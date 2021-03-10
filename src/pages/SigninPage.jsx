@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Card, Form, Button } from "react-bootstrap";
 
 const SigninPage = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(passwordRef.current.value);
+  };
+
   return (
     <>
       <Card>
         <Card className='body'>
           <h2>Sign in</h2>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label className='d-none'>Email</Form.Label>
               <Form.Control
@@ -15,6 +23,7 @@ const SigninPage = () => {
                 autoComplete='username'
                 placeholder='Email'
                 required
+                ref={emailRef}
               />
             </Form.Group>
             <Form.Group>
@@ -24,6 +33,7 @@ const SigninPage = () => {
                 autoComplete='new-password'
                 placeholder='Password'
                 required
+                ref={passwordRef}
               />
             </Form.Group>
             <Button type='Submit'>Sign In</Button>
