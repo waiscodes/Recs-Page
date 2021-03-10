@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Card, Form, Button } from "react-bootstrap";
 
 const SignupPage = () => {
+  const emailRef = useRef();
+  const nameRef = useRef();
+  const usernameRef = useRef();
+  const passwordRef = useRef();
+  const conPasswordRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Card>
         <Card.Body>
           <h2>Sign in</h2>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label className='d-none'>Email</Form.Label>
               <Form.Control
@@ -15,15 +25,27 @@ const SignupPage = () => {
                 autoComplete='username'
                 placeholder='Email'
                 required
+                ref={emailRef}
               />
             </Form.Group>
             <Form.Group>
               <Form.Label className='d-none'>Full Name</Form.Label>
-              <Form.Control type='text' placeholder='Full Name' required />
+              <Form.Control
+                type='text'
+                placeholder='Full Name'
+                required
+                ref={nameRef}
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label className='d-none'>Username</Form.Label>
-              <Form.Control type='text' placeholder='Username' required />
+              <Form.Control
+                type='text'
+                placeholder='Username'
+                autoComplete='username'
+                required
+                ref={usernameRef}
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label className='d-none'>Password</Form.Label>
@@ -32,6 +54,7 @@ const SignupPage = () => {
                 autoComplete='new-password'
                 placeholder='Password'
                 required
+                ref={passwordRef}
               />
             </Form.Group>
             <Form.Group>
@@ -41,6 +64,7 @@ const SignupPage = () => {
                 autoComplete='new-password'
                 placeholder='Confirm Password'
                 required
+                ref={conPasswordRef}
               />
             </Form.Group>
             <Button type='Submit'>Sign In</Button>
