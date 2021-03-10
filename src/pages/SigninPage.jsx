@@ -13,7 +13,7 @@ const SigninPage = () => {
   return (
     <>
       <Card>
-        <Card className='body'>
+        <Card.Body>
           <h2>Sign in</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
@@ -38,7 +38,10 @@ const SigninPage = () => {
             </Form.Group>
             <Button type='Submit'>Sign In</Button>
           </Form>
-        </Card>
+        </Card.Body>
+      </Card>
+      <Card>
+        <Card.Body>Don't have an account? Sign up</Card.Body>
       </Card>
     </>
   );
