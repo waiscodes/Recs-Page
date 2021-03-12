@@ -11,6 +11,7 @@ const ProfilePage = () => {
             <p className='display-name'>Birm Wais</p>
             <p className='username'>waisideas</p>
             <p>Add bio here</p>
+            <Button>Add Recommendation</Button>
           </div>
         </Card.Body>
       </Card>

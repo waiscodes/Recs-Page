@@ -10,6 +10,7 @@ function App() {
     <AuthProvider className='App'>
       <Container>
         <ProfilePage />
+        <SignupPage />
       </Container>
     </AuthProvider>
   );
