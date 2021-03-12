@@ -1,14 +1,26 @@
-import React, { useRef } from "react";
-import { Card, Form, Button } from "react-bootstrap";
+import React, { useRef, useState } from "react";
+import { Card, Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const SigninPage = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { signin } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(passwordRef.current.value);
+
+    try {
+      setError("");
+      setLoading(true);
+      await signin(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError("Failed to sign in");
+    }
+    setLoading(false);
   };
 
   return (
@@ -16,6 +28,7 @@ const SigninPage = () => {
       <Card>
         <Card.Body>
           <h2>Sign in</h2>
+          {error && <Alert variant='danger'>{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label className='d-none'>Email</Form.Label>
@@ -37,7 +50,9 @@ const SigninPage = () => {
                 ref={passwordRef}
               />
             </Form.Group>
-            <Button type='Submit'>Sign In</Button>
+            <Button type='Submit' disabled={loading}>
+              Sign In
+            </Button>
           </Form>
         </Card.Body>
       </Card>
