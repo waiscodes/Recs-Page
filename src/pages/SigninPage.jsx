@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Card, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const SigninPage = () => {
   const emailRef = useRef();
@@ -41,7 +42,9 @@ const SigninPage = () => {
         </Card.Body>
       </Card>
       <Card>
-        <Card.Body>Don't have an account? Sign up</Card.Body>
+        <Card.Body>
+          Don't have an account? <Link to='/signup'>Sign up</Link>
+        </Card.Body>
       </Card>
     </>
   );
