@@ -13,6 +13,7 @@ const Dashboard = () => {
           <Button>Edit Profile</Button>
           <Button>Add Recommendation</Button>
         </div>
+        <hr />
       </Card.Body>
     </Card>
   );
