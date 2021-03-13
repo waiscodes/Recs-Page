@@ -4,6 +4,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./pages/PrivateRoute";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
 
@@ -13,7 +14,7 @@ function App() {
       <Router>
         <AuthProvider className='App'>
           <Switch>
-            <Route exact path='/' component={Dashboard} />
+            <PrivateRoute exact path='/' component={Dashboard} />
             <Route path='/signup' component={SignupPage} />
             <Route path='/signin' component={SigninPage} />
           </Switch>
