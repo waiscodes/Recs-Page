@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Card, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 
 const Dashboard = () => {
   const { currentUser } = useAuth();
+  const testRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <Card>
@@ -17,6 +22,9 @@ const Dashboard = () => {
           <Button>Add Recommendation</Button>
         </div>
         <hr />
+        <form onSubmit={handleSubmit}>
+          <input type='text' name='test' id='test' ref={testRef} />
+        </form>
       </Card.Body>
     </Card>
   );

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { auth } from "../fire";
+import fire, { auth } from "../fire";
 
 const AuthContext = React.createContext();
 export const useAuth = () => {
@@ -10,8 +10,16 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Register and Login
-  const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
+  const signup = (name, email, username, password) => {
+    const db = fire.firestore();
+    console.log(db);
+    auth.createUserWithEmailAndPassword(email, password).then((cred) => {
+      return db.collection("users").doc(cred.user.uid).set({
+        name: name,
+        username: username,
+        bio: "",
+      });
+    });
   };
 
   const signin = (email, password) => {
