@@ -30,12 +30,12 @@ const SignupPage = () => {
         usernameRef.current.value,
         passwordRef.current.value
       );
+      setLoading(false);
       history.push("/");
     } catch {
       setError("Failed to create account");
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (

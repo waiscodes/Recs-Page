@@ -3,14 +3,23 @@ import { Card, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import placeholderAvi from "../images/placeholder-avi.png";
 import "../css/Dashboard.css";
+import fire from "../fire";
 
 const Dashboard = () => {
   const [avi, setAvi] = useState(placeholderAvi);
   const { currentUser } = useAuth();
   const testRef = useRef();
 
+  const addToFirestore = () => {
+    const db = fire.firestore();
+    db.collection("books").add({
+      test: testRef.current.value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    addToFirestore();
   };
 
   return (
@@ -25,9 +34,6 @@ const Dashboard = () => {
           <Button>Add Recommendation</Button>
         </div>
         <hr />
-        <form onSubmit={handleSubmit}>
-          <input type='text' name='test' id='test' ref={testRef} />
-        </form>
       </Card.Body>
     </Card>
   );
