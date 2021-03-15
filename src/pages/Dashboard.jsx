@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import placeholderAvi from "../images/placeholder-avi.png";
-import "../index.css";
+import "../css/Dashboard.css";
 
 const Dashboard = () => {
   const [avi, setAvi] = useState(placeholderAvi);
