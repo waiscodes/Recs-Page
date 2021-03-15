@@ -2,3 +2,8 @@
   border: solid;
   text-align: center;
 }
+
+.profile-pic {
+  width: 200px;
+  clip-path: circle();
+}
