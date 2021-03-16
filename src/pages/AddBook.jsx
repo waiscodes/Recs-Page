@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Modal } from "react-bootstrap";
 import axios from "axios";
 
 const AddBook = () => {
@@ -23,39 +23,52 @@ const AddBook = () => {
 
   return (
     <>
-      <Container>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Title'
-              onChange={handleChange}
-            />
-            <Form.Text className='text-muted'>
-              Search and Click on Thumbnail
-            </Form.Text>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Recommender</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Who recommended it?'
-              ref={recRef}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Reason</Form.Label>
-            <Form.Control
-              as='textarea'
-              rows={3}
-              placeholder='Reason. Why should I read read it'
-              ref={reasonRef}
-            />
-          </Form.Group>
-          <Button type='submit'>Submit</Button>
-        </Form>
-      </Container>
+      <Modal.Dialog className='bootstrap-modal'>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Book</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Container>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Title'
+                  onChange={handleChange}
+                />
+                <Form.Text className='text-muted'>
+                  Search and Click on Thumbnail
+                </Form.Text>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Recommender</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Who recommended it?'
+                  ref={recRef}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Reason</Form.Label>
+                <Form.Control
+                  as='textarea'
+                  rows={3}
+                  placeholder='Reason. Why should I read read it'
+                  ref={reasonRef}
+                />
+              </Form.Group>
+            </Form>
+          </Container>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant='secondary'>Close</Button>
+          <Button variant='primary' onClick={handleSubmit}>
+            Add Rec
+          </Button>
+        </Modal.Footer>
+      </Modal.Dialog>
     </>
   );
 };
