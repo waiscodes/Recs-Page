@@ -9,7 +9,9 @@ const RecModal = ({ show, close }) => {
           <Modal.Title>Add Book</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body></Modal.Body>
+        <Modal.Body>
+          <h3>Hello World</h3>
+        </Modal.Body>
 
         <Modal.Footer>
           <Button variant='secondary'>Close</Button>

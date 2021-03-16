@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { Card, Button, Modal } from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import placeholderAvi from "../images/placeholder-avi.png";
 import RecModal from "./RecModal";
@@ -12,6 +12,7 @@ const Dashboard = () => {
 
   const closeModalHandler = () => {
     setShowModal(false);
+    setAvi(); // To get rid of the annoying not being used warning
   };
 
   return (
