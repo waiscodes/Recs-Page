@@ -1,4 +1,5 @@
 import React from "react";
+import AddBook from "./AddBook";
 import { Button, Modal } from "react-bootstrap";
 
 const RecModal = ({ show, close }) => {
@@ -10,7 +11,7 @@ const RecModal = ({ show, close }) => {
         </Modal.Header>
 
         <Modal.Body>
-          <h3>Hello World</h3>
+          <AddBook />
         </Modal.Body>
 
         <Modal.Footer>
