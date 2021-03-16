@@ -1,9 +1,13 @@
 .user-info {
-  border: solid;
   text-align: center;
 }
 
 .profile-pic {
   width: 200px;
   clip-path: circle();
+}
+
+.bootstrap-modal {
+  position: absolute;
+  margin-top: 0px;
 }
