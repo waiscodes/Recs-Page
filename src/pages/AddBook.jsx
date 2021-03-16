@@ -1,14 +1,26 @@
-import React from "react";
-import { Container, Form, Input } from "react-bootstrap";
+import React, { useRef, useState } from "react";
+import { Container, Form } from "react-bootstrap";
 
 const AddBook = () => {
+  const [title, setTitle] = useState();
+  const recRef = useRef();
+  const reasonRef = useRef();
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Container>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
-            <Form.Control type='text' />
+            <Form.Control type='text' onChange={handleChange} />
             <Form.Text className='text-muted'>
               Search and Click on Thumbnail
             </Form.Text>
