@@ -5,14 +5,17 @@ import { db } from "../fire";
 
 const RecommendPage = () => {
   const [title, setTitle] = useState();
+  const [author, setAuthor] = useState();
+  const [thumbnail, setThumbnail] = useState();
   const [book, setBook] = useState();
   const recRef = useRef();
   const reasonRef = useRef();
   const [result, setResult] = useState([]);
 
   const pickBook = (e) => {
-    setTitle(e.target.attributes.getNamedItem("data-book").value);
-    setBook(e.target.attributes.getNamedItem("data-book").value);
+    setTitle(e.target.attributes.getNamedItem("data-title").value);
+    setAuthor(e.target.attributes.getNamedItem("data-authors").value);
+    setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
   };
 
   const handleChange = (e) => {
@@ -24,15 +27,20 @@ const RecommendPage = () => {
       });
   };
 
+  const addToFirestore = () => {
+    db.collection("books").add({
+      title: title,
+      author: author,
+      thumbnail: thumbnail,
+      recBy: recRef.current.value,
+      reason: reasonRef.current.value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    db.collection("book").add({
-      title: title,
-      book: book,
-      recBy: recRef,
-      reason: reasonRef,
-    });
+    addToFirestore();
   };
 
   return (
@@ -53,7 +61,9 @@ const RecommendPage = () => {
                   book.volumeInfo.imageLinks.thumbnail
                 }
                 alt=''
-                data-book={book.volumeInfo.title}
+                data-title={book.volumeInfo.title}
+                data-authors={book.volumeInfo.authors}
+                data-thumbnail={book.volumeInfo.imageLinks.thumbnail}
                 onClick={pickBook}
               />
             </div>
