@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Container, Form, Button, Modal } from "react-bootstrap";
+import { Container, Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 
 const RecommendPage = () => {
@@ -24,6 +24,22 @@ const RecommendPage = () => {
   return (
     <>
       <Container>
+        <div>
+          {result.map((book) => (
+            <img
+              src={
+                book.volumeInfo.imageLinks &&
+                book.volumeInfo.imageLinks.thumbnail
+              }
+              key={
+                book.volumeInfo.imageLinks &&
+                book.volumeInfo.imageLinks.thumbnail
+              }
+              alt=''
+              data-book={book.volumeInfo.title}
+            />
+          ))}
+        </div>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
@@ -53,6 +69,7 @@ const RecommendPage = () => {
               ref={reasonRef}
             />
           </Form.Group>
+          <Button type='submit'>Submit</Button>
         </Form>
       </Container>
     </>
