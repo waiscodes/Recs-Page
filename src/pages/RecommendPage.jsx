@@ -1,13 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { db } from "../fire";
+import debounce from "lodash.debounce";
 
 const RecommendPage = () => {
   const [title, setTitle] = useState();
   const [author, setAuthor] = useState();
   const [thumbnail, setThumbnail] = useState();
-  const [book, setBook] = useState();
   const recRef = useRef();
   const reasonRef = useRef();
   const [result, setResult] = useState([]);
@@ -18,13 +18,20 @@ const RecommendPage = () => {
     setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
   };
 
+  const debounceSearch = useCallback(
+    debounce((title) => {
+      axios
+        .get(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
+        .then((res) => {
+          setResult(res.data.items.slice(0, 3));
+        });
+    }, 1000),
+    []
+  );
+
   const handleChange = (e) => {
     setTitle(e.target.value);
-    axios
-      .get(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
-      .then((res) => {
-        setResult(res.data.items.slice(0, 3));
-      });
+    debounceSearch(e.target.value);
   };
 
   const addToFirestore = () => {
@@ -63,7 +70,10 @@ const RecommendPage = () => {
                 alt=''
                 data-title={book.volumeInfo.title}
                 data-authors={book.volumeInfo.authors}
-                data-thumbnail={book.volumeInfo.imageLinks.thumbnail}
+                data-thumbnail={
+                  book.volumeInfo.imageLinks &&
+                  book.volumeInfo.imageLinks.thumbnail
+                }
                 onClick={pickBook}
               />
             </div>
