@@ -3,6 +3,7 @@ import { Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { db } from "../fire";
 import debounce from "lodash.debounce";
+import { useHistory } from "react-router";
 
 const RecommendPage = () => {
   const [title, setTitle] = useState();
@@ -11,6 +12,8 @@ const RecommendPage = () => {
   const recRef = useRef();
   const reasonRef = useRef();
   const [result, setResult] = useState([]);
+  const [error, setError] = useState("");
+  const history = useHistory();
 
   const pickBook = (e) => {
     setTitle(e.target.attributes.getNamedItem("data-title").value);
@@ -18,6 +21,7 @@ const RecommendPage = () => {
     setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
   };
 
+  // eslint-disable-next-line
   const debounceSearch = useCallback(
     debounce((title) => {
       axios
@@ -35,13 +39,18 @@ const RecommendPage = () => {
   };
 
   const addToFirestore = () => {
-    db.collection("books").add({
-      title: title,
-      author: author,
-      thumbnail: thumbnail,
-      recBy: recRef.current.value,
-      reason: reasonRef.current.value,
-    });
+    try {
+      db.collection("books").add({
+        title: title,
+        author: author,
+        thumbnail: thumbnail,
+        recBy: recRef.current.value,
+        reason: reasonRef.current.value,
+      });
+      history.goBack();
+    } catch {
+      setError("Failed to add book");
+    }
   };
 
   const handleSubmit = (e) => {
