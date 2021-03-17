@@ -1,19 +1,22 @@
 import React, { useRef, useState } from "react";
-import { Container, Form, Button, Card } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { db } from "../fire";
 
 const RecommendPage = () => {
   const [title, setTitle] = useState();
+  const [book, setBook] = useState();
   const recRef = useRef();
   const reasonRef = useRef();
   const [result, setResult] = useState([]);
 
-  const handleChange = (e) => {
-    setTitle(e.target.value);
+  const pickBook = (e) => {
+    setTitle(e.target.attributes.getNamedItem("data-book").value);
+    setBook(e.target.attributes.getNamedItem("data-book").value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleChange = (e) => {
+    setTitle(e.target.value);
     axios
       .get(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
       .then((res) => {
@@ -21,23 +24,39 @@ const RecommendPage = () => {
       });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    db.collection("book").add({
+      title: title,
+      book: book,
+      recBy: recRef,
+      reason: reasonRef,
+    });
+  };
+
   return (
     <>
       <Container>
-        <div>
+        <div className='d-flex'>
           {result.map((book) => (
-            <img
-              src={
-                book.volumeInfo.imageLinks &&
-                book.volumeInfo.imageLinks.thumbnail
-              }
+            <div
+              className='m-1'
               key={
                 book.volumeInfo.imageLinks &&
                 book.volumeInfo.imageLinks.thumbnail
               }
-              alt=''
-              data-book={book.volumeInfo.title}
-            />
+            >
+              <img
+                src={
+                  book.volumeInfo.imageLinks &&
+                  book.volumeInfo.imageLinks.thumbnail
+                }
+                alt=''
+                data-book={book.volumeInfo.title}
+                onClick={pickBook}
+              />
+            </div>
           ))}
         </div>
         <Form onSubmit={handleSubmit}>
@@ -47,6 +66,7 @@ const RecommendPage = () => {
               type='text'
               placeholder='Title'
               onChange={handleChange}
+              value={title}
             />
             <Form.Text className='text-muted'>
               Search and Click on Thumbnail
