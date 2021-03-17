@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import placeholderAvi from "../images/placeholder-avi.png";
-import AddBook from "./AddBook";
 import "../css/Dashboard.css";
 
 const Dashboard = () => {
@@ -27,7 +26,6 @@ const Dashboard = () => {
           <Button onClick={() => setShowModal(true)}>Add Recommendation</Button>
         </div>
         <hr />
-        <AddBook showModal={showModal} closeModalHandler={closeModalHandler} />
       </Card.Body>
     </Card>
   );

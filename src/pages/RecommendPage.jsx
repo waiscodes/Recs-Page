@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Container, Form, Button, Modal } from "react-bootstrap";
 import axios from "axios";
 
-const AddBook = () => {
+const RecommendPage = () => {
   const [title, setTitle] = useState();
   const recRef = useRef();
   const reasonRef = useRef();
@@ -73,4 +73,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default RecommendPage;
