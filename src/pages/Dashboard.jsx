@@ -3,6 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import placeholderAvi from "../images/placeholder-avi.png";
 import "../css/Dashboard.css";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [avi, setAvi] = useState(placeholderAvi);
@@ -23,7 +24,9 @@ const Dashboard = () => {
           <p>{currentUser.email}</p>
           <p>Add bio here</p>
           <Button>Edit Profile</Button>
-          <Button onClick={() => setShowModal(true)}>Add Recommendation</Button>
+          <Link to='recommend'>
+            <Button>Add Recommendation</Button>
+          </Link>
         </div>
         <hr />
       </Card.Body>

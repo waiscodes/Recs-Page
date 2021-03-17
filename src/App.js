@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./pages/PrivateRoute";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
+import RecommendPage from "./pages/RecommendPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <PrivateRoute exact path='/' component={Dashboard} />
             <Route path='/signup' component={SignupPage} />
             <Route path='/signin' component={SigninPage} />
+            <Route path='/recommend' component={RecommendPage} />
           </Switch>
         </AuthProvider>
       </Router>

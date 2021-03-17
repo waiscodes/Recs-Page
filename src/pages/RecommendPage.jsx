@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Container, Form, Button, Modal } from "react-bootstrap";
 import axios from "axios";
 
@@ -64,9 +65,7 @@ const RecommendPage = () => {
 
         <Modal.Footer>
           <Button variant='secondary'>Close</Button>
-          <Button variant='primary' onClick={handleSubmit}>
-            Add Rec
-          </Button>
+          <Button variant='primary'>Add Rec</Button>
         </Modal.Footer>
       </Modal.Dialog>
     </>
