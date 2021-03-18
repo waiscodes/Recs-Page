@@ -10,3 +10,14 @@
 .bootstrap-modal {
   margin-top: 0px;
 }
+
+.books-map {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  border: solid;
+}
+
+.ind-book {
+  border: solid;
+}

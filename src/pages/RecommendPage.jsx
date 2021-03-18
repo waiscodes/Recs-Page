@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import { db } from "../fire";
 import debounce from "lodash.debounce";
@@ -88,6 +88,7 @@ const RecommendPage = () => {
             </div>
           ))}
         </div>
+        {error && <Alert variant='danger'>{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
