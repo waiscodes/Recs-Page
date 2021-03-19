@@ -7,7 +7,6 @@ export const useAuth = () => {
 };
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
-  const [userInfo, setUserInfo] = useState();
   const [loading, setLoading] = useState(true);
 
   // Register and Login
@@ -27,18 +26,8 @@ export const AuthProvider = ({ children }) => {
 
   // User info
 
-  const getUserInfo = (uid) => {
-    db.collection("users")
-      .doc(uid)
-      .get()
-      .then((snap) => {
-        console.log(snap.data());
-      });
-  };
-
   auth.onAuthStateChanged((user) => {
     setCurrentUser(user);
-    getUserInfo(user.uid);
     setLoading(false);
   });
 
@@ -51,7 +40,6 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
-    userInfo,
     signup,
     signin,
   };
