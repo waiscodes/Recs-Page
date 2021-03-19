@@ -9,10 +9,11 @@ import { db } from "../fire";
 const Dashboard = () => {
   const [avi, setAvi] = useState(placeholderAvi);
   const { currentUser } = useAuth();
+  const { userInfo } = useAuth();
   const [books, setBooks] = useState();
 
   const editProfile = () => {
-    setAvi(); // placeholder to avoid unused var warning
+    setAvi(placeholderAvi); // placeholder to avoid unused var warning
   };
 
   useEffect(() => {
@@ -40,6 +41,7 @@ const Dashboard = () => {
           <img src={avi} alt='' className='profile-pic' />
           <p className='display-name'>Birm Wais</p>
           <p>{currentUser.email}</p>
+          <pre>{userInfo}</pre>
           <p>Add bio here</p>
           <Button onClick={editProfile}>Edit Profile</Button>
           <Link to='recommend'>
