@@ -53,7 +53,7 @@ const SigninPage = () => {
               />
             </Form.Group>
             <Button type='Submit' disabled={loading}>
-              Sign In
+              Sign in
             </Button>
           </Form>
         </Card.Body>

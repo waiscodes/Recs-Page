@@ -29,7 +29,7 @@ const RecommendPage = () => {
         .then((res) => {
           setResult(res.data.items.slice(0, 3));
         });
-    }, 1000),
+    }, 500),
     []
   );
 
@@ -88,7 +88,7 @@ const RecommendPage = () => {
             </div>
           ))}
         </div>
-        {error && <Alert variant='danger'>{error}</Alert>}
+        {/* {error && <Alert variant='danger'>{error}</Alert>} */}
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
