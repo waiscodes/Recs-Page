@@ -5,6 +5,8 @@ import { db } from "../fire";
 import debounce from "lodash.debounce";
 import { useHistory } from "react-router";
 
+// TODO: Hide book recommendation full form until the book is selected. This will improve the customer experience.
+
 const RecommendPage = () => {
   const [title, setTitle] = useState();
   const [author, setAuthor] = useState();
