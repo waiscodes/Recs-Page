@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import { db } from "../fire";
