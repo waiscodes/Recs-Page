@@ -18,7 +18,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     getUser(profile);
-  }, []);
+  });
 
   return (
     <>

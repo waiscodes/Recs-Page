@@ -44,7 +44,7 @@ const Dashboard = () => {
           <pre>{userInfo}</pre>
           <p>Add bio here</p>
           <Button onClick={editProfile}>Edit Profile</Button>
-          <Link to='recommend'>
+          <Link to={"recommend/" + "aa"}>
             <Button>Add Recommendation</Button>
           </Link>
         </div>
