@@ -8,8 +8,8 @@ import { db } from "../fire";
 
 const Dashboard = () => {
   const [avi, setAvi] = useState(placeholderAvi);
+  const [user, setUser] = useState();
   const { currentUser } = useAuth();
-  const { userInfo } = useAuth();
   const [books, setBooks] = useState();
 
   const editProfile = () => {
@@ -18,7 +18,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     getBooks();
+    getUser();
   }, []);
+
+  const getUser = () => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then((snap) => setUser(snap.data()));
+  };
 
   const getBooks = () => {
     db.collection("books")
@@ -40,11 +48,11 @@ const Dashboard = () => {
         <div className='user-info'>
           <img src={avi} alt='' className='profile-pic' />
           <p className='display-name'>Birm Wais</p>
-          <p>{currentUser.email}</p>
-          <pre>{userInfo}</pre>
+          <p>{currentUser.displayName}</p>
+          <p>{user.username}</p>
           <p>Add bio here</p>
           <Button onClick={editProfile}>Edit Profile</Button>
-          <Link to={"recommend/" + "aa"}>
+          <Link to={"recommend/" + user.username}>
             <Button>Add Recommendation</Button>
           </Link>
         </div>
