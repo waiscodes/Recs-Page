@@ -19,7 +19,7 @@ function App() {
             <PrivateRoute exact path='/' component={Dashboard} />
             <Route path='/signup' component={SignupPage} />
             <Route path='/signin' component={SigninPage} />
-            <Route path='/recommend/' component={RecommendPage} />
+            <Route path='/recommend/:username' component={RecommendPage} />
             <Route path='/:profile' component={ProfilePage} />
           </Switch>
         </AuthProvider>
