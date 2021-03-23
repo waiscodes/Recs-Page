@@ -5,6 +5,7 @@ import placeholderAvi from "../images/placeholder-avi.png";
 import "../css/Dashboard.css";
 import { Link } from "react-router-dom";
 import { db } from "../fire";
+import RecommendPage from "./RecommendPage";
 
 const Dashboard = () => {
   const [avi, setAvi] = useState(placeholderAvi);
@@ -17,7 +18,6 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getBooks();
     getUser();
   }, []);
 
@@ -26,11 +26,13 @@ const Dashboard = () => {
       .doc(currentUser.uid)
       .get()
       .then((snap) => setUser(snap.data()));
+    getBooks();
   };
 
   const getBooks = () => {
     db.collection("books")
       .get()
+      .where("username", "==", user.username)
       .then((snap) => {
         setBooks(
           snap.docs.map((doc) => ({
@@ -49,14 +51,15 @@ const Dashboard = () => {
           <img src={avi} alt='' className='profile-pic' />
           <p className='display-name'>Birm Wais</p>
           <p>{currentUser.displayName}</p>
-          <p>{user.username}</p>
+          <p>{user && user.username}</p>
           <p>Add bio here</p>
           <Button onClick={editProfile}>Edit Profile</Button>
-          <Link to={"recommend/" + user.username}>
+          <Link to={"recommend/"}>
             <Button>Add Recommendation</Button>
           </Link>
         </div>
         <hr />
+        <RecommendPage username={user && user.username} />
         <Container className='books-map'>
           {books &&
             books.map((book) => (

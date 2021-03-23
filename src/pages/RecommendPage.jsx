@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 
 // TODO: Hide book recommendation full form until the book is selected. This will improve the customer experience.
 
-const RecommendPage = () => {
+const RecommendPage = (props) => {
   const [title, setTitle] = useState();
   const [author, setAuthor] = useState();
   const [thumbnail, setThumbnail] = useState();
@@ -49,15 +49,14 @@ const RecommendPage = () => {
         recBy: recRef.current.value,
         reason: reasonRef.current.value,
       });
-      history.goBack();
+      console.log("sucess");
     } catch {
-      setError("Failed to add book");
+      console.log("Failed to add book");
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(error);
 
     addToFirestore();
   };
@@ -92,6 +91,7 @@ const RecommendPage = () => {
           ))}
         </div>
         {/* {error && <Alert variant='danger'>{error}</Alert>} */}
+        {props.username}
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
