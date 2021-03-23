@@ -19,6 +19,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getUser();
+    getBooks();
   }, []);
 
   const getUser = () => {
@@ -26,13 +27,11 @@ const Dashboard = () => {
       .doc(currentUser.uid)
       .get()
       .then((snap) => setUser(snap.data()));
-    getBooks();
   };
 
   const getBooks = () => {
     db.collection("books")
       .get()
-      .where("username", "==", user.username)
       .then((snap) => {
         setBooks(
           snap.docs.map((doc) => ({
@@ -59,7 +58,7 @@ const Dashboard = () => {
           </Link>
         </div>
         <hr />
-        <RecommendPage username={user && user.username} />
+        <RecommendPage uid={currentUser.uid} />
         <Container className='books-map'>
           {books &&
             books.map((book) => (

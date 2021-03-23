@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
         name: name,
         username: username,
         bio: "",
+        uid: cred.user.uid,
       });
     });
   };

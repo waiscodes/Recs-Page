@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import { db } from "../fire";
+import RecommendPage from "./RecommendPage";
 
 const ProfilePage = () => {
   const { profile } = useParams();
+  const [userProfile, setUserProfile] = useState();
 
   const getUser = (username) => {
-    db.collection("user")
+    db.collection("users")
       .where("username", "==", username)
       .get()
-      .then((snap) => ({
-        id: snap.id,
-        user: snap.data(),
-      }));
+      .then((snap) => {
+        snap.docs.map((doc) => {
+          setUserProfile(doc.data());
+        });
+      });
   };
 
   useEffect(() => {
@@ -31,6 +34,8 @@ const ProfilePage = () => {
             <p>{"bio here"}</p>
             <Button>Add Recommendation</Button>
           </div>
+          <hr />
+          <RecommendPage uid={userProfile && userProfile.uid} />
         </Card.Body>
       </Card>
     </>

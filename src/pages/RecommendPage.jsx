@@ -48,8 +48,10 @@ const RecommendPage = (props) => {
         thumbnail: thumbnail,
         recBy: recRef.current.value,
         reason: reasonRef.current.value,
+        rating: 0,
+        uid: props.uid,
       });
-      console.log("sucess");
+      console.log("success");
     } catch {
       console.log("Failed to add book");
     }
@@ -91,7 +93,7 @@ const RecommendPage = (props) => {
           ))}
         </div>
         {/* {error && <Alert variant='danger'>{error}</Alert>} */}
-        {props.username}
+        {props.uid}
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
