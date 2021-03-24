@@ -16,7 +16,7 @@ const ProfilePage = () => {
 
   const loadPage = async () => {
     const page = await getUser(profile);
-    console.log(page);
+    getBooks();
   };
 
   const getUser = (username) => {
@@ -28,9 +28,9 @@ const ProfilePage = () => {
       });
   };
 
-  const getBooks = (uid) => {
+  const getBooks = () => {
     db.collection("books")
-      .where("uid", "==", uid)
+      // .where("uid", "==", uid)
       .get()
       .then((snap) => {
         setBooks(
