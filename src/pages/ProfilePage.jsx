@@ -11,15 +11,21 @@ const ProfilePage = () => {
   const [books, setBooks] = useState();
 
   useEffect(() => {
-    console.log("something");
+    loadPage();
   });
 
-  const getUser = async (username) => {
-    await db
-      .collection("users")
+  const loadPage = async () => {
+    const page = await getUser(profile);
+    console.log(page);
+  };
+
+  const getUser = (username) => {
+    db.collection("users")
       .where("username", "==", username)
       .get()
-      .then((snap) => setUserProfile(snap.docs[0].data()));
+      .then((snap) => {
+        return snap.docs[0].data();
+      });
   };
 
   const getBooks = (uid) => {
@@ -41,7 +47,7 @@ const ProfilePage = () => {
     <>
       <Card>
         <Card.Body>
-          {/* {JSON.stringify(books, null, 2)} */}
+          {JSON.stringify(userProfile, null, 2)}
           <div className='user-info'>
             <img src='' alt='' />
             <p className='display-name'>Birm Wais</p>
