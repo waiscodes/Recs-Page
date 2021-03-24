@@ -1,32 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
 import { db } from "../fire";
 import RecommendPage from "./RecommendPage";
 
 const ProfilePage = () => {
   const { profile } = useParams();
   const [userProfile, setUserProfile] = useState();
-
-  const getUser = (username) => {
-    db.collection("users")
-      .where("username", "==", username)
-      .get()
-      .then((snap) => {
-        snap.docs.map((doc) => {
-          setUserProfile(doc.data());
-        });
-      });
-  };
+  const [uid, setUid] = useState("");
+  const [books, setBooks] = useState();
 
   useEffect(() => {
-    getUser(profile);
+    console.log("something");
   });
+
+  const getUser = async (username) => {
+    await db
+      .collection("users")
+      .where("username", "==", username)
+      .get()
+      .then((snap) => setUserProfile(snap.docs[0].data()));
+  };
+
+  const getBooks = (uid) => {
+    db.collection("books")
+      .where("uid", "==", uid)
+      .get()
+      .then((snap) => {
+        setBooks(
+          snap.docs.map((doc) => ({
+            id: doc.id,
+            title: doc.data().title,
+            thumbnail: doc.data().thumbnail,
+          }))
+        );
+      });
+  };
 
   return (
     <>
       <Card>
         <Card.Body>
+          {/* {JSON.stringify(books, null, 2)} */}
           <div className='user-info'>
             <img src='' alt='' />
             <p className='display-name'>Birm Wais</p>
@@ -37,6 +52,15 @@ const ProfilePage = () => {
           <hr />
           <RecommendPage uid={userProfile && userProfile.uid} />
         </Card.Body>
+        <Container className='books-map'>
+          {books &&
+            books.map((book) => (
+              <div key={book.id} className='ind-book'>
+                <img src={book.thumbnail} alt='' />
+                <p>{book.title}</p>
+              </div>
+            ))}
+        </Container>
       </Card>
     </>
   );
