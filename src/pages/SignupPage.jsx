@@ -56,15 +56,6 @@ const SignupPage = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label className='d-none'>Full Name</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Full Name'
-                required
-                ref={nameRef}
-              />
-            </Form.Group>
-            <Form.Group>
               <Form.Label className='d-none'>Username</Form.Label>
               <Form.Control
                 type='text'
