@@ -9,6 +9,7 @@ import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
 import RecommendPage from "./pages/RecommendPage";
 import ProfilePage from "./pages/ProfilePage";
+import CompleteProfile from "./pages/CompleteProfile";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <AuthProvider className='App'>
           <Switch>
             <PrivateRoute exact path='/' component={Dashboard} />
+            <PrivateRoute
+              path='/complete-profile'
+              component={CompleteProfile}
+            />
             <Route path='/signup' component={SignupPage} />
             <Route path='/signin' component={SigninPage} />
             <Route path='/recommend/:username' component={RecommendPage} />
