@@ -2,29 +2,31 @@ import React, { useRef, useState } from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import { db } from "../fire";
 
 const CompleteProfile = () => {
-  const emailRef = useRef();
   const nameRef = useRef();
   const bioRef = useRef();
   const passwordRef = useRef();
   const conPasswordRef = useRef();
-  const { signup } = useAuth();
+  const { currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (passwordRef.current.value !== conPasswordRef.current.value) {
-      return setError("Passwords do not match");
-    }
+    db.collection("users").doc(currentUser.uid).update({
+      name: nameRef.current.value,
+      bio: bioRef.current.value,
+    });
   };
 
   return (
     <>
       <Card>
+        {JSON.stringify(currentUser, null, 2)}
         <Card.Body>
           <h2>Complete Profile</h2>
           {error && <Alert variant='danger'>{error}</Alert>}
