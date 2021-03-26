@@ -21,11 +21,11 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  // Authentication
+
   const signin = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
-
-  // User info
 
   auth.onAuthStateChanged((user) => {
     setCurrentUser(user);

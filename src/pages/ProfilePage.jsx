@@ -11,26 +11,23 @@ const ProfilePage = () => {
   const [books, setBooks] = useState();
 
   useEffect(() => {
-    loadPage();
-  });
-
-  const loadPage = async () => {
-    const page = await getUser(profile);
-    getBooks();
-  };
+    getUser(profile);
+  }, []);
 
   const getUser = (username) => {
     db.collection("users")
       .where("username", "==", username)
       .get()
       .then((snap) => {
-        return snap.docs[0].data();
+        setUserProfile(snap.docs[0].data());
+        getBooks(snap.docs[0].data());
       });
   };
 
-  const getBooks = () => {
+  const getBooks = (user) => {
+    console.log("run!");
     db.collection("books")
-      // .where("uid", "==", uid)
+      .where("uid", "==", user.uid)
       .get()
       .then((snap) => {
         setBooks(
@@ -41,6 +38,7 @@ const ProfilePage = () => {
           }))
         );
       });
+    console.log("ran");
   };
 
   return (
