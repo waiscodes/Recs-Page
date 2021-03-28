@@ -8,6 +8,7 @@ const CompleteProfile = () => {
   const nameRef = useRef();
   const bioRef = useRef();
   const aviRef = useRef();
+  const [avi, setAvi] = useState();
   const { currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,9 @@ const CompleteProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addToFirestore();
+    // addToFirestore();
+
+    console.log(aviRef.current.value);
   };
 
   return (
@@ -53,7 +56,12 @@ const CompleteProfile = () => {
             </Form.Group>
             <Form.Group>
               <Form.Label className=''>Profile Picture</Form.Label>
-              <Form.Control type='file' rows={3} ref={aviRef} />
+              <Form.Control
+                type='file'
+                rows={3}
+                ref={aviRef}
+                onChange={(e) => setAvi(e.target.value)}
+              />
             </Form.Group>
             <Button type='Submit' disabled={loading}>
               Update Profile
