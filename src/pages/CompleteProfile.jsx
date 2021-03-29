@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import { db } from "../fire";
+import { db, storage } from "../fire";
 
 const CompleteProfile = () => {
   const nameRef = useRef();
@@ -27,9 +27,6 @@ const CompleteProfile = () => {
     // addToFirestore();
 
     console.log(aviRef.current.value);
-
-    const formData = new FormData();
-    formData.append("file", avi);
   };
 
   return (
