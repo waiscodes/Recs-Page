@@ -27,6 +27,9 @@ const CompleteProfile = () => {
     // addToFirestore();
 
     console.log(aviRef.current.value);
+
+    const formData = new FormData();
+    formData.append("file", avi);
   };
 
   return (
