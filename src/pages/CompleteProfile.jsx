@@ -27,10 +27,13 @@ const CompleteProfile = () => {
     e.preventDefault();
     // addToFirestore();
 
+    // console.log(avi);
+
     storage
       .ref("Profile-pic")
       .put(avi)
-      .then((res) => console.log("gottem"))
+      .getDownloadURL()
+      .then((res) => console.log(res))
       .catch((error) => console.log(error));
   };
 
@@ -65,7 +68,7 @@ const CompleteProfile = () => {
                 type='file'
                 rows={3}
                 ref={aviRef}
-                onChange={(e) => setAvi(e.target.value)}
+                onChange={(e) => setAvi(e.target.files[0])}
               />
             </Form.Group>
             <Button type='Submit' disabled={loading}>
