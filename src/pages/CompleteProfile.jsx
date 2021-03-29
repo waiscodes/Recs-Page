@@ -9,6 +9,7 @@ const CompleteProfile = () => {
   const bioRef = useRef();
   const aviRef = useRef();
   const [avi, setAvi] = useState();
+  const [aviURL, setAviURL] = useState();
   const { currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,11 @@ const CompleteProfile = () => {
     e.preventDefault();
     // addToFirestore();
 
-    console.log(aviRef.current.value);
+    storage
+      .ref("Profile-pic")
+      .put(avi)
+      .then((res) => console.log("gottem"))
+      .catch((error) => console.log(error));
   };
 
   return (
