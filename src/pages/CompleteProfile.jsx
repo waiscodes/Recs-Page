@@ -30,9 +30,8 @@ const CompleteProfile = () => {
     // console.log(avi);
 
     storage
-      .ref("Profile-pic")
+      .ref("users/" + currentUser.uid + "/" + "Avi")
       .put(avi)
-      .getDownloadURL()
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
   };
