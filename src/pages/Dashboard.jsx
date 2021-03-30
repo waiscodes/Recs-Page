@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import placeholderAvi from "../images/placeholder-avi.png";
 import "../css/Dashboard.css";
 import { Link } from "react-router-dom";
-import { db } from "../fire";
+import { db, storage } from "../fire";
 import RecommendPage from "./RecommendPage";
 
 const Dashboard = () => {
@@ -20,6 +20,7 @@ const Dashboard = () => {
   useEffect(() => {
     getUser();
     getBooks();
+    getAvi();
   }, []);
 
   const getUser = () => {
@@ -41,6 +42,16 @@ const Dashboard = () => {
             thumbnail: doc.data().thumbnail,
           }))
         );
+      });
+  };
+
+  const getAvi = () => {
+    console.log("hello world");
+    storage
+      .ref("users/" + currentUser.uid + "/" + "Avi")
+      .getDownloadURL()
+      .then((url) => {
+        setAvi(url);
       });
   };
 
