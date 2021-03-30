@@ -8,7 +8,6 @@ const ProfilePage = () => {
   const { profile } = useParams();
   const [userProfile, setUserProfile] = useState();
   const [avi, setAvi] = useState();
-  const [uid, setUid] = useState("");
   const [books, setBooks] = useState();
 
   useEffect(() => {

@@ -46,7 +46,6 @@ const Dashboard = () => {
   };
 
   const getAvi = () => {
-    console.log("hello world");
     storage
       .ref("users/" + currentUser.uid + "/" + "Avi")
       .getDownloadURL()

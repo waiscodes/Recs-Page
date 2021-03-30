@@ -93,7 +93,6 @@ const RecommendPage = (props) => {
           ))}
         </div>
         {/* {error && <Alert variant='danger'>{error}</Alert>} */}
-        {props.uid}
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
