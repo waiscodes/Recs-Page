@@ -9,7 +9,6 @@ const CompleteProfile = () => {
   const bioRef = useRef();
   const aviRef = useRef();
   const [avi, setAvi] = useState();
-  const [aviURL, setAviURL] = useState();
   const { currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);

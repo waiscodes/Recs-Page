@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Button, Container } from "react-bootstrap";
-import { db } from "../fire";
+import { db, storage } from "../fire";
 import RecommendPage from "./RecommendPage";
 
 const ProfilePage = () => {
   const { profile } = useParams();
   const [userProfile, setUserProfile] = useState();
+  const [avi, setAvi] = useState();
   const [uid, setUid] = useState("");
   const [books, setBooks] = useState();
 
@@ -21,6 +22,16 @@ const ProfilePage = () => {
       .then((snap) => {
         setUserProfile(snap.docs[0].data());
         getBooks(snap.docs[0].data());
+        getAvi(snap.docs[0].data().uid);
+      });
+  };
+
+  const getAvi = (uid) => {
+    storage
+      .ref("users/" + uid + "/" + "Avi")
+      .getDownloadURL()
+      .then((url) => {
+        setAvi(url);
       });
   };
 
@@ -47,7 +58,7 @@ const ProfilePage = () => {
         <Card.Body>
           {JSON.stringify(userProfile, null, 2)}
           <div className='user-info'>
-            <img src='' alt='' />
+            <img src={avi} alt='' />
             <p className='display-name'>Birm Wais</p>
             <p className='username'>{profile}</p>
             <p>{"bio here"}</p>
