@@ -63,8 +63,7 @@ const Dashboard = () => {
       <Card.Body>
         <div className='user-info'>
           <img src={avi} alt='' className='profile-pic' />
-          <p className='display-name'>Birm Wais</p>
-          <p>{currentUser.displayName}</p>
+          <p className='display-name'>{user && user.name}</p>
           <p>{user && user.username}</p>
           <p>{user && user.bio}</p>
           <Button onClick={editProfile}>Edit Profile</Button>
