@@ -60,7 +60,6 @@ const ProfilePage = () => {
             <p className='display-name'>{userProfile && userProfile.name}</p>
             <p className='username'>@{profile}</p>
             <p>{userProfile && userProfile.bio}</p>
-            <Button>Add Recommendation</Button>
           </div>
           <hr />
           <RecommendPage uid={userProfile && userProfile.uid} />

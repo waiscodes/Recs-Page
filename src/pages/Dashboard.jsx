@@ -68,9 +68,6 @@ const Dashboard = () => {
           <p>{user && user.username}</p>
           <p>Add bio here</p>
           <Button onClick={editProfile}>Edit Profile</Button>
-          <Link to={"recommend/"}>
-            <Button>Add Recommendation</Button>
-          </Link>
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
