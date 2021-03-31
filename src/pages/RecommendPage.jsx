@@ -95,19 +95,19 @@ const RecommendPage = (props) => {
         {/* {error && <Alert variant='danger'>{error}</Alert>} */}
         <Form onSubmit={handleSubmit}>
           <Form.Group>
-            <Form.Label>Title</Form.Label>
+            <Form.Label className='d-none'>Title</Form.Label>
             <Form.Control
               type='text'
               placeholder='Title'
               onChange={handleChange}
               value={title}
             />
-            <Form.Text className='text-muted'>
+            {/* <Form.Text className='text-muted'>
               Search and Click on Thumbnail
-            </Form.Text>
+            </Form.Text> */}
           </Form.Group>
           <Form.Group>
-            <Form.Label>Recommender</Form.Label>
+            <Form.Label className='d-none'>Recommender</Form.Label>
             <Form.Control
               type='text'
               placeholder='Who recommended it?'
@@ -115,7 +115,7 @@ const RecommendPage = (props) => {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Reason</Form.Label>
+            <Form.Label className='d-none'>Reason</Form.Label>
             <Form.Control
               as='textarea'
               rows={3}
