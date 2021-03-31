@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Button, Container } from "react-bootstrap";
 import { db, storage } from "../fire";
+import placeholderAvi from "../images/placeholder-avi.png";
 import RecommendPage from "./RecommendPage";
 
 const ProfilePage = () => {
   const { profile } = useParams();
   const [userProfile, setUserProfile] = useState();
-  const [avi, setAvi] = useState();
+  const [avi, setAvi] = useState(placeholderAvi);
   const [books, setBooks] = useState();
 
   useEffect(() => {
