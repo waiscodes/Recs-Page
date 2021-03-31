@@ -15,6 +15,7 @@ const RecommendPage = (props) => {
   const reasonRef = useRef();
   const [result, setResult] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [selectBook, setSelectBook] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
 
@@ -38,6 +39,10 @@ const RecommendPage = (props) => {
   );
 
   const handleChange = (e) => {
+    if (e.target.value.length > 1) {
+      setSelectBook(true);
+    }
+
     setTitle(e.target.value);
     debounceSearch(e.target.value);
   };
@@ -68,6 +73,7 @@ const RecommendPage = (props) => {
   return (
     <>
       <Container>
+        {selectBook && <p>Select book</p>}
         <div className='d-flex'>
           {result.map((book) => (
             <div
@@ -114,7 +120,7 @@ const RecommendPage = (props) => {
                 <Form.Label className='d-none'>Recommender</Form.Label>
                 <Form.Control
                   type='text'
-                  placeholder='Who recommended it?'
+                  placeholder="Who's recommending it?"
                   ref={recRef}
                 />
               </Form.Group>
