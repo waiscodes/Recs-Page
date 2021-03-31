@@ -8,9 +8,9 @@ import { useHistory } from "react-router";
 // TODO: Hide book recommendation full form until the book is selected. This will improve the customer experience.
 
 const RecommendPage = (props) => {
-  const [title, setTitle] = useState();
-  const [author, setAuthor] = useState();
-  const [thumbnail, setThumbnail] = useState();
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
   const recRef = useRef();
   const reasonRef = useRef();
   const [result, setResult] = useState([]);
