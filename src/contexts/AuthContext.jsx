@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
   const signup = (email, username, password) => {
     auth.createUserWithEmailAndPassword(email, password).then((cred) => {
       return db.collection("users").doc(cred.user.uid).set({
+        name: username,
         username: username,
         bio: "",
         uid: cred.user.uid,

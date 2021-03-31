@@ -57,7 +57,7 @@ const ProfilePage = () => {
         <Card.Body>
           <div className='user-info'>
             <img src={avi} alt='' className='profile-pic' />
-            <p className='display-name'>Birm Wais</p>
+            <p className='display-name'>{userProfile && userProfile.name}</p>
             <p className='username'>@{profile}</p>
             <p>{userProfile && userProfile.bio}</p>
             <Button>Add Recommendation</Button>

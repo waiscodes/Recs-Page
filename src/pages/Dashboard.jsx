@@ -3,7 +3,7 @@ import { Card, Button, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import placeholderAvi from "../images/placeholder-avi.png";
 import "../css/Dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
 import RecommendPage from "./RecommendPage";
 
@@ -12,6 +12,7 @@ const Dashboard = () => {
   const [user, setUser] = useState();
   const { currentUser } = useAuth();
   const [books, setBooks] = useState();
+  const history = useHistory();
 
   const editProfile = () => {
     setAvi(placeholderAvi); // placeholder to avoid unused var warning
@@ -51,6 +52,9 @@ const Dashboard = () => {
       .getDownloadURL()
       .then((url) => {
         setAvi(url);
+      })
+      .catch(() => {
+        history.push("/complete-profile");
       });
   };
 
