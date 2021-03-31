@@ -20,6 +20,7 @@ const CompleteProfile = () => {
       bio: bioRef.current.value,
       avi: aviRef.current.value,
     });
+    history.push("/");
   };
 
   const handleSubmit = (e) => {

@@ -66,7 +66,7 @@ const Dashboard = () => {
           <p className='display-name'>Birm Wais</p>
           <p>{currentUser.displayName}</p>
           <p>{user && user.username}</p>
-          <p>Add bio here</p>
+          <p>{user && user.bio}</p>
           <Button onClick={editProfile}>Edit Profile</Button>
         </div>
         <hr />

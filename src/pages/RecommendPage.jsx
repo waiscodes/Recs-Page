@@ -106,7 +106,7 @@ const RecommendPage = (props) => {
             <Form.Label className='d-none'>Title</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Title'
+              placeholder='Recommend Book'
               onChange={handleChange}
               value={title}
             />
