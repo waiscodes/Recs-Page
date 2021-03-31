@@ -37,7 +37,6 @@ const ProfilePage = () => {
   };
 
   const getBooks = (user) => {
-    console.log("run!");
     db.collection("books")
       .where("uid", "==", user.uid)
       .get()
@@ -50,7 +49,6 @@ const ProfilePage = () => {
           }))
         );
       });
-    console.log("ran");
   };
 
   return (
