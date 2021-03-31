@@ -60,8 +60,8 @@ const ProfilePage = () => {
           <div className='user-info'>
             <img src={avi} alt='' className='profile-pic' />
             <p className='display-name'>Birm Wais</p>
-            <p className='username'>{profile}</p>
-            <p>{"bio here"}</p>
+            <p className='username'>@{profile}</p>
+            <p>{userProfile && userProfile.bio}</p>
             <Button>Add Recommendation</Button>
           </div>
           <hr />
