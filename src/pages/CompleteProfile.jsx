@@ -15,12 +15,19 @@ const CompleteProfile = () => {
   const history = useHistory();
 
   const addToFirestore = () => {
-    db.collection("users").doc(currentUser.uid).update({
-      name: nameRef.current.value,
-      bio: bioRef.current.value,
-      avi: aviRef.current.value,
-    });
-    history.push("/");
+    db.collection("users")
+      .doc(currentUser.uid)
+      .update({
+        name: nameRef.current.value,
+        bio: bioRef.current.value,
+        avi: aviRef.current.value,
+      })
+      .then(() => {
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleSubmit = (e) => {
