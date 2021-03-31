@@ -1,0 +1,23 @@
+.user-info {
+  text-align: center;
+}
+
+.profile-pic {
+  width: 200px;
+  clip-path: circle();
+}
+
+.bootstrap-modal {
+  margin-top: 0px;
+}
+
+.books-map {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  border: solid;
+}
+
+.ind-book {
+  border: solid;
+}

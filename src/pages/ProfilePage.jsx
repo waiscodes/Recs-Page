@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Button, Container } from "react-bootstrap";
+import "../css/Profile.css";
 import { db, storage } from "../fire";
 import placeholderAvi from "../images/placeholder-avi.png";
 import RecommendPage from "./RecommendPage";
@@ -56,9 +57,8 @@ const ProfilePage = () => {
     <>
       <Card>
         <Card.Body>
-          {JSON.stringify(userProfile, null, 2)}
           <div className='user-info'>
-            <img src={avi} alt='' />
+            <img src={avi} alt='' className='profile-pic' />
             <p className='display-name'>Birm Wais</p>
             <p className='username'>{profile}</p>
             <p>{"bio here"}</p>
