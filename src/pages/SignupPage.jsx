@@ -5,7 +5,6 @@ import { Link, useHistory } from "react-router-dom";
 
 const SignupPage = () => {
   const emailRef = useRef();
-  const nameRef = useRef();
   const usernameRef = useRef();
   const passwordRef = useRef();
   const conPasswordRef = useRef();
@@ -25,13 +24,12 @@ const SignupPage = () => {
       setError("");
       setLoading(true);
       await signup(
-        nameRef.current.value,
         emailRef.current.value,
         usernameRef.current.value,
         passwordRef.current.value
       );
       setLoading(false);
-      history.push("/");
+      history.push("/complete-profile");
     } catch {
       setError("Failed to create account");
       setLoading(false);
