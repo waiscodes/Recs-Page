@@ -24,9 +24,7 @@ const CompleteProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // addToFirestore();
-
-    // console.log(avi);
+    addToFirestore();
 
     storage
       .ref("users/" + currentUser.uid + "/" + "Avi")
