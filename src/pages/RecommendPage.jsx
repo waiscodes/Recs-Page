@@ -14,10 +14,12 @@ const RecommendPage = (props) => {
   const recRef = useRef();
   const reasonRef = useRef();
   const [result, setResult] = useState([]);
+  const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
 
   const pickBook = (e) => {
+    setShowForm(true);
     setTitle(e.target.attributes.getNamedItem("data-title").value);
     setAuthor(e.target.attributes.getNamedItem("data-authors").value);
     setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
@@ -106,24 +108,28 @@ const RecommendPage = (props) => {
               Search and Click on Thumbnail
             </Form.Text> */}
           </Form.Group>
-          <Form.Group>
-            <Form.Label className='d-none'>Recommender</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Who recommended it?'
-              ref={recRef}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label className='d-none'>Reason</Form.Label>
-            <Form.Control
-              as='textarea'
-              rows={3}
-              placeholder='Reason. Why should I read read it'
-              ref={reasonRef}
-            />
-          </Form.Group>
-          <Button type='submit'>Submit</Button>
+          {showForm && (
+            <div>
+              <Form.Group>
+                <Form.Label className='d-none'>Recommender</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Who recommended it?'
+                  ref={recRef}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label className='d-none'>Reason</Form.Label>
+                <Form.Control
+                  as='textarea'
+                  rows={3}
+                  placeholder='Reason. Why should I read read it'
+                  ref={reasonRef}
+                />
+              </Form.Group>
+              <Button type='submit'>Submit</Button>
+            </div>
+          )}
         </Form>
       </Container>
     </>
