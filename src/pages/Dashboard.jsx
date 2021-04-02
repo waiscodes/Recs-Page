@@ -54,7 +54,7 @@ const Dashboard = () => {
         setAvi(url);
       })
       .catch(() => {
-        history.push("/complete-profile");
+        // history.push("/complete-profile");
       });
   };
 
