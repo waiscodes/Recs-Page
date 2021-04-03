@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 
 const SignupPage = () => {
   const emailRef = useRef();
-  const usernameRef = useRef();
+  const nameRef = useRef();
   const passwordRef = useRef();
   const conPasswordRef = useRef();
   const { signup } = useAuth();
@@ -25,7 +25,7 @@ const SignupPage = () => {
       setLoading(true);
       await signup(
         emailRef.current.value,
-        usernameRef.current.value,
+        nameRef.current.value,
         passwordRef.current.value
       );
       setLoading(false);
@@ -54,13 +54,13 @@ const SignupPage = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label className='d-none'>Username</Form.Label>
+              <Form.Label className='d-none'>Full Name</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Username'
-                autoComplete='username'
+                placeholder='Full Name'
+                // autoComplete='username'
                 required
-                ref={usernameRef}
+                ref={nameRef}
               />
             </Form.Group>
             <Form.Group>
