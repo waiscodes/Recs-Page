@@ -24,8 +24,8 @@ const SignupPage = () => {
       setError("");
       setLoading(true);
       await signup(
-        emailRef.current.value,
         nameRef.current.value,
+        emailRef.current.value,
         passwordRef.current.value
       );
       setLoading(false);
