@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
 
 const CompleteProfile = () => {
-  const nameRef = useRef();
+  const username = useRef();
   const bioRef = useRef();
   const aviRef = useRef();
   const [avi, setAvi] = useState();
@@ -18,7 +18,7 @@ const CompleteProfile = () => {
     db.collection("users")
       .doc(currentUser.uid)
       .update({
-        name: nameRef.current.value,
+        username: username.current.value,
         bio: bioRef.current.value,
         avi: aviRef.current.value,
       })
@@ -49,12 +49,12 @@ const CompleteProfile = () => {
           {error && <Alert variant='danger'>{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label className='d-none'>Display Name</Form.Label>
+              <Form.Label className='d-none'>Username</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Full Name'
+                placeholder='Username'
                 required
-                ref={nameRef}
+                ref={username}
               />
             </Form.Group>
             <Form.Group>
