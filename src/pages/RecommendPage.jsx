@@ -59,6 +59,7 @@ const RecommendPage = (props) => {
         uid: props.uid,
       });
       console.log("success");
+      setShowForm(false);
     } catch {
       console.log("Failed to add book");
     }
