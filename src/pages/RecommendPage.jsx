@@ -60,6 +60,8 @@ const RecommendPage = (props) => {
       });
       console.log("success");
       setShowForm(false);
+      setSelectBook(false);
+      setResult(false);
     } catch {
       console.log("Failed to add book");
     }
@@ -76,30 +78,31 @@ const RecommendPage = (props) => {
       <Container>
         {selectBook && <p>Select book</p>}
         <div className='d-flex'>
-          {result.map((book) => (
-            <div
-              className='m-1'
-              key={
-                book.volumeInfo.imageLinks &&
-                book.volumeInfo.imageLinks.thumbnail
-              }
-            >
-              <img
-                src={
+          {result &&
+            result.map((book) => (
+              <div
+                className='m-1'
+                key={
                   book.volumeInfo.imageLinks &&
                   book.volumeInfo.imageLinks.thumbnail
                 }
-                alt=''
-                data-title={book.volumeInfo.title}
-                data-authors={book.volumeInfo.authors}
-                data-thumbnail={
-                  book.volumeInfo.imageLinks &&
-                  book.volumeInfo.imageLinks.thumbnail
-                }
-                onClick={pickBook}
-              />
-            </div>
-          ))}
+              >
+                <img
+                  src={
+                    book.volumeInfo.imageLinks &&
+                    book.volumeInfo.imageLinks.thumbnail
+                  }
+                  alt=''
+                  data-title={book.volumeInfo.title}
+                  data-authors={book.volumeInfo.authors}
+                  data-thumbnail={
+                    book.volumeInfo.imageLinks &&
+                    book.volumeInfo.imageLinks.thumbnail
+                  }
+                  onClick={pickBook}
+                />
+              </div>
+            ))}
         </div>
         {/* {error && <Alert variant='danger'>{error}</Alert>} */}
         <Form onSubmit={handleSubmit}>
