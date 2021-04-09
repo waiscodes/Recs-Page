@@ -68,7 +68,9 @@ const Dashboard = () => {
           <p className='display-name'>{user && user.name}</p>
           <p>@{user && user.username}</p>
           <p>{user && user.bio}</p>
-          {completeProfile && (
+          {completeProfile ? (
+            <Button onClick={editProfile}>Complete Profile</Button>
+          ) : (
             <Button onClick={editProfile}>Edit Profile</Button>
           )}
         </div>
