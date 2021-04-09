@@ -13,6 +13,7 @@ const Dashboard = () => {
   const { currentUser } = useAuth();
   const [books, setBooks] = useState();
   const history = useHistory();
+  const [completeProfile, setCompleteProfile] = useState(false);
 
   const editProfile = () => {
     setAvi(placeholderAvi); // placeholder to avoid unused var warning
@@ -55,6 +56,7 @@ const Dashboard = () => {
       })
       .catch(() => {
         // history.push("/complete-profile");
+        setCompleteProfile(true);
       });
   };
 
@@ -66,7 +68,9 @@ const Dashboard = () => {
           <p className='display-name'>{user && user.name}</p>
           <p>@{user && user.username}</p>
           <p>{user && user.bio}</p>
-          <Button onClick={editProfile}>Edit Profile</Button>
+          {completeProfile && (
+            <Button onClick={editProfile}>Edit Profile</Button>
+          )}
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
