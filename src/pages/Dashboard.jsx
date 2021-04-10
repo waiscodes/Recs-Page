@@ -8,7 +8,7 @@ import { db, storage } from "../fire";
 import RecommendPage from "./RecommendPage";
 
 const Dashboard = () => {
-  const [avi, setAvi] = useState(placeholderAvi);
+  const [avi, setAvi] = useState();
   const [user, setUser] = useState();
   const { currentUser } = useAuth();
   const [books, setBooks] = useState();
@@ -16,7 +16,7 @@ const Dashboard = () => {
   const [completeProfile, setCompleteProfile] = useState(false);
 
   const editProfile = () => {
-    setAvi(placeholderAvi); // placeholder to avoid unused var warning
+    setAvi(placeholderAvi);
   };
 
   useEffect(() => {
