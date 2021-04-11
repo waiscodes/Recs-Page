@@ -1,5 +1,6 @@
+import placeholderAvi from "../images/placeholder-avi.png";
 import React, { useContext, useEffect, useState } from "react";
-import { auth, db } from "../fire";
+import { auth, db, storage } from "../fire";
 
 const AuthContext = React.createContext();
 export const useAuth = () => {
@@ -12,11 +13,22 @@ export const AuthProvider = ({ children }) => {
   // Register and Login
   const signup = (name, email, password) => {
     auth.createUserWithEmailAndPassword(email, password).then((cred) => {
+      setAvi(cred.user);
       return db.collection("users").doc(cred.user.uid).set({
         name: name,
         uid: cred.user.uid,
       });
     });
+  };
+
+  // Set avi
+
+  const setAvi = (currentUser) => {
+    storage
+      .ref("users/" + currentUser.uid + "/" + "Avi")
+      .put(placeholderAvi)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
   };
 
   // Authentication
