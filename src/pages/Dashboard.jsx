@@ -61,7 +61,7 @@ const Dashboard = () => {
         <div className='user-info'>
           <img src={avi} alt='' className='profile-pic' />
           <p className='display-name'>{user && user.name}</p>
-          <p>@{user && user.username}</p>
+          <p>{user && "@" + user.username}</p>
           <p>{user && user.bio}</p>
           {!avi && <Button onClick={completeProfile}>Complete Profile</Button>}
         </div>
