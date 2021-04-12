@@ -69,14 +69,19 @@ const Dashboard = () => {
           <p>@{user && user.username}</p>
           <p>{user && user.bio}</p>
           {completeProfile ? (
-            <Button onClick={editProfile}>Complete Profile</Button>
-          ) : (
             <Button onClick={editProfile}>Edit Profile</Button>
+          ) : (
+            <Button onClick={editProfile}>Complete Profile</Button>
           )}
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
         <Container className='books-map'>
+          <p>
+            {books && books.length == 0
+              ? "You don't have any Recommendations yet."
+              : ""}
+          </p>
           {books &&
             books.map((book) => (
               <div key={book.id} className='ind-book'>
