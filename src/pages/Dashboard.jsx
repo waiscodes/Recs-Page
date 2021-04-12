@@ -16,7 +16,7 @@ const Dashboard = () => {
   const [completeProfile, setCompleteProfile] = useState(false);
 
   const editProfile = () => {
-    setAvi(placeholderAvi);
+    history.push("/complete-profile");
   };
 
   useEffect(() => {
@@ -53,10 +53,6 @@ const Dashboard = () => {
       .getDownloadURL()
       .then((url) => {
         setAvi(url);
-      })
-      .catch(() => {
-        // history.push("/complete-profile");
-        setCompleteProfile(true);
       });
   };
 
