@@ -1,6 +1,5 @@
-import placeholderAvi from "../images/placeholder-avi.png";
 import React, { useContext, useEffect, useState } from "react";
-import { auth, db, storage } from "../fire";
+import { auth, db } from "../fire";
 
 const AuthContext = React.createContext();
 export const useAuth = () => {
