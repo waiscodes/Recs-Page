@@ -10,7 +10,7 @@ import RecommendPage from "./RecommendPage";
 const Dashboard = () => {
   const [avi, setAvi] = useState();
   const [user, setUser] = useState();
-  const { currentUser } = useAuth();
+  const { currentUser, signOut } = useAuth();
   const [books, setBooks] = useState();
   const history = useHistory();
 
@@ -58,6 +58,7 @@ const Dashboard = () => {
   return (
     <Card>
       <Card.Body>
+        <Button onClick={() => signOut()}>Sign Out</Button>
         <div className='user-info'>
           <img src={avi} alt='' className='profile-pic' />
           <p className='display-name'>{user && user.name}</p>

@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  // Register and Login
+  // Register
   const signup = (name, email, password) => {
     auth.createUserWithEmailAndPassword(email, password).then((cred) => {
       return db.collection("users").doc(cred.user.uid).set({
@@ -23,6 +23,12 @@ export const AuthProvider = ({ children }) => {
 
   const signin = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
+  };
+
+  // Sign out
+
+  const signOut = () => {
+    auth.signOut();
   };
 
   auth.onAuthStateChanged((user) => {
@@ -41,6 +47,7 @@ export const AuthProvider = ({ children }) => {
     currentUser,
     signup,
     signin,
+    signOut,
   };
 
   return (
