@@ -21,16 +21,6 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  // Set avi
-
-  const setAvi = (currentUser) => {
-    storage
-      .ref("users/" + currentUser.uid + "/" + "Avi")
-      .put(placeholderAvi)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-  };
-
   // Authentication
 
   const signin = (email, password) => {
