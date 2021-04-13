@@ -26,9 +26,11 @@ const ProfilePage = () => {
       .where("username", "==", username)
       .get()
       .then((snap) => {
-        setUserProfile(snap.docs[0].data());
-        getBooks(snap.docs[0].data());
-        getAvi(snap.docs[0].data().uid);
+        if (snap.docs[0]) {
+          setUserProfile(snap.docs[0].data());
+          getBooks(snap.docs[0].data());
+          getAvi(snap.docs[0].data().uid);
+        }
       });
   };
 
