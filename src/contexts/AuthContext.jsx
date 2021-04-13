@@ -15,6 +15,8 @@ export const AuthProvider = ({ children }) => {
       return db.collection("users").doc(cred.user.uid).set({
         name: name,
         uid: cred.user.uid,
+        bio: "Click Complete Profile to add Avatar, Username, and Bio",
+        username: Date.now(),
       });
     });
   };
