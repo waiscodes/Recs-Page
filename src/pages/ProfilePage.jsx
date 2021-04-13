@@ -31,6 +31,7 @@ const ProfilePage = () => {
           getBooks(snap.docs[0].data());
           getAvi(snap.docs[0].data().uid);
         }
+        setLoading(true);
       });
   };
 
@@ -60,28 +61,31 @@ const ProfilePage = () => {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <Spinner animation='border' />
-          <div className='user-info'>
-            <img src={avi} alt='' className='profile-pic' />
-            <p className='display-name'>{userProfile && userProfile.name}</p>
-            <p className='username'>@{profile}</p>
-            <p>{userProfile && userProfile.bio}</p>
-          </div>
-          <hr />
-          <RecommendPage uid={userProfile && userProfile.uid} />
-        </Card.Body>
-        <Container className='books-map'>
-          {books &&
-            books.map((book) => (
-              <div key={book.id} className='ind-book'>
-                <img src={book.thumbnail} alt='' />
-                <p>{book.title}</p>
-              </div>
-            ))}
-        </Container>
-      </Card>
+      {!loading && <Spinner animation='border' />}
+
+      {loading && (
+        <Card>
+          <Card.Body>
+            <div className='user-info'>
+              <img src={avi} alt='' className='profile-pic' />
+              <p className='display-name'>{userProfile && userProfile.name}</p>
+              <p className='username'>@{profile}</p>
+              <p>{userProfile && userProfile.bio}</p>
+            </div>
+            <hr />
+            <RecommendPage uid={userProfile && userProfile.uid} />
+          </Card.Body>
+          <Container className='books-map'>
+            {books &&
+              books.map((book) => (
+                <div key={book.id} className='ind-book'>
+                  <img src={book.thumbnail} alt='' />
+                  <p>{book.title}</p>
+                </div>
+              ))}
+          </Container>
+        </Card>
+      )}
     </>
   );
 };
