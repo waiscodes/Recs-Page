@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Button, Container } from "react-bootstrap";
 import "../css/Profile.css";
-import { db, storage } from "../fire";
+import { auth, db, storage } from "../fire";
 import placeholderAvi from "../images/placeholder-avi.png";
 import RecommendPage from "./RecommendPage";
 
@@ -14,7 +14,12 @@ const ProfilePage = () => {
 
   useEffect(() => {
     getUser(profile);
+    // anonSignIn();
   }, []);
+
+  // const anonSignIn = () => {
+  //   auth.signInAnonymously();
+  // };
 
   const getUser = (username) => {
     db.collection("users")
