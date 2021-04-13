@@ -9,7 +9,7 @@ import RecommendPage from "./RecommendPage";
 const ProfilePage = () => {
   const { profile } = useParams();
   const [userProfile, setUserProfile] = useState();
-  const [avi, setAvi] = useState(placeholderAvi);
+  const [avi, setAvi] = useState();
   const [books, setBooks] = useState();
 
   useEffect(() => {
