@@ -49,19 +49,22 @@ const RecommendPage = (props) => {
 
   const addToFirestore = () => {
     try {
-      db.collection("books").add({
-        title: title,
-        author: author,
-        thumbnail: thumbnail,
-        recBy: recRef.current.value,
-        reason: reasonRef.current.value,
-        rating: 0,
-        uid: props.uid,
-      });
-      console.log("success");
-      setShowForm(false);
-      setSelectBook(false);
-      setResult(false);
+      db.collection("books")
+        .add({
+          title: title,
+          author: author,
+          thumbnail: thumbnail,
+          recBy: recRef.current.value,
+          reason: reasonRef.current.value,
+          rating: 0,
+          uid: props.uid,
+        })
+        .then(() => {
+          console.log("success");
+          setShowForm(false);
+          setSelectBook(false);
+          setResult(false);
+        });
     } catch {
       console.log("Failed to add book");
     }
