@@ -58,13 +58,13 @@ const Dashboard = () => {
   return (
     <Card>
       <Card.Body>
-        <Button onClick={() => signOut()}>Sign Out</Button>
         <div className='user-info'>
           <img src={avi} alt='' className='profile-pic' />
           <p className='display-name'>{user && user.name}</p>
           <p>{user && "@" + user.username}</p>
           <p>{user && user.bio}</p>
           {!avi && <Button onClick={completeProfile}>Complete Profile</Button>}
+          <Button onClick={() => signOut()}>Sign Out</Button>
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
