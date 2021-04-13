@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Button, Container } from "react-bootstrap";
+import { Card, Button, Container, Spinner } from "react-bootstrap";
 import "../css/Profile.css";
 import { auth, db, storage } from "../fire";
-import placeholderAvi from "../images/placeholder-avi.png";
 import RecommendPage from "./RecommendPage";
 
 const ProfilePage = () => {
@@ -11,6 +10,7 @@ const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState();
   const [avi, setAvi] = useState();
   const [books, setBooks] = useState();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getUser(profile);
@@ -62,6 +62,7 @@ const ProfilePage = () => {
     <>
       <Card>
         <Card.Body>
+          <Spinner animation='border' />
           <div className='user-info'>
             <img src={avi} alt='' className='profile-pic' />
             <p className='display-name'>{userProfile && userProfile.name}</p>
