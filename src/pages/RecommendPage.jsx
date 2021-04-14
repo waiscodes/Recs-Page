@@ -58,6 +58,7 @@ const RecommendPage = (props) => {
           reason: reasonRef.current.value,
           rating: 0,
           uid: props.uid,
+          createdAt: serverTimestamp(),
         })
         .then(() => {
           console.log("success");
