@@ -91,7 +91,6 @@ const RecommendPage = (props) => {
           {result &&
             result.map((book) => (
               <div
-                className='api-result'
                 key={
                   book.volumeInfo.imageLinks &&
                   book.volumeInfo.imageLinks.thumbnail

@@ -1,3 +1,7 @@
 .api-result {
   margin: 3px;
 }
+
+.selected-book {
+  border: solid pink;
+}
