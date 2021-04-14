@@ -19,12 +19,14 @@ const RecommendPage = (props) => {
   const [selectBook, setSelectBook] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
+  // const [border, setBorder] = useState(false);
 
   const pickBook = (e) => {
     setShowForm(true);
     setTitle(e.target.attributes.getNamedItem("data-title").value);
     setAuthor(e.target.attributes.getNamedItem("data-authors").value);
     setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
+    // setBorder(!border);
   };
 
   // eslint-disable-next-line
@@ -101,6 +103,7 @@ const RecommendPage = (props) => {
                     book.volumeInfo.imageLinks &&
                     book.volumeInfo.imageLinks.thumbnail
                   }
+                  // className={border ? "selected-book" : ""}
                   alt=''
                   data-title={book.volumeInfo.title}
                   data-authors={book.volumeInfo.authors}
