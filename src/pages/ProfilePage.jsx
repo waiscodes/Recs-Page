@@ -75,11 +75,20 @@ const ProfilePage = () => {
             <RecommendPage uid={userProfile && userProfile.uid} />
           </Card.Body>
           <Container className='books-map'>
+            <p>
+              {books && books.length == 0
+                ? "This person doesn't have any recommendations yet. Recommend them a Book"
+                : ""}
+            </p>
             {books &&
               books.map((book) => (
                 <div key={book.id} className='ind-book'>
                   <img src={book.thumbnail} alt='' />
-                  <p>{book.title}</p>
+                  <p>
+                    {book.title.length > 30
+                      ? book.title.substr(0, 30) + "..."
+                      : book.title}
+                  </p>
                 </div>
               ))}
           </Container>
