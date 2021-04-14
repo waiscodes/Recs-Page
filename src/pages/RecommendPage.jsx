@@ -4,6 +4,7 @@ import axios from "axios";
 import { db } from "../fire";
 import debounce from "lodash.debounce";
 import { useHistory } from "react-router";
+import "../css/Recommend.css";
 
 // TODO: Hide book recommendation full form until the book is selected. This will improve the customer experience.
 
@@ -90,7 +91,7 @@ const RecommendPage = (props) => {
           {result &&
             result.map((book) => (
               <div
-                className='m-1'
+                className='api-result'
                 key={
                   book.volumeInfo.imageLinks &&
                   book.volumeInfo.imageLinks.thumbnail
