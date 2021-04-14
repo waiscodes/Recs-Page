@@ -45,10 +45,13 @@ const ProfilePage = () => {
   };
 
   const getBooks = (user) => {
-    db.collection("books")
+    let unsubscribe;
+
+    unsubscribe = db
+      .collection("books")
       .where("uid", "==", user.uid)
-      .get()
-      .then((snap) => {
+      // .get()
+      .onSnapshot((snap) => {
         setBooks(
           snap.docs.map((doc) => ({
             id: doc.id,
@@ -57,6 +60,15 @@ const ProfilePage = () => {
           }))
         );
       });
+    // .then((snap) => {
+    //   setBooks(
+    //     snap.docs.map((doc) => ({
+    //       id: doc.id,
+    //       title: doc.data().title,
+    //       thumbnail: doc.data().thumbnail,
+    //     }))
+    //   );
+    // });
   };
 
   return (
