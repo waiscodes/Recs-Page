@@ -34,8 +34,7 @@ const Dashboard = () => {
   const getBooks = () => {
     db.collection("books")
       .where("uid", "==", currentUser.uid)
-      .get()
-      .then((snap) => {
+      .onSnapshot((snap) => {
         setBooks(
           snap.docs.map((doc) => ({
             id: doc.id,
