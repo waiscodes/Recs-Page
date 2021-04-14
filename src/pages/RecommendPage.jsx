@@ -42,6 +42,10 @@ const RecommendPage = (props) => {
     if (e.target.value.length > 1) {
       setSelectBook(true);
     }
+    if (e.target.value.length < 1) {
+      setSelectBook(false);
+      setResult([]);
+    }
 
     setTitle(e.target.value);
     debounceSearch(e.target.value);
@@ -75,6 +79,7 @@ const RecommendPage = (props) => {
     e.preventDefault();
 
     addToFirestore();
+    setTitle("");
   };
 
   return (
