@@ -116,6 +116,7 @@ const RecommendPage = (props) => {
               placeholder='Add Book Recommendation'
               onChange={handleChange}
               value={title}
+              required
             />
             {/* <Form.Text className='text-muted'>
               Search and Click on Thumbnail
@@ -129,6 +130,7 @@ const RecommendPage = (props) => {
                   type='text'
                   placeholder="Who's recommending it?"
                   ref={recRef}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -138,6 +140,7 @@ const RecommendPage = (props) => {
                   rows={3}
                   placeholder='Reason. Why should I read read it'
                   ref={reasonRef}
+                  required
                 />
               </Form.Group>
               <Button type='submit'>Submit</Button>
