@@ -77,7 +77,11 @@ const Dashboard = () => {
             books.map((book) => (
               <div key={book.id} className='ind-book'>
                 <img src={book.thumbnail} alt='' />
-                <p>{book.title}</p>
+                <p>
+                  {book.title.length > 30
+                    ? book.title.substr(0, 30) + "..."
+                    : book.title}
+                </p>
               </div>
             ))}
         </Container>
