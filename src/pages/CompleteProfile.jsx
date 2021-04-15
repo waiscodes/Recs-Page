@@ -30,6 +30,16 @@ const CompleteProfile = () => {
       });
   };
 
+  // const debounceUsername = useCallback(() => {
+  //   callback;
+  // }, [input]);
+
+  const handleChange = (e) => {
+    if (e.target.value.length > 4) {
+      console.log(e);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addToFirestore();
@@ -55,6 +65,7 @@ const CompleteProfile = () => {
                 placeholder='Username'
                 required
                 ref={username}
+                onChange={handleChange}
               />
             </Form.Group>
             <Form.Group>
