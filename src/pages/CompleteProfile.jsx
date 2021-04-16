@@ -37,6 +37,7 @@ const CompleteProfile = () => {
   const handleChange = (e) => {
     if (e.target.value.length > 4) {
       console.log(e);
+      // Send error that characters must be over 4. Debounce?
     }
   };
 
