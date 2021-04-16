@@ -64,6 +64,7 @@ const Dashboard = () => {
           <p>{user && user.bio}</p>
           {!avi && <Button onClick={completeProfile}>Complete Profile</Button>}
           <Button onClick={() => signOut()}>Sign Out</Button>
+          <Button>Share Profile Link</Button>
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
