@@ -54,6 +54,12 @@ const Dashboard = () => {
       });
   };
 
+  const copyShareLink = () => {
+    const shareLink = "https://recs.page/" + user.username;
+
+    console.log(shareLink);
+  };
+
   return (
     <Card>
       <Card.Body>
@@ -64,7 +70,7 @@ const Dashboard = () => {
           <p>{user && user.bio}</p>
           {!avi && <Button onClick={completeProfile}>Complete Profile</Button>}
           <Button onClick={() => signOut()}>Sign Out</Button>
-          <Button>Share Profile Link</Button>
+          <Button onClick={copyShareLink}>Share Profile Link</Button>
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
