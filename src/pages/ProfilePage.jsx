@@ -78,7 +78,9 @@ const ProfilePage = () => {
           <Container className='books-map'>
             <p>
               {books && books.length == 0
-                ? "This person doesn't have any recommendations yet. Recommend them a Book"
+                ? `${
+                    userProfile && userProfile.name
+                  } doesn't have any recommendations yet. Recommend them a Book`
                 : ""}
             </p>
             {books &&
