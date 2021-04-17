@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Card, Button, Container, Spinner } from "react-bootstrap";
 import "../css/Profile.css";
 import { auth, db, storage } from "../fire";
@@ -70,7 +70,9 @@ const ProfilePage = () => {
               <p className='display-name'>{userProfile && userProfile.name}</p>
               <p className='username'>@{profile}</p>
               <p>{userProfile && userProfile.bio}</p>
-              <Button>Create an Account</Button>
+              <Link to='/'>
+                <Button>Create an Account</Button>
+              </Link>
             </div>
             <hr />
             <RecommendPage uid={userProfile && userProfile.uid} />
