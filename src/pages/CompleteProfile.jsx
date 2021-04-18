@@ -40,8 +40,8 @@ const CompleteProfile = () => {
   );
 
   const handleChange = (e) => {
-    if (e.nativeEvent.data.includes(" ")) {
-      console.log("cannot contain spaces");
+    if (e.nativeEvent.data && e.nativeEvent.data.includes(" ")) {
+      setError("This must not contain any spaces");
     }
     if (e.target.value.length > 4) {
       debounceUsername(e.target.value);
