@@ -35,7 +35,7 @@ const RecommendPage = (props) => {
         .then((res) => {
           setResult(res.data.items.slice(0, 3));
         });
-    }, 500),
+    }, 250),
     []
   );
 
