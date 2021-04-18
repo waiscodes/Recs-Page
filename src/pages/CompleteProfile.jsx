@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
+import debounce from "lodash.debounce";
 import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
 
@@ -30,14 +31,23 @@ const CompleteProfile = () => {
       });
   };
 
-  // const debounceUsername = useCallback(() => {
-  //   callback;
-  // }, [input]);
+  // eslint-disable-next-line
+  const debounceUsername = useCallback(
+    debounce((username) => {
+      console.log(username);
+    }, 500),
+    []
+  );
 
   const handleChange = (e) => {
+    if (e.nativeEvent.data.includes(" ")) {
+      console.log("cannot contain spaces");
+    }
     if (e.target.value.length > 4) {
-      console.log(e);
+      debounceUsername(e.target.value);
       // Send error that characters must be over 4. Debounce?
+    } else {
+      console.log("Username must be 4 more of characters");
     }
   };
 
