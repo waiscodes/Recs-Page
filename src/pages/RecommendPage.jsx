@@ -6,8 +6,6 @@ import debounce from "lodash.debounce";
 import { useHistory } from "react-router";
 import "../css/Recommend.css";
 
-// TODO: Hide book recommendation full form until the book is selected. This will improve the customer experience.
-
 const RecommendPage = (props) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -137,6 +135,8 @@ const RecommendPage = (props) => {
                 <Form.Label className='d-none'>Recommender</Form.Label>
                 <Form.Control
                   type='text'
+                  id='recommender'
+                  autoFocus
                   placeholder="Who's recommending it?"
                   ref={recRef}
                   required
