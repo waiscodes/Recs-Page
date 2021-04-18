@@ -28,7 +28,9 @@ const Dashboard = () => {
     db.collection("users")
       .doc(currentUser.uid)
       .get()
-      .then((snap) => setUser(snap.data()));
+      .then((snap) => {
+        setUser(snap.data());
+      });
   };
 
   const getBooks = () => {
@@ -55,9 +57,8 @@ const Dashboard = () => {
   };
 
   const copyShareLink = () => {
-    const shareLink = "https://recs.page/" + user.username;
-
-    console.log(shareLink);
+    document.querySelector("#copyContent").select();
+    document.execCommand("copy");
   };
 
   return (
@@ -70,6 +71,13 @@ const Dashboard = () => {
           <p>{user && user.bio}</p>
           {!avi && <Button onClick={completeProfile}>Complete Profile</Button>}
           <Button onClick={() => signOut()}>Sign Out</Button>
+          <input
+            type='text'
+            name='copyContent'
+            id='copyContent'
+            className='screen-reader-text'
+            defaultValue={user && "https://recs.page/" + user.username}
+          />
           <Button onClick={copyShareLink}>Share Profile Link</Button>
         </div>
         <hr />
