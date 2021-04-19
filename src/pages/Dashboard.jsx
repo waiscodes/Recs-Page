@@ -13,6 +13,7 @@ const Dashboard = () => {
   const { currentUser, signOut } = useAuth();
   const [books, setBooks] = useState();
   const history = useHistory();
+  const [bookSelected, setBookSelected] = useState("");
 
   const completeProfile = () => {
     history.push("/complete-profile");
@@ -62,8 +63,8 @@ const Dashboard = () => {
     document.execCommand("copy");
   };
 
-  const viewRec = (e) => {
-    e.target.classList.toggle("view-book");
+  const selected = {
+    border: "red solid",
   };
 
   return (
@@ -95,7 +96,12 @@ const Dashboard = () => {
           </p>
           {books &&
             books.map((book) => (
-              <Card key={book.id} className='ind-book ' onClick={viewRec}>
+              <Card
+                key={book.id}
+                className='ind-book'
+                style={bookSelected === book.id ? selected : null}
+                onClick={() => setBookSelected(book.id)}
+              >
                 <img src={book.thumbnail} alt='' />
                 <p>
                   {book.title.length > 30
