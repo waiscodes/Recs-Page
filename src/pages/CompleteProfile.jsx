@@ -66,13 +66,16 @@ const CompleteProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addToFirestore();
 
-    storage
-      .ref("users/" + currentUser.uid + "/" + "Avi")
-      .put(avi)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+    if (!error) {
+      addToFirestore();
+
+      storage
+        .ref("users/" + currentUser.uid + "/" + "Avi")
+        .put(avi)
+        .then((res) => console.log(res))
+        .catch((error) => console.log(error));
+    }
   };
 
   return (
