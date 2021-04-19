@@ -43,11 +43,13 @@ const CompleteProfile = () => {
     const longEnough = e.target.value.length > 4;
 
     if (e.target.value && !e.target.value.includes(" ")) {
+      setError(false);
       if (longEnough) {
+        setError(false);
         debounceUsername(e.target.value);
         // Send error that characters must be over 4. Debounce?
       } else {
-        console.log("Username must be 4 more of characters");
+        setError("Username must be 4 more of characters");
       }
     } else {
       setError("This must not contain any spaces");
