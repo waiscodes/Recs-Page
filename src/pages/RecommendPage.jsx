@@ -24,7 +24,8 @@ const RecommendPage = (props) => {
     setTitle(e.target.attributes.getNamedItem("data-title").value);
     setAuthor(e.target.attributes.getNamedItem("data-authors").value);
     setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
-    // setBorder(!border);
+
+    e.target.classList.toggle("someClass");
   };
 
   // eslint-disable-next-line
@@ -101,7 +102,6 @@ const RecommendPage = (props) => {
                     book.volumeInfo.imageLinks &&
                     book.volumeInfo.imageLinks.thumbnail
                   }
-                  // className={border ? "selected-book" : ""}
                   alt=''
                   data-title={book.volumeInfo.title}
                   data-authors={book.volumeInfo.authors}
