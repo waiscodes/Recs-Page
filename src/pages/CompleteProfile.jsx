@@ -70,11 +70,13 @@ const CompleteProfile = () => {
     if (!error) {
       addToFirestore();
 
-      storage
-        .ref("users/" + currentUser.uid + "/" + "Avi")
-        .put(avi)
-        .then((res) => console.log(res))
-        .catch((error) => console.log(error));
+      if (avi) {
+        storage
+          .ref("users/" + currentUser.uid + "/" + "Avi")
+          .put(avi)
+          .then((res) => console.log(res))
+          .catch((error) => console.log(error));
+      }
     }
   };
 
@@ -113,7 +115,7 @@ const CompleteProfile = () => {
                 onChange={(e) => setAvi(e.target.files[0])}
               />
             </Form.Group>
-            <Button type='Submit' disabled={loading}>
+            <Button type='Submit' disabled={error}>
               Update Profile
             </Button>
           </Form>
