@@ -40,14 +40,17 @@ const CompleteProfile = () => {
   );
 
   const handleChange = (e) => {
-    if (e.nativeEvent.data && e.nativeEvent.data.includes(" ")) {
-      setError("This must not contain any spaces");
-    }
-    if (e.target.value.length > 4) {
-      debounceUsername(e.target.value);
-      // Send error that characters must be over 4. Debounce?
+    const longEnough = e.target.value.length > 4;
+
+    if (e.target.value && !e.target.value.includes(" ")) {
+      if (longEnough) {
+        debounceUsername(e.target.value);
+        // Send error that characters must be over 4. Debounce?
+      } else {
+        console.log("Username must be 4 more of characters");
+      }
     } else {
-      console.log("Username must be 4 more of characters");
+      setError("This must not contain any spaces");
     }
   };
 
