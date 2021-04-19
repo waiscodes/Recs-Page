@@ -34,13 +34,21 @@ const CompleteProfile = () => {
   // eslint-disable-next-line
   const debounceUsername = useCallback(
     debounce((username) => {
-      console.log(username);
+      db.collection("users")
+        .where("username", "==", username)
+        .get()
+        .then((snap) => {
+          if (snap.docs && snap.docs[0].data()) {
+            setError("username is already taken");
+          }
+        })
+        .catch(() => {});
     }, 500),
     []
   );
 
   const handleChange = (e) => {
-    const longEnough = e.target.value.length > 4;
+    const longEnough = e.target.value.length >= 4;
 
     if (e.target.value && !e.target.value.includes(" ")) {
       setError(false);
