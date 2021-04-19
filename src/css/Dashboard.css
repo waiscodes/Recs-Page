@@ -43,3 +43,7 @@
   font-size: 12px;
   font-style: italic;
 }
+
+.view-book {
+  border: red solid;
+}

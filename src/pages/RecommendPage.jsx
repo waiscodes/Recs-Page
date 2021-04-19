@@ -25,7 +25,7 @@ const RecommendPage = (props) => {
     setAuthor(e.target.attributes.getNamedItem("data-authors").value);
     setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
 
-    e.target.classList.toggle("someClass");
+    e.target.classList.toggle("picked-book");
   };
 
   // eslint-disable-next-line

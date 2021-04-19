@@ -62,6 +62,10 @@ const Dashboard = () => {
     document.execCommand("copy");
   };
 
+  const viewRec = (e) => {
+    e.target.classList.toggle("view-book");
+  };
+
   return (
     <Card>
       <Card.Body>
@@ -91,7 +95,7 @@ const Dashboard = () => {
           </p>
           {books &&
             books.map((book) => (
-              <Card key={book.id} className='ind-book '>
+              <Card key={book.id} className='ind-book ' onClick={viewRec}>
                 <img src={book.thumbnail} alt='' />
                 <p>
                   {book.title.length > 30
