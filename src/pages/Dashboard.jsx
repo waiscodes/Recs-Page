@@ -41,6 +41,7 @@ const Dashboard = () => {
           snap.docs.map((doc) => ({
             id: doc.id,
             title: doc.data().title,
+            recBy: doc.data().recBy,
             thumbnail: doc.data().thumbnail,
           }))
         );
@@ -90,14 +91,15 @@ const Dashboard = () => {
           </p>
           {books &&
             books.map((book) => (
-              <div key={book.id} className='ind-book'>
+              <Card key={book.id} className='ind-book '>
                 <img src={book.thumbnail} alt='' />
                 <p>
                   {book.title.length > 30
                     ? book.title.substr(0, 30) + "..."
                     : book.title}
                 </p>
-              </div>
+                <p className='recBy text-muted'>Rec from {book.recBy}</p>
+              </Card>
             ))}
         </Container>
       </Card.Body>

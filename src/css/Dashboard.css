@@ -19,7 +19,6 @@
 }
 
 .ind-book {
-  /* border: solid; */
   width: min-content;
 }
 
@@ -34,4 +33,13 @@
   position: absolute;
   width: 1px;
   word-wrap: normal !important;
+}
+
+.ind-book > * {
+  margin: 0px;
+}
+
+.recBy {
+  font-size: 12px;
+  font-style: italic;
 }
