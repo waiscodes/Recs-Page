@@ -4,7 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import "../css/MyNavbar.css";
 
 const MyNavbar = () => {
-  const { signOut } = useAuth();
+  const { currentUser, signOut } = useAuth();
 
   return (
     <>
@@ -12,10 +12,14 @@ const MyNavbar = () => {
         <Navbar.Brand>
           Recs <span>page</span>
         </Navbar.Brand>
-        <Nav className='ml-auto'>
-          <Nav.Link>Home</Nav.Link>
-          <Nav.Link onClick={() => signOut()}>Logout</Nav.Link>
-        </Nav>
+        {currentUser ? (
+          <Nav className='ml-auto'>
+            <Nav.Link>Home</Nav.Link>
+            <Nav.Link onClick={() => signOut()}>Logout</Nav.Link>
+          </Nav>
+        ) : (
+          ""
+        )}
       </Navbar>
     </>
   );
