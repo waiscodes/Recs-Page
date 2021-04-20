@@ -1,0 +1,8 @@
+.navbar {
+  border: red solid;
+  justify-content: space-evenly;
+}
+
+.navbar > * {
+  border: solid green;
+}
