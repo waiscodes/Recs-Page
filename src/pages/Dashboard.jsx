@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Container, Row } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import placeholderAvi from "../images/placeholder-avi.png";
 import "../css/Dashboard.css";
 import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";

@@ -1,8 +1,14 @@
 import React from "react";
+import { useAuth } from "../contexts/AuthContext";
 import { Navbar, Nav } from "react-bootstrap";
 import "../css/MyNavbar.css";
 
 const MyNavbar = () => {
+  const { signOut } = useAuth();
+
+  const logout = () => {
+    signOut();
+  };
   return (
     <>
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>
@@ -10,8 +16,8 @@ const MyNavbar = () => {
           Recs <span>page</span>
         </Navbar.Brand>
         <Nav className='ml-auto'>
-          <Nav.Link href='#home'>Home</Nav.Link>
-          <Nav.Link href='#logout'>Logout</Nav.Link>
+          <Nav.Link>Home</Nav.Link>
+          <Nav.Link onClick={logout}>Logout</Nav.Link>
         </Nav>
       </Navbar>
     </>
