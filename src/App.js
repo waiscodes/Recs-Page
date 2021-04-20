@@ -15,10 +15,10 @@ import MyNavbar from "./pages/Navbar";
 function App() {
   return (
     <>
-      <MyNavbar />
-      <Container>
-        <Router>
-          <AuthProvider className='App'>
+      <Router>
+        <AuthProvider className='App'>
+          <MyNavbar />
+          <Container>
             <Switch>
               <PrivateRoute exact path='/' component={Dashboard} />
               <PrivateRoute
@@ -30,9 +30,9 @@ function App() {
               <Route path='/recommend/:username' component={RecommendPage} />
               <Route path='/:profile' component={ProfilePage} />
             </Switch>
-          </AuthProvider>
-        </Router>
-      </Container>
+          </Container>
+        </AuthProvider>
+      </Router>
     </>
   );
 }

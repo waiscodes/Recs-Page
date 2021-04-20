@@ -6,10 +6,12 @@ const MyNavbar = () => {
   return (
     <>
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>
-        <Navbar.Brand>Recs Page</Navbar.Brand>
+        <Navbar.Brand>
+          Recs <span>page</span>
+        </Navbar.Brand>
         <Nav className='ml-auto'>
           <Nav.Link href='#home'>Home</Nav.Link>
-          <Nav.Link href='#pricing'>Logout</Nav.Link>
+          <Nav.Link href='#logout'>Logout</Nav.Link>
         </Nav>
       </Navbar>
     </>
