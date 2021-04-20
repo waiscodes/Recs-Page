@@ -7,7 +7,7 @@ const MyNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>
         <Navbar.Brand>Recs Page</Navbar.Brand>
-        <Nav className='mr-auto'>
+        <Nav className='ml-auto'>
           <Nav.Link href='#home'>Home</Nav.Link>
           <Nav.Link href='#pricing'>Logout</Nav.Link>
         </Nav>
