@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Container } from "react-bootstrap";
+import { Card, Button, Container, CloseButton } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import "../css/Dashboard.css";
 import { Link, useHistory } from "react-router-dom";
@@ -12,7 +12,7 @@ const Dashboard = () => {
   const { currentUser, signOut } = useAuth();
   const [books, setBooks] = useState();
   const history = useHistory();
-  const [bookSelected, setBookSelected] = useState("");
+  const [bookSelected, setBookSelected] = useState(false);
 
   const completeProfile = () => {
     history.push("/complete-profile");
@@ -110,7 +110,8 @@ const Dashboard = () => {
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
-        <Button onClick={() => setBookSelected(null)}>Close</Button>
+        <CloseButton onClick={() => setBookSelected(null)}>Close</CloseButton>
+
         <Container className='books-map'>
           <p>
             {books && books.length == 0
