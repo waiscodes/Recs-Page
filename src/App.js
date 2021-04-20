@@ -10,6 +10,7 @@ import SignupPage from "./pages/SignupPage";
 import RecommendPage from "./pages/RecommendPage";
 import ProfilePage from "./pages/ProfilePage";
 import CompleteProfile from "./pages/CompleteProfile";
+import Navbar1 from "./pages/Navbar";
 
 function App() {
   return (
