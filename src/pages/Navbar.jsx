@@ -6,9 +6,6 @@ import "../css/MyNavbar.css";
 const MyNavbar = () => {
   const { signOut } = useAuth();
 
-  const logout = () => {
-    signOut();
-  };
   return (
     <>
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>
@@ -17,7 +14,7 @@ const MyNavbar = () => {
         </Navbar.Brand>
         <Nav className='ml-auto'>
           <Nav.Link>Home</Nav.Link>
-          <Nav.Link onClick={logout}>Logout</Nav.Link>
+          <Nav.Link onClick={() => signOut()}>Logout</Nav.Link>
         </Nav>
       </Navbar>
     </>
