@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { Navbar, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../css/MyNavbar.css";
 
 const MyNavbar = () => {
@@ -14,11 +15,17 @@ const MyNavbar = () => {
         </Navbar.Brand>
         {currentUser ? (
           <Nav className='ml-auto'>
-            <Nav.Link>Home</Nav.Link>
-            <Nav.Link onClick={() => signOut()}>Logout</Nav.Link>
+            <Link to='/'>
+              <Nav>Home</Nav>
+            </Link>
+            <Nav onClick={() => signOut()}>Logout</Nav>
           </Nav>
         ) : (
-          ""
+          <Nav className='ml-auto'>
+            <Link to='/signin'>
+              <Nav>Register</Nav>
+            </Link>
+          </Nav>
         )}
       </Navbar>
     </>
