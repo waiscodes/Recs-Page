@@ -1,0 +1,9 @@
+.remove-href {
+  text-decoration: none;
+  color: white;
+}
+
+.remove-href:hover {
+  color: white;
+  text-decoration: none;
+}
