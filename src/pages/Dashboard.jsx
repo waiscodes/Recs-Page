@@ -80,7 +80,6 @@ const Dashboard = () => {
           <p>{user && "@" + user.username}</p>
           <p>{user && user.bio}</p>
           {!avi && <Button onClick={completeProfile}>Complete Profile</Button>}
-          <Button onClick={() => signOut()}>Sign Out</Button>
           <input
             type='text'
             name='copyContent'
