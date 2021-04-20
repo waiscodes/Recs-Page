@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Container } from "react-bootstrap";
+import { Card, Button, Container, Row } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import placeholderAvi from "../images/placeholder-avi.png";
 import "../css/Dashboard.css";
@@ -42,7 +42,9 @@ const Dashboard = () => {
           snap.docs.map((doc) => ({
             id: doc.id,
             title: doc.data().title,
+            author: doc.data().author,
             recBy: doc.data().recBy,
+            reason: doc.data().reason,
             thumbnail: doc.data().thumbnail,
           }))
         );
@@ -65,8 +67,9 @@ const Dashboard = () => {
 
   const selected = {
     border: "red solid",
-    width: "100%",
-    display: "block",
+    width: "400px",
+    display: "flex",
+    flexDirection: "row",
   };
 
   return (
@@ -102,19 +105,36 @@ const Dashboard = () => {
             books.map((book) => (
               <Card
                 key={book.id}
-                className='ind-book'
                 style={bookSelected === book.id ? selected : null}
                 onClick={() => {
                   setBookSelected(book.id);
                 }}
               >
-                <img src={book.thumbnail} alt='' />
-                <p>
-                  {book.title.length > 30
-                    ? book.title.substr(0, 30) + "..."
-                    : book.title}
-                </p>
-                <p className='recBy text-muted'>Rec from {book.recBy}</p>
+                <div className='ind-book'>
+                  <img src={book.thumbnail} alt='' />
+                  {bookSelected === book.id ? (
+                    ""
+                  ) : (
+                    <div>
+                      <p>
+                        {book.title.length > 30
+                          ? book.title.substr(0, 30) + "..."
+                          : book.title}
+                      </p>
+                      <p className='recBy text-muted'>Rec from {book.recBy}</p>
+                    </div>
+                  )}
+                </div>
+                {bookSelected === book.id ? (
+                  <div>
+                    <h4>Title: {book.title}</h4>
+                    <p>Author: {book.author}</p>
+                    <p>Recommended by: {book.recBy}</p>
+                    <p>Why You should read it: {book.reason}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
               </Card>
             ))}
         </Container>
