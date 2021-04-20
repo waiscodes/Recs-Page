@@ -65,6 +65,8 @@ const Dashboard = () => {
 
   const selected = {
     border: "red solid",
+    width: "100%",
+    display: "block",
   };
 
   return (
@@ -88,19 +90,23 @@ const Dashboard = () => {
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
+        <Button onClick={() => setBookSelected(null)}>Close</Button>
         <Container className='books-map'>
           <p>
             {books && books.length == 0
               ? "You don't have any Recommendations yet."
               : ""}
           </p>
+
           {books &&
             books.map((book) => (
               <Card
                 key={book.id}
                 className='ind-book'
                 style={bookSelected === book.id ? selected : null}
-                onClick={() => setBookSelected(book.id)}
+                onClick={() => {
+                  setBookSelected(book.id);
+                }}
               >
                 <img src={book.thumbnail} alt='' />
                 <p>

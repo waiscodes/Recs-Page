@@ -15,6 +15,7 @@ const RecommendPage = (props) => {
   const [result, setResult] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [selectBook, setSelectBook] = useState(false);
+  const [highlightedBook, setHighlightedBook] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
   // const [border, setBorder] = useState(false);
@@ -25,7 +26,7 @@ const RecommendPage = (props) => {
     setAuthor(e.target.attributes.getNamedItem("data-authors").value);
     setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
 
-    e.target.classList.toggle("picked-book");
+    // e.target.classList.toggle("picked-book");
   };
 
   // eslint-disable-next-line
@@ -84,6 +85,11 @@ const RecommendPage = (props) => {
     setTitle("");
   };
 
+  const highlightCSS = {
+    border: "solid rgba(255, 0, 0, 0.534) 2px",
+    borderRadius: "3px",
+  };
+
   return (
     <>
       <Container>
@@ -92,10 +98,9 @@ const RecommendPage = (props) => {
           {result &&
             result.map((book) => (
               <div
-                key={
-                  book.volumeInfo.imageLinks &&
-                  book.volumeInfo.imageLinks.thumbnail
-                }
+                key={book.id}
+                onClick={() => setHighlightedBook(book.id)}
+                style={highlightedBook === book.id ? highlightCSS : null}
               >
                 <img
                   src={
