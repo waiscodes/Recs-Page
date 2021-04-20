@@ -11,20 +11,18 @@ const MyNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>
         <Navbar.Brand>
-          Recs <span>page</span>
+          <Link to='/' className='remove-href'>
+            Recs <span>page</span>
+          </Link>
         </Navbar.Brand>
         {currentUser ? (
           <Nav className='ml-auto'>
-            <Link to='/'>
-              <Nav>Home</Nav>
-            </Link>
-            <Nav onClick={() => signOut()}>Logout</Nav>
+            <Nav.Link href='/'>Home</Nav.Link>
+            <Nav.Link onClick={() => signOut()}>Logout</Nav.Link>
           </Nav>
         ) : (
           <Nav className='ml-auto'>
-            <Link to='/signin'>
-              <Nav>Register</Nav>
-            </Link>
+            <Nav.Link href='/signup'>Register</Nav.Link>
           </Nav>
         )}
       </Navbar>
