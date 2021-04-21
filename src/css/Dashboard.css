@@ -39,6 +39,15 @@
   margin: 0px;
 }
 
+.ind-book-desc {
+  border: solid;
+  line-height: 1.2em;
+}
+
+.ind-book-desc > * {
+  margin: 0px;
+}
+
 .recBy {
   font-size: 12px;
   font-style: italic;
@@ -52,6 +61,7 @@
   line-height: 1em;
   padding: 5px;
   font-weight: 300;
+  overflow: scroll;
 }
 
 .desc {

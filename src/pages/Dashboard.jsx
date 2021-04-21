@@ -133,13 +133,18 @@ const Dashboard = () => {
                   {bookSelected === book.id ? (
                     ""
                   ) : (
-                    <div>
+                    <div className='ind-book-desc'>
                       <p>
                         {book.title.length > 30
                           ? book.title.substr(0, 30) + "..."
                           : book.title}
                       </p>
-                      <p className='recBy text-muted'>Rec from {book.recBy}</p>
+                      <p className='recBy text-muted'>
+                        Rec by{" "}
+                        {book.recBy.length > 10
+                          ? book.recBy.substr(0, 10) + "..."
+                          : book.recBy}
+                      </p>
                     </div>
                   )}
                 </div>
