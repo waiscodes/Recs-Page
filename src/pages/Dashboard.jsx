@@ -123,31 +123,32 @@ const Dashboard = () => {
             books.map((book) => (
               <Card
                 key={book.id}
+                className='ind-book'
                 style={bookSelected === book.id ? selected : null}
                 onClick={() => {
                   setBookSelected(book.id);
                 }}
               >
-                <div className='ind-book'>
+                <div className='img-div'>
                   <img src={book.thumbnail} alt='' />
-                  {bookSelected === book.id ? (
-                    ""
-                  ) : (
-                    <div className='ind-book-desc'>
-                      <p>
-                        {book.title.length > 30
-                          ? book.title.substr(0, 30) + "..."
-                          : book.title}
-                      </p>
-                      <p className='recBy text-muted'>
-                        Rec by{" "}
-                        {book.recBy.length > 10
-                          ? book.recBy.substr(0, 10) + "..."
-                          : book.recBy}
-                      </p>
-                    </div>
-                  )}
                 </div>
+                {bookSelected === book.id ? (
+                  ""
+                ) : (
+                  <div className='ind-book-desc'>
+                    <p>
+                      {book.title.length > 30
+                        ? book.title.substr(0, 30) + "..."
+                        : book.title}
+                    </p>
+                    <p className='recBy text-muted'>
+                      Rec by{" "}
+                      {book.recBy.length > 10
+                        ? book.recBy.substr(0, 10) + "..."
+                        : book.recBy}
+                    </p>
+                  </div>
+                )}
                 {bookSelected === book.id ? (
                   <div className='book-desc'>
                     <h4>{book.title}</h4>

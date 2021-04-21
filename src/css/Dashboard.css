@@ -20,6 +20,9 @@
 
 .ind-book {
   width: min-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .screen-reader-text {
@@ -39,8 +42,11 @@
   margin: 0px;
 }
 
+.img-div {
+  width: min-content;
+}
+
 .ind-book-desc {
-  border: solid;
   line-height: 1.2em;
 }
 
@@ -62,6 +68,7 @@
   padding: 5px;
   font-weight: 300;
   overflow: scroll;
+  width: 100%;
 }
 
 .desc {
