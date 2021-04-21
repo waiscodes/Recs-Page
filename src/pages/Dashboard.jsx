@@ -144,11 +144,20 @@ const Dashboard = () => {
                   )}
                 </div>
                 {bookSelected === book.id ? (
-                  <div>
-                    <h4>Title: {book.title}</h4>
-                    <p>Author: {book.author}</p>
-                    <p>Recommended by: {book.recBy}</p>
-                    <p>Why You should read it: {book.reason}</p>
+                  <div className='book-desc'>
+                    <h4>{book.title}</h4>
+                    <p>
+                      <span className='desc'>Author: </span>
+                      {book.author}
+                    </p>
+                    <p>
+                      <span className='desc'>Rec by: </span>
+                      {book.recBy}
+                    </p>
+                    <p>
+                      <span className='desc'>Reason: </span>
+                      {book.reason}
+                    </p>
                   </div>
                 ) : (
                   ""
