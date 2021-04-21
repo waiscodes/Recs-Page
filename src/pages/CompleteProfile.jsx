@@ -19,7 +19,7 @@ const CompleteProfile = () => {
     db.collection("users")
       .doc(currentUser.uid)
       .update({
-        username: username.current.value,
+        username: username.current.value.toLowerCase(),
         bio: bioRef.current.value,
         avi: aviRef.current.value,
       })
