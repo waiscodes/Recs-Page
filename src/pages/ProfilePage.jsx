@@ -23,7 +23,7 @@ const ProfilePage = () => {
 
   const getUser = (username) => {
     db.collection("users")
-      .where("username", "==", username)
+      .where("username", "==", username.toLowerCase())
       .get()
       .then((snap) => {
         if (snap.docs[0]) {
