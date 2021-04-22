@@ -52,6 +52,8 @@ const ProfilePage = () => {
           snap.docs.map((doc) => ({
             id: doc.id,
             title: doc.data().title,
+            author: doc.data().author,
+            recBy: doc.data().recBy,
             thumbnail: doc.data().thumbnail,
           }))
         );
@@ -86,11 +88,19 @@ const ProfilePage = () => {
               books.map((book) => (
                 <div key={book.id} className='ind-book'>
                   <img src={book.thumbnail} alt='' />
-                  <p>
-                    {book.title.length > 30
-                      ? book.title.substr(0, 30) + "..."
-                      : book.title}
-                  </p>
+                  <div className='ind-book-desc'>
+                    <p>
+                      {book.title.length > 30
+                        ? book.title.substr(0, 30) + "..."
+                        : book.title}
+                    </p>
+                    <p className='recBy text-muted'>
+                      Rec by{" "}
+                      {book.recBy.length > 10
+                        ? book.recBy.substr(0, 10) + "..."
+                        : book.recBy}
+                    </p>
+                  </div>
                 </div>
               ))}
           </Container>
