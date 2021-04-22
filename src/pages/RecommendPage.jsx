@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import { db } from "../fire";
 import debounce from "lodash.debounce";
@@ -94,6 +94,11 @@ const RecommendPage = (props) => {
     <>
       <Container>
         {selectBook && <p>Select book</p>}
+        {author && (
+          <Alert variant='success'>
+            Selected: {title} by {author}
+          </Alert>
+        )}
         <div className='d-flex'>
           {result &&
             result.map((book) => (
