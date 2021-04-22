@@ -65,7 +65,6 @@ const Dashboard = () => {
   };
 
   const selected = {
-    border: "red solid",
     width: "400px",
     display: "flex",
     flexDirection: "row",
@@ -110,7 +109,6 @@ const Dashboard = () => {
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
-        <CloseButton onClick={() => setBookSelected(null)}>Close</CloseButton>
 
         <Container className='books-map'>
           <p>
@@ -125,12 +123,13 @@ const Dashboard = () => {
                 key={book.id}
                 className='ind-book'
                 style={bookSelected === book.id ? selected : null}
-                onClick={() => {
-                  setBookSelected(book.id);
-                }}
               >
                 <div className='img-div'>
-                  <img src={book.thumbnail} alt='' />
+                  <img
+                    src={book.thumbnail}
+                    alt=''
+                    onClick={() => setBookSelected(book.id)}
+                  />
                 </div>
                 {bookSelected === book.id ? (
                   ""
@@ -151,6 +150,9 @@ const Dashboard = () => {
                 )}
                 {bookSelected === book.id ? (
                   <div className='book-desc'>
+                    <CloseButton onClick={() => setBookSelected(null)}>
+                      Close
+                    </CloseButton>
                     <h4>{book.title}</h4>
                     <p>
                       <span className='desc'>Author: </span>
