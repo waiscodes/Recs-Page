@@ -10,3 +10,7 @@
   border: solid rgba(255, 0, 0, 0.534) 2px;
   border-radius: 3px;
 }
+
+.books-result {
+  overflow: scroll;
+}

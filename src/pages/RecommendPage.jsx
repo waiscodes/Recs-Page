@@ -99,7 +99,7 @@ const RecommendPage = (props) => {
             Selected: {title} by {author}
           </Alert>
         )}
-        <div className='d-flex'>
+        <div className='books-result d-flex'>
           {result &&
             result.map((book) => (
               <div
