@@ -23,7 +23,11 @@ const RecommendPage = (props) => {
   const pickBook = (e) => {
     setShowForm(true);
     setTitle(e.target.attributes.getNamedItem("data-title").value);
-    setAuthor(e.target.attributes.getNamedItem("data-authors").value);
+    if (e.target.attributes.getNamedItem("data-authors")) {
+      setAuthor(e.target.attributes.getNamedItem("data-authors").value);
+    } else {
+      setAuthor("Unknown");
+    }
     setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
 
     // e.target.classList.toggle("picked-book");
