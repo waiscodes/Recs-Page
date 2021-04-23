@@ -18,7 +18,7 @@ function App() {
       <Router>
         <AuthProvider className='App'>
           <MyNavbar />
-          <Container>
+          <Container class='container'>
             <Switch>
               <PrivateRoute exact path='/' component={Dashboard} />
               <PrivateRoute
