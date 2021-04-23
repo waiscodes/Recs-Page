@@ -70,3 +70,8 @@
 .desc {
   font-weight: 500;
 }
+
+.copy-container {
+  width: 175px;
+  margin: auto;
+}
