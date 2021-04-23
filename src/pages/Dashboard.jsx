@@ -82,7 +82,7 @@ const Dashboard = () => {
           />
 
           <h4 className='display-name'>{user && user.name}</h4>
-          <p>{user && "@" + user.username}</p>
+          <p className='text-muted'>{user && "@" + user.username}</p>
           <p>{user && user.bio}</p>
           {!avi && <Button onClick={completeProfile}>Complete Profile</Button>}
           <input

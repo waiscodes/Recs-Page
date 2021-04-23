@@ -69,8 +69,10 @@ const ProfilePage = () => {
           <Card.Body>
             <div className='user-info'>
               <img src={avi} alt='' className='profile-pic' />
-              <p className='display-name'>{userProfile && userProfile.name}</p>
-              <p className='username'>@{profile}</p>
+              <h4 className='display-name'>
+                {userProfile && userProfile.name}
+              </h4>
+              <p className='username text-muted'>@{profile}</p>
               <p>{userProfile && userProfile.bio}</p>
             </div>
             <hr />
