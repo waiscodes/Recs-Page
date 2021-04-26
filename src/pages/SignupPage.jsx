@@ -47,7 +47,7 @@ const SignupPage = () => {
               <Form.Label className='d-none'>Email</Form.Label>
               <Form.Control
                 type='email'
-                autoComplete='username'
+                autoComplete='email'
                 placeholder='Email'
                 required
                 ref={emailRef}
@@ -58,7 +58,7 @@ const SignupPage = () => {
               <Form.Control
                 type='text'
                 placeholder='Full Name'
-                // autoComplete='username'
+                autoComplete='cc-name'
                 required
                 ref={nameRef}
               />
