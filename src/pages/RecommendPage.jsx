@@ -48,7 +48,9 @@ const RecommendPage = (props) => {
       axios
         .get(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
         .then((res) => {
-          setResult(res.data.items.slice(0, 3));
+          if (res.data.items) {
+            setResult(res.data.items.slice(0, 3));
+          }
         });
     }, 500),
     []
@@ -57,15 +59,17 @@ const RecommendPage = (props) => {
   const handleChange = (e) => {
     if (e.target.value.length > 1) {
       setSelectBook(true);
+
+      debounceSearch(e.target.value);
     }
     if (e.target.value.length < 1) {
       setSelectBook(false);
       setResult([]);
     }
-    setShowForm(false);
 
     setTitle(e.target.value);
-    debounceSearch(e.target.value);
+    // To stop editing of the title after the book is selected to ensure the correct book is selected
+    setShowForm(false);
   };
 
   const addToFirestore = () => {
