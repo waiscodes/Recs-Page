@@ -31,7 +31,6 @@ const ProfilePage = () => {
           getBooks(snap.docs[0].data());
           getAvi(snap.docs[0].data().uid);
         }
-        setLoading(true);
       });
   };
 
@@ -42,6 +41,7 @@ const ProfilePage = () => {
       .then((url) => {
         setAvi(url);
       });
+    setLoading(true);
   };
 
   const getBooks = (user) => {

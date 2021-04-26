@@ -22,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     getUser();
     getBooks();
-    getAvi();
+    // getAvi();
   }, []);
 
   const getUser = () => {
@@ -56,7 +56,14 @@ const Dashboard = () => {
       .ref("users/" + currentUser.uid + "/" + "Avi")
       .getDownloadURL()
       .then((url) => {
-        setAvi(url);
+        if (url) {
+          setAvi(url);
+        }
+      })
+      .catch((error) => {
+        setAvi(
+          "https://firebasestorage.googleapis.com/v0/b/lazy-tbr.appspot.com/o/users%2Fdefault-cat-avi.png?alt=media&token=c2872e49-f7d9-4a27-8311-5c3b8b153221"
+        );
       });
   };
 
@@ -85,22 +92,24 @@ const Dashboard = () => {
           <img
             className='profile-pic rounded-circle z-depth-2'
             alt='100x100'
-            src={avi}
+            src={user && user.avi}
             data-holder-rendered='true'
           />
 
           <h4 className='display-name'>{user && user.name}</h4>
           <p className='text-muted'>{user && "@" + user.username}</p>
           <p>{user && user.bio}</p>
-          {!avi && <Button onClick={completeProfile}>Complete Profile</Button>}
-          <input
-            type='text'
-            name='copyContent'
-            id='copyContent'
-            className='screen-reader-text'
-            defaultValue={user && "https://recs.page/" + user.username}
-          />
           <div className='text-center'>
+            {!avi && (
+              <Button onClick={completeProfile}>Complete Profile</Button>
+            )}
+            <input
+              type='text'
+              name='copyContent'
+              id='copyContent'
+              className='screen-reader-text'
+              defaultValue={user && "https://recs.page/" + user.username}
+            />
             <Button onClick={copyShareLink}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
