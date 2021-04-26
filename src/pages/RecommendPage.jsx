@@ -52,6 +52,7 @@ const RecommendPage = (props) => {
     if (e.target.value.length < 1) {
       setSelectBook(false);
       setResult([]);
+      setAuthor(false);
     }
 
     setTitle(e.target.value);
@@ -76,6 +77,7 @@ const RecommendPage = (props) => {
           setShowForm(false);
           setSelectBook(false);
           setResult(false);
+          setAuthor(false);
         });
     } catch {
       console.log("Failed to add book");
@@ -97,11 +99,15 @@ const RecommendPage = (props) => {
   return (
     <>
       <Container>
-        {selectBook && <p>Select book</p>}
-        {author && (
-          <Alert variant='success'>
-            Selected: {title} by {author}
-          </Alert>
+        {selectBook && (
+          <div>
+            <p>Select book</p>
+            {author && (
+              <Alert variant='success'>
+                Selected: {title} by {author}
+              </Alert>
+            )}
+          </div>
         )}
         <div className='books-result d-flex'>
           {result &&
