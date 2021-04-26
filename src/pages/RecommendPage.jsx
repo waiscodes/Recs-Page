@@ -52,8 +52,8 @@ const RecommendPage = (props) => {
     if (e.target.value.length < 1) {
       setSelectBook(false);
       setResult([]);
-      setAuthor(false);
     }
+    setAuthor(false);
 
     setTitle(e.target.value);
     debounceSearch(e.target.value);
