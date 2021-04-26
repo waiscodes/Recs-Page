@@ -15,6 +15,7 @@ const RecommendPage = (props) => {
   const [result, setResult] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [selectBook, setSelectBook] = useState(false);
+  const [selectedBookDesc, setSelectedBookDesc] = useState(false);
   const [highlightedBook, setHighlightedBook] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
@@ -22,15 +23,22 @@ const RecommendPage = (props) => {
 
   const pickBook = (e) => {
     setShowForm(true);
-    setTitle(e.target.attributes.getNamedItem("data-title").value);
-    if (e.target.attributes.getNamedItem("data-authors")) {
-      setAuthor(e.target.attributes.getNamedItem("data-authors").value);
-    } else {
-      setAuthor("Unknown");
-    }
-    setThumbnail(e.target.attributes.getNamedItem("data-thumbnail").value);
 
-    // e.target.classList.toggle("picked-book");
+    const selectedTitle = e.target.attributes.getNamedItem("data-title").value;
+    const selectedThumbnail = e.target.attributes.getNamedItem("data-thumbnail")
+      .value;
+    let selectedAuthor = "";
+
+    if (e.target.attributes.getNamedItem("data-authors")) {
+      selectedAuthor = e.target.attributes.getNamedItem("data-authors").value;
+    } else {
+      selectedAuthor = "Unknown";
+    }
+
+    setTitle(selectedTitle);
+    setAuthor(selectedAuthor);
+    setThumbnail(selectedThumbnail);
+    setSelectedBookDesc(`Selected: ${selectedTitle} by ${selectedAuthor}`);
   };
 
   // eslint-disable-next-line
@@ -53,7 +61,7 @@ const RecommendPage = (props) => {
       setSelectBook(false);
       setResult([]);
     }
-    setAuthor(false);
+    setShowForm(false);
 
     setTitle(e.target.value);
     debounceSearch(e.target.value);
@@ -102,11 +110,7 @@ const RecommendPage = (props) => {
         {selectBook && (
           <div>
             <p>Select book</p>
-            {author && (
-              <Alert variant='success'>
-                Selected: {title} by {author}
-              </Alert>
-            )}
+            {author && <Alert variant='success'>{selectedBookDesc}</Alert>}
           </div>
         )}
         <div className='books-result d-flex'>
@@ -134,7 +138,6 @@ const RecommendPage = (props) => {
               </div>
             ))}
         </div>
-        {/* {error && <Alert variant='danger'>{error}</Alert>} */}
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label className='d-none'>Title</Form.Label>
@@ -145,9 +148,6 @@ const RecommendPage = (props) => {
               value={title}
               required
             />
-            {/* <Form.Text className='text-muted'>
-              Search and Click on Thumbnail
-            </Form.Text> */}
           </Form.Group>
           {showForm && (
             <div>
