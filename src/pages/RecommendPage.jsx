@@ -70,6 +70,7 @@ const RecommendPage = (props) => {
     setTitle(e.target.value);
     // To stop editing of the title after the book is selected to ensure the correct book is selected
     setShowForm(false);
+    setSelectedBookDesc(false);
   };
 
   const addToFirestore = () => {
@@ -114,8 +115,10 @@ const RecommendPage = (props) => {
       <Container>
         {selectBook && (
           <div>
-            <p>Select book</p>
-            {author && <Alert variant='success'>{selectedBookDesc}</Alert>}
+            <p className='text-muted'>Select book</p>
+            {selectedBookDesc && (
+              <Alert variant='success'>{selectedBookDesc}</Alert>
+            )}
           </div>
         )}
         <div className='books-result d-flex'>
