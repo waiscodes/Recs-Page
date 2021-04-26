@@ -19,7 +19,6 @@ const RecommendPage = (props) => {
   const [highlightedBook, setHighlightedBook] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
-  // const [border, setBorder] = useState(false);
 
   const pickBook = (e) => {
     setShowForm(true);
@@ -29,6 +28,7 @@ const RecommendPage = (props) => {
       .value;
     let selectedAuthor = "";
 
+    // For some books that don't have authors assigned to them
     if (e.target.attributes.getNamedItem("data-authors")) {
       selectedAuthor = e.target.attributes.getNamedItem("data-authors").value;
     } else {
@@ -38,6 +38,7 @@ const RecommendPage = (props) => {
     setTitle(selectedTitle);
     setAuthor(selectedAuthor);
     setThumbnail(selectedThumbnail);
+    // This describes the book that was selected
     setSelectedBookDesc(`Selected: ${selectedTitle} by ${selectedAuthor}`);
   };
 
