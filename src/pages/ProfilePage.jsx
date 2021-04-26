@@ -62,7 +62,11 @@ const ProfilePage = () => {
 
   return (
     <>
-      {!loading && <Spinner animation='border' />}
+      {!loading && (
+        <div className='spinner'>
+          <Spinner animation='border' />
+        </div>
+      )}
 
       {loading && (
         <Card>
