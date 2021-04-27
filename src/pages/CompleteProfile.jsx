@@ -10,18 +10,34 @@ const CompleteProfile = () => {
   const bioRef = useRef();
   const aviRef = useRef();
   const [avi, setAvi] = useState();
+  const [aviLink, setAviLink] = useState();
   const { currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const addToFirestore = () => {
+  const updateWithAvi = (aviURL) => {
     db.collection("users")
       .doc(currentUser.uid)
       .update({
         username: username.current.value.toLowerCase(),
         bio: bioRef.current.value,
-        avi: aviRef.current.value,
+        avi: aviURL,
+      })
+      .then(() => {
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const updateWithoutAvi = () => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .update({
+        username: username.current.value.toLowerCase(),
+        bio: bioRef.current.value,
       })
       .then(() => {
         history.push("/");
@@ -68,14 +84,29 @@ const CompleteProfile = () => {
     e.preventDefault();
 
     if (!error) {
-      addToFirestore();
-
       if (avi) {
-        storage
+        const storageRef = storage
           .ref("users/" + currentUser.uid + "/" + "Avi")
-          .put(avi)
-          .then((res) => console.log(res))
-          .catch((error) => console.log(error));
+          .put(avi);
+
+        storageRef.on(
+          "state_changed",
+          (snapshot) => {
+            let progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("Upload is " + progress + "% done");
+          },
+          (error) => {
+            console.log(error);
+          },
+          () => {
+            storageRef.snapshot.ref.getDownloadURL().then((aviURL) => {
+              updateWithAvi(aviURL);
+            });
+          }
+        );
+      } else {
+        updateWithoutAvi();
       }
     }
   };
