@@ -100,9 +100,15 @@ const Dashboard = () => {
           <p className='text-muted'>{user && "@" + user.username}</p>
           <p>{user && user.bio}</p>
           <div className='text-center'>
-            {!avi && (
+            {user?.avi ==
+            "https://firebasestorage.googleapis.com/v0/b/lazy-tbr.appspot.com/o/users%2Fdefault-cat-avi.png?alt=media&token=c2872e49-f7d9-4a27-8311-5c3b8b153221" ? (
               <Button onClick={completeProfile}>Complete Profile</Button>
+            ) : (
+              ""
             )}
+            {/* {!avi && (
+              <Button onClick={completeProfile}>Complete Profile</Button>
+            )} */}
             <input
               type='text'
               name='copyContent'
