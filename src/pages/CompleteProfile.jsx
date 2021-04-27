@@ -10,7 +10,7 @@ const CompleteProfile = () => {
   const bioRef = useRef();
   const aviRef = useRef();
   const [avi, setAvi] = useState();
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(false);
   const [aviLink, setAviLink] = useState();
   const { currentUser } = useAuth();
   const [error, setError] = useState("");
@@ -96,7 +96,7 @@ const CompleteProfile = () => {
           (snapshot) => {
             let percentage =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            setProgress(progress);
+            setProgress(percentage);
           },
           (error) => {
             console.log(error);
@@ -148,7 +148,9 @@ const CompleteProfile = () => {
                 onChange={(e) => setAvi(e.target.files[0])}
               />
             </Form.Group>
-            <ProgressBar now={progress} label={`${progress}%`} />
+            {progress && (
+              <ProgressBar now={progress} label={`${Math.round(progress)}%`} />
+            )}
             <Button type='Submit' disabled={loading}>
               Update Profile
             </Button>
