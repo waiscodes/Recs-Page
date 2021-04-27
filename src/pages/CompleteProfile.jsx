@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { Card, Form, Button, Alert } from "react-bootstrap";
+import { Card, Form, Button, Alert, ProgressBar } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import debounce from "lodash.debounce";
 import { Link, useHistory } from "react-router-dom";
@@ -10,6 +10,7 @@ const CompleteProfile = () => {
   const bioRef = useRef();
   const aviRef = useRef();
   const [avi, setAvi] = useState();
+  const [progress, setProgress] = useState(0);
   const [aviLink, setAviLink] = useState();
   const { currentUser } = useAuth();
   const [error, setError] = useState("");
@@ -55,7 +56,7 @@ const CompleteProfile = () => {
         .get()
         .then((snap) => {
           if (snap.docs && snap.docs[0].data()) {
-            setError("username is already taken");
+            setError("username is already taken. Please pick a different one");
           }
         })
         .catch(() => {});
@@ -82,6 +83,7 @@ const CompleteProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!error) {
       if (avi) {
@@ -92,9 +94,9 @@ const CompleteProfile = () => {
         storageRef.on(
           "state_changed",
           (snapshot) => {
-            let progress =
+            let percentage =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
+            setProgress(progress);
           },
           (error) => {
             console.log(error);
@@ -146,7 +148,8 @@ const CompleteProfile = () => {
                 onChange={(e) => setAvi(e.target.files[0])}
               />
             </Form.Group>
-            <Button type='Submit' disabled={error}>
+            <ProgressBar now={progress} label={`${progress}%`} />
+            <Button type='Submit' disabled={loading}>
               Update Profile
             </Button>
           </Form>
