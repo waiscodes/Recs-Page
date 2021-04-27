@@ -29,9 +29,10 @@ const ProfilePage = () => {
         if (snap.docs[0]) {
           setUserProfile(snap.docs[0].data());
           getBooks(snap.docs[0].data());
-          getAvi(snap.docs[0].data().uid);
+          // getAvi(snap.docs[0].data().uid);
         }
       });
+    setLoading(true);
   };
 
   const getAvi = (uid) => {
@@ -72,7 +73,11 @@ const ProfilePage = () => {
         <Card>
           <Card.Body>
             <div className='user-info'>
-              <img src={avi} alt='' className='profile-pic' />
+              <img
+                src={userProfile && userProfile.avi}
+                alt=''
+                className='profile-pic'
+              />
               <h4 className='display-name'>
                 {userProfile && userProfile.name}
               </h4>
