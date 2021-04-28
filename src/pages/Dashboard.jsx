@@ -116,32 +116,32 @@ const Dashboard = () => {
             "https://firebasestorage.googleapis.com/v0/b/lazy-tbr.appspot.com/o/users%2Fdefault-cat-avi.png?alt=media&token=c2872e49-f7d9-4a27-8311-5c3b8b153221" ? (
               <Button onClick={completeProfile}>Complete Profile</Button>
             ) : (
-              ""
+              <div>
+                <TwitterShareButton url={"https://recs.page/" + user?.username}>
+                  <TwitterIcon size={32} round={true} />
+                </TwitterShareButton>
+                <WhatsappShareButton
+                  url={"https://recs.page/" + user?.username}
+                >
+                  <WhatsappIcon size={32} round={true} />
+                </WhatsappShareButton>
+                <FacebookMessengerShareButton
+                  url={"https://recs.page/" + user?.username}
+                >
+                  <FacebookMessengerIcon size={32} round={true} />
+                </FacebookMessengerShareButton>
+                <LinkedinShareButton
+                  url={"https://recs.page/" + user?.username}
+                >
+                  <LinkedinIcon size={32} round={true} />
+                </LinkedinShareButton>
+                <TelegramShareButton
+                  url={"https://recs.page/" + user?.username}
+                >
+                  <TelegramIcon size={32} round={true} />
+                </TelegramShareButton>
+              </div>
             )}
-            <input
-              type='text'
-              name='copyContent'
-              id='copyContent'
-              className='screen-reader-text'
-              defaultValue={user && "https://recs.page/" + user.username}
-            />
-            <TwitterShareButton url={"https://recs.page/" + user?.username}>
-              <TwitterIcon size={32} round={true} />
-            </TwitterShareButton>
-            <WhatsappShareButton url={"https://recs.page/" + user?.username}>
-              <WhatsappIcon size={32} round={true} />
-            </WhatsappShareButton>
-            <FacebookMessengerShareButton
-              url={"https://recs.page/" + user?.username}
-            >
-              <FacebookMessengerIcon size={32} round={true} />
-            </FacebookMessengerShareButton>
-            <LinkedinShareButton url={"https://recs.page/" + user?.username}>
-              <LinkedinIcon size={32} round={true} />
-            </LinkedinShareButton>
-            <TelegramShareButton url={"https://recs.page/" + user?.username}>
-              <TelegramIcon size={32} round={true} />
-            </TelegramShareButton>
           </div>
         </div>
         <hr />
