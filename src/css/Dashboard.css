@@ -75,3 +75,8 @@
   width: 175px;
   margin: auto;
 }
+
+.social-share > * {
+  margin: 0px;
+  padding: 0px;
+}
