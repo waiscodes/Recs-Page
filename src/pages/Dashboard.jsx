@@ -12,6 +12,10 @@ import {
   WhatsappIcon,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TelegramShareButton,
+  TelegramIcon,
 } from "react-share";
 
 const Dashboard = () => {
@@ -132,9 +136,12 @@ const Dashboard = () => {
             >
               <FacebookMessengerIcon size={32} round={true} />
             </FacebookMessengerShareButton>
-            <TwitterShareButton url={"https://recs.page/" + user?.username}>
-              <TwitterIcon size={32} round={true} />
-            </TwitterShareButton>
+            <LinkedinShareButton url={"https://recs.page/" + user?.username}>
+              <LinkedinIcon size={32} round={true} />
+            </LinkedinShareButton>
+            <TelegramShareButton url={"https://recs.page/" + user?.username}>
+              <TelegramIcon size={32} round={true} />
+            </TelegramShareButton>
           </div>
         </div>
         <hr />
