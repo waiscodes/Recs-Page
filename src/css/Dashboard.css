@@ -22,7 +22,6 @@
   width: min-content;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .screen-reader-text {

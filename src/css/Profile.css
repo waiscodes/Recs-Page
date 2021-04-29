@@ -14,7 +14,6 @@
 .books-map {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
   padding: 0px;
   /* border: solid; */
 }
