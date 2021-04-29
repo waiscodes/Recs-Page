@@ -3,23 +3,28 @@ import { Link, useParams } from "react-router-dom";
 import { Card, Button, Container, Spinner } from "react-bootstrap";
 import "../css/Profile.css";
 import { auth, db, storage } from "../fire";
+import { useAuth } from "../contexts/AuthContext";
 import RecommendPage from "./RecommendPage";
 
 const ProfilePage = () => {
   const { profile } = useParams();
   const [userProfile, setUserProfile] = useState();
   const [avi, setAvi] = useState();
+  const { currentUser } = useAuth();
   const [books, setBooks] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getUser(profile);
-    // anonSignIn();
+    if (!currentUser) {
+      anonSignIn();
+    }
   }, []);
 
-  // const anonSignIn = () => {
-  //   auth.signInAnonymously();
-  // };
+  const anonSignIn = () => {
+    auth.signInAnonymously();
+    console.log(auth);
+  };
 
   const getUser = (username) => {
     db.collection("users")
