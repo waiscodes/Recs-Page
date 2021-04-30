@@ -22,8 +22,8 @@ const ProfilePage = () => {
   }, []);
 
   const anonSignIn = () => {
-    auth.signInAnonymously();
-    console.log(auth);
+    // auth.signInAnonymously();
+    console.log("Anon sign in");
   };
 
   const getUser = (username) => {
