@@ -56,16 +56,20 @@ const ProfilePage = () => {
     db.collection("books")
       .where("uid", "==", user.uid)
       .onSnapshot((snap) => {
-        setBooks(
-          snap.docs.map((doc) => ({
-            id: doc.id,
-            title: doc.data().title,
-            author: doc.data().author,
-            recBy: doc.data().recBy,
-            thumbnail: doc.data().thumbnail,
-            rating: doc.data().rating,
-          }))
-        );
+        let result = snap.docs.map((doc) => ({
+          id: doc.id,
+          title: doc.data().title,
+          author: doc.data().author,
+          recBy: doc.data().recBy,
+          thumbnail: doc.data().thumbnail,
+          rating: doc.data().rating,
+        }));
+        result.sort((a, b) => {
+          if (a.rating > b.rating) return -1;
+          if (a.rating < b.rating) return +1;
+          return 0;
+        });
+        setBooks(result);
       });
   };
 
