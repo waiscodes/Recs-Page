@@ -50,16 +50,25 @@ const Dashboard = () => {
     db.collection("books")
       .where("uid", "==", currentUser.uid)
       .onSnapshot((snap) => {
-        setBooks(
-          snap.docs.map((doc) => ({
-            id: doc.id,
-            title: doc.data().title,
-            author: doc.data().author,
-            recBy: doc.data().recBy,
-            reason: doc.data().reason,
-            thumbnail: doc.data().thumbnail,
-          }))
-        );
+        let result = snap.docs.map((doc) => ({
+          id: doc.id,
+          title: doc.data().title,
+          author: doc.data().author,
+          recBy: doc.data().recBy,
+          reason: doc.data().reason,
+          thumbnail: doc.data().thumbnail,
+        }));
+        result.sort((a, b) => {
+          if (a.createdAt > b.createdAt) return -1;
+          if (a.createdAt < b.createdAt) return +1;
+          return 0;
+        });
+        result.sort((a, b) => {
+          if (a.rating > b.rating) return -1;
+          if (a.rating < b.rating) return +1;
+          return 0;
+        });
+        setBooks(result);
       });
   };
 
