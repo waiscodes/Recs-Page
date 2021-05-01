@@ -14,6 +14,7 @@ const ProfilePage = () => {
   const [books, setBooks] = useState();
   const [loading, setLoading] = useState(false);
   const [bookSelected, setBookSelected] = useState(false);
+  const [bookLiked, setBookLiked] = useState(false);
 
   useEffect(() => {
     getUser(profile);
@@ -62,8 +63,17 @@ const ProfilePage = () => {
             author: doc.data().author,
             recBy: doc.data().recBy,
             thumbnail: doc.data().thumbnail,
+            rating: doc.data().rating,
           }))
         );
+      });
+  };
+
+  const likeBook = (bookId, bookRating) => {
+    db.collection("books")
+      .doc(bookId)
+      .update({
+        rating: bookRating + 1,
       });
   };
 
@@ -114,6 +124,7 @@ const ProfilePage = () => {
                   key={book.id}
                   className='ind-book'
                   style={bookSelected === book.id ? selected : null}
+                  onDoubleClick={() => likeBook(book.id, book.rating)}
                 >
                   <div className='img-div'>
                     <img
@@ -156,6 +167,11 @@ const ProfilePage = () => {
                       <p>
                         <span className='desc'>Reason: </span>
                         {book.reason}
+                      </p>
+                      <p>
+                        <span className='desc'>Rating: </span>
+                        {book?.rating}{" "}
+                        <span className='double-tap'>Double Tap to Like</span>
                       </p>
                     </div>
                   ) : (

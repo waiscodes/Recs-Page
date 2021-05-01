@@ -96,3 +96,8 @@
   margin: 0px;
   padding: 0px;
 }
+
+.double-tap {
+  opacity: 40%;
+  font-size: 0.9em;
+}
