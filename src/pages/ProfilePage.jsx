@@ -61,9 +61,16 @@ const ProfilePage = () => {
           title: doc.data().title,
           author: doc.data().author,
           recBy: doc.data().recBy,
+          reason: doc.data().reason,
           thumbnail: doc.data().thumbnail,
           rating: doc.data().rating,
+          createdAt: doc.data().createdAt,
         }));
+        result.sort((a, b) => {
+          if (a.createdAt > b.createdAt) return -1;
+          if (a.createdAt < b.createdAt) return +1;
+          return 0;
+        });
         result.sort((a, b) => {
           if (a.rating > b.rating) return -1;
           if (a.rating < b.rating) return +1;
