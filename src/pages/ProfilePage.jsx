@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Card, Button, Container, Spinner } from "react-bootstrap";
+import { Card, Button, Container, Spinner, CloseButton } from "react-bootstrap";
 import "../css/Profile.css";
 import { auth, db, storage } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
@@ -13,6 +13,7 @@ const ProfilePage = () => {
   const { currentUser } = useAuth();
   const [books, setBooks] = useState();
   const [loading, setLoading] = useState(false);
+  const [bookSelected, setBookSelected] = useState(false);
 
   useEffect(() => {
     getUser(profile);
@@ -66,6 +67,12 @@ const ProfilePage = () => {
       });
   };
 
+  const selected = {
+    width: "400px",
+    display: "flex",
+    flexDirection: "row",
+  };
+
   return (
     <>
       {!loading && (
@@ -81,6 +88,7 @@ const ProfilePage = () => {
               <img
                 src={userProfile && userProfile.avi}
                 alt=''
+                onDoubleClick={() => alert("hello world")}
                 className='profile-pic'
               />
               <h4 className='display-name'>
@@ -102,22 +110,58 @@ const ProfilePage = () => {
             </p>
             {books &&
               books.map((book) => (
-                <div key={book.id} className='ind-book'>
-                  <img src={book.thumbnail} alt='' />
-                  <div className='ind-book-desc'>
-                    <p>
-                      {book.title.length > 30
-                        ? book.title.substr(0, 30) + "..."
-                        : book.title}
-                    </p>
-                    <p className='recBy text-muted'>
-                      Rec by{" "}
-                      {book.recBy.length > 10
-                        ? book.recBy.substr(0, 10) + "..."
-                        : book.recBy}
-                    </p>
+                <Card
+                  key={book.id}
+                  className='ind-book'
+                  style={bookSelected === book.id ? selected : null}
+                >
+                  <div className='img-div'>
+                    <img
+                      src={book.thumbnail}
+                      alt=''
+                      onClick={() => setBookSelected(book.id)}
+                    />
                   </div>
-                </div>
+                  {bookSelected === book.id ? (
+                    ""
+                  ) : (
+                    <div className='ind-book-desc'>
+                      <p>
+                        {book.title.length > 30
+                          ? book.title.substr(0, 30) + "..."
+                          : book.title}
+                      </p>
+                      <p className='recBy text-muted'>
+                        Rec by{" "}
+                        {book.recBy.length > 10
+                          ? book.recBy.substr(0, 10) + "..."
+                          : book.recBy}
+                      </p>
+                    </div>
+                  )}
+                  {bookSelected === book.id ? (
+                    <div className='book-desc'>
+                      <CloseButton onClick={() => setBookSelected(null)}>
+                        Close
+                      </CloseButton>
+                      <h4>{book.title}</h4>
+                      <p>
+                        <span className='desc'>Author: </span>
+                        {book.author}
+                      </p>
+                      <p>
+                        <span className='desc'>Rec by: </span>
+                        {book.recBy}
+                      </p>
+                      <p>
+                        <span className='desc'>Reason: </span>
+                        {book.reason}
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </Card>
               ))}
           </Container>
         </Card>
