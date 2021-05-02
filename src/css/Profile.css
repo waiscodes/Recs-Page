@@ -18,8 +18,13 @@
   /* border: solid; */
 }
 
-/* .ind-book {
-  border: solid;
+.ind-book {
+  /* border: solid; */
+  transition: width 5s;
+}
+
+/* .ind-book:hover {
+  width: 400px;
 } */
 
 .spinner {
