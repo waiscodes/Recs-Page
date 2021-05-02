@@ -57,6 +57,8 @@ const Dashboard = () => {
           recBy: doc.data().recBy,
           reason: doc.data().reason,
           thumbnail: doc.data().thumbnail,
+          rating: doc.data().rating,
+          createdAt: doc.data().createdAt,
         }));
         result.sort((a, b) => {
           if (a.createdAt > b.createdAt) return -1;
@@ -98,6 +100,14 @@ const Dashboard = () => {
     const hideCopied = () => {
       setCopied(false);
     };
+  };
+
+  const likeBook = (bookId, bookRating) => {
+    db.collection("books")
+      .doc(bookId)
+      .update({
+        rating: bookRating + 1,
+      });
   };
 
   const selected = {
@@ -189,6 +199,7 @@ const Dashboard = () => {
                 key={book.id}
                 className='ind-book'
                 style={bookSelected === book.id ? selected : null}
+                onDoubleClick={() => likeBook(book.id, book.rating)}
               >
                 <div className='img-div'>
                   <img
@@ -231,6 +242,11 @@ const Dashboard = () => {
                     <p>
                       <span className='desc'>Reason: </span>
                       {book.reason}
+                    </p>
+                    <p>
+                      <span className='desc'>Rating: </span>
+                      {book?.rating}{" "}
+                      <span className='double-tap'>Double Tap to Like</span>
                     </p>
                   </div>
                 ) : (

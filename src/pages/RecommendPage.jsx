@@ -49,7 +49,7 @@ const RecommendPage = (props) => {
         .get(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
         .then((res) => {
           if (res.data.items) {
-            setResult(res.data.items.slice(0, 3));
+            setResult(res.data.items.slice(0, 5));
           }
         });
     }, 500),
