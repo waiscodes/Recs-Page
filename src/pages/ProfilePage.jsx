@@ -81,10 +81,11 @@ const ProfilePage = () => {
   };
 
   const likeBook = (bookId, bookRating) => {
+    setBookLiked(!bookLiked);
     db.collection("books")
       .doc(bookId)
       .update({
-        rating: bookRating + 1,
+        rating: bookLiked ? bookRating + 1 : bookRating - 1,
       });
   };
 
