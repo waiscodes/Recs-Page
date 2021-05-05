@@ -78,8 +78,10 @@ const Dashboard = () => {
       <Card.Body>
         <Profile user={user} />
         <div className='text-center'>
-          {!user?.profileCompleted && (
+          {user?.profileCompleted ? (
             <Button onClick={completeProfile}>Complete Profile</Button>
+          ) : (
+            <Button>Edit Profile</Button>
           )}
         </div>
         <hr />
