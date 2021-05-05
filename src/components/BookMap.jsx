@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { db } from "../fire";
-import { Card, Button, Container, CloseButton } from "react-bootstrap";
+import { Card, Container, CloseButton } from "react-bootstrap";
 
 const BookMap = (props) => {
   const books = props.books;
@@ -26,7 +26,7 @@ const BookMap = (props) => {
   };
 
   return (
-    <>
+    <Container className='d-flex flex-wrap'>
       {books &&
         books.map((book) => (
           <Card
@@ -78,7 +78,7 @@ const BookMap = (props) => {
                   {book.reason}
                 </p>
                 <p>
-                  <span className='desc'>Rating: </span>
+                  <span className='desc'>Upvotes: </span>
                   {isNaN(book?.rating) ? 0 : book?.rating}{" "}
                   <span className='double-tap'>Double Tap to Like</span>
                 </p>
@@ -88,7 +88,7 @@ const BookMap = (props) => {
             )}
           </Card>
         ))}
-    </>
+    </Container>
   );
 };
 
