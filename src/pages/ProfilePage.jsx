@@ -5,6 +5,7 @@ import "../css/Profile.css";
 import { auth, db, storage } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
 import RecommendPage from "./RecommendPage";
+import Profile from "../components/Profile";
 
 const ProfilePage = () => {
   const { profile } = useParams();
@@ -106,19 +107,7 @@ const ProfilePage = () => {
       {loading && (
         <Card>
           <Card.Body>
-            <div className='user-info'>
-              <img
-                src={userProfile && userProfile.avi}
-                alt=''
-                onDoubleClick={() => alert("hello world")}
-                className='profile-pic'
-              />
-              <h4 className='display-name'>
-                {userProfile && userProfile.name}
-              </h4>
-              <p className='username text-muted'>@{profile}</p>
-              <p>{userProfile && userProfile.bio}</p>
-            </div>
+            <Profile user={userProfile} />
             <hr />
             <RecommendPage uid={userProfile && userProfile.uid} />
           </Card.Body>
