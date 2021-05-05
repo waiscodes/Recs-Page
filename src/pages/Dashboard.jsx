@@ -57,6 +57,7 @@ const Dashboard = () => {
           thumbnail: doc.data().thumbnail,
           rating: doc.data().rating,
           createdAt: doc.data().createdAt,
+          profileCompleted: doc.data().profileCompleted,
         }));
         result.sort((a, b) => {
           if (a.createdAt > b.createdAt) return -1;
@@ -77,55 +78,8 @@ const Dashboard = () => {
       <Card.Body>
         <Profile user={user} />
         <div className='text-center'>
-          {user?.avi ==
-          "https://firebasestorage.googleapis.com/v0/b/lazy-tbr.appspot.com/o/users%2Fdefault-cat-avi.png?alt=media&token=c2872e49-f7d9-4a27-8311-5c3b8b153221" ? (
+          {!user?.profileCompleted && (
             <Button onClick={completeProfile}>Complete Profile</Button>
-          ) : (
-            <div className='social-share'>
-              <p className='text-muted'>Ask for recommendations</p>
-              <div>
-                <TwitterShareButton
-                  url={
-                    "Recommend me a book on my Recs Page https://recs.page/" +
-                    user?.username
-                  }
-                >
-                  <TwitterIcon size={32} round={true} />
-                </TwitterShareButton>
-                <WhatsappShareButton
-                  url={
-                    "Recommend me a book on my Recs Page https://recs.page/" +
-                    user?.username
-                  }
-                >
-                  <WhatsappIcon size={32} round={true} />
-                </WhatsappShareButton>
-                <FacebookMessengerShareButton
-                  url={
-                    "Recommend me a book on my Recs Page https://recs.page/" +
-                    user?.username
-                  }
-                >
-                  <FacebookMessengerIcon size={32} round={true} />
-                </FacebookMessengerShareButton>
-                <LinkedinShareButton
-                  url={
-                    "Recommend me a book on my Recs Page https://recs.page/" +
-                    user?.username
-                  }
-                >
-                  <LinkedinIcon size={32} round={true} />
-                </LinkedinShareButton>
-                <TelegramShareButton
-                  url={
-                    "Recommend me a book on my Recs Page https://recs.page/" +
-                    user?.username
-                  }
-                >
-                  <TelegramIcon size={32} round={true} />
-                </TelegramShareButton>
-              </div>
-            </div>
           )}
         </div>
         <hr />
