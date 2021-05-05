@@ -17,6 +17,7 @@ import {
   TelegramShareButton,
   TelegramIcon,
 } from "react-share";
+import Profile from "../components/Profile";
 
 const Dashboard = () => {
   const [avi, setAvi] = useState();
@@ -119,69 +120,58 @@ const Dashboard = () => {
   return (
     <Card>
       <Card.Body>
-        <div className='user-info'>
-          <img
-            className='profile-pic rounded-circle z-depth-2'
-            alt='100x100'
-            src={user && user.avi}
-            data-holder-rendered='true'
-          />
-
-          <h4 className='display-name'>{user && user.name}</h4>
-          <p className='text-muted'>{user && "@" + user.username}</p>
-          <p>{user && user.bio}</p>
-          <div className='text-center'>
-            {user?.avi ==
-            "https://firebasestorage.googleapis.com/v0/b/lazy-tbr.appspot.com/o/users%2Fdefault-cat-avi.png?alt=media&token=c2872e49-f7d9-4a27-8311-5c3b8b153221" ? (
-              <Button onClick={completeProfile}>Complete Profile</Button>
-            ) : (
-              <div className='social-share'>
-                <p className='text-muted'>Ask for recommendations</p>
-                <div>
-                  <TwitterShareButton
-                    url={
-                      "Recommend me a book on my Recs Page https://recs.page/" +
-                      user?.username
-                    }
-                  >
-                    <TwitterIcon size={32} round={true} />
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    url={
-                      "Recommend me a book on my Recs Page https://recs.page/" +
-                      user?.username
-                    }
-                  >
-                    <WhatsappIcon size={32} round={true} />
-                  </WhatsappShareButton>
-                  <FacebookMessengerShareButton
-                    url={
-                      "Recommend me a book on my Recs Page https://recs.page/" +
-                      user?.username
-                    }
-                  >
-                    <FacebookMessengerIcon size={32} round={true} />
-                  </FacebookMessengerShareButton>
-                  <LinkedinShareButton
-                    url={
-                      "Recommend me a book on my Recs Page https://recs.page/" +
-                      user?.username
-                    }
-                  >
-                    <LinkedinIcon size={32} round={true} />
-                  </LinkedinShareButton>
-                  <TelegramShareButton
-                    url={
-                      "Recommend me a book on my Recs Page https://recs.page/" +
-                      user?.username
-                    }
-                  >
-                    <TelegramIcon size={32} round={true} />
-                  </TelegramShareButton>
-                </div>
+        <Profile user={user} />
+        <div className='text-center'>
+          {user?.avi ==
+          "https://firebasestorage.googleapis.com/v0/b/lazy-tbr.appspot.com/o/users%2Fdefault-cat-avi.png?alt=media&token=c2872e49-f7d9-4a27-8311-5c3b8b153221" ? (
+            <Button onClick={completeProfile}>Complete Profile</Button>
+          ) : (
+            <div className='social-share'>
+              <p className='text-muted'>Ask for recommendations</p>
+              <div>
+                <TwitterShareButton
+                  url={
+                    "Recommend me a book on my Recs Page https://recs.page/" +
+                    user?.username
+                  }
+                >
+                  <TwitterIcon size={32} round={true} />
+                </TwitterShareButton>
+                <WhatsappShareButton
+                  url={
+                    "Recommend me a book on my Recs Page https://recs.page/" +
+                    user?.username
+                  }
+                >
+                  <WhatsappIcon size={32} round={true} />
+                </WhatsappShareButton>
+                <FacebookMessengerShareButton
+                  url={
+                    "Recommend me a book on my Recs Page https://recs.page/" +
+                    user?.username
+                  }
+                >
+                  <FacebookMessengerIcon size={32} round={true} />
+                </FacebookMessengerShareButton>
+                <LinkedinShareButton
+                  url={
+                    "Recommend me a book on my Recs Page https://recs.page/" +
+                    user?.username
+                  }
+                >
+                  <LinkedinIcon size={32} round={true} />
+                </LinkedinShareButton>
+                <TelegramShareButton
+                  url={
+                    "Recommend me a book on my Recs Page https://recs.page/" +
+                    user?.username
+                  }
+                >
+                  <TelegramIcon size={32} round={true} />
+                </TelegramShareButton>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <hr />
         <RecommendPage uid={currentUser.uid} />
