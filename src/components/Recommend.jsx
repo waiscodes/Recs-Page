@@ -6,7 +6,7 @@ import debounce from "lodash.debounce";
 import { useHistory } from "react-router";
 import "../css/Recommend.css";
 
-const RecommendPage = (props) => {
+const Recommend = (props) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [thumbnail, setThumbnail] = useState("");
@@ -189,4 +189,4 @@ const RecommendPage = (props) => {
   );
 };
 
-export default RecommendPage;
+export default Recommend;

@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import "../css/Dashboard.css";
 import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
-import RecommendPage from "./RecommendPage";
+import Recommend from "../components/Recommend";
 import {
   TwitterShareButton,
   TwitterIcon,
@@ -174,7 +174,7 @@ const Dashboard = () => {
           )}
         </div>
         <hr />
-        <RecommendPage uid={currentUser.uid} />
+        <Recommend uid={currentUser.uid} />
 
         <Container className='books-map'>
           <p>

@@ -4,7 +4,7 @@ import { Card, Button, Container, Spinner, CloseButton } from "react-bootstrap";
 import "../css/Profile.css";
 import { auth, db, storage } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
-import RecommendPage from "./RecommendPage";
+import Recommend from "../components/Recommend";
 import Profile from "../components/Profile";
 
 const ProfilePage = () => {
@@ -109,7 +109,7 @@ const ProfilePage = () => {
           <Card.Body>
             <Profile user={userProfile} />
             <hr />
-            <RecommendPage uid={userProfile && userProfile.uid} />
+            <Recommend uid={userProfile && userProfile.uid} />
           </Card.Body>
           <Container className='books-map'>
             <p>
