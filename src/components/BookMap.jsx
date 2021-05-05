@@ -5,12 +5,17 @@ import { Card, Button, Container, CloseButton } from "react-bootstrap";
 const BookMap = (props) => {
   const books = props.books;
   const [bookSelected, setBookSelected] = useState();
+  const [bookLiked, setBookLiked] = useState(true);
 
   const likeBook = (bookId, bookRating) => {
+    setBookLiked(!bookLiked);
+    if (isNaN(bookRating)) {
+      bookRating = 0;
+    }
     db.collection("books")
       .doc(bookId)
       .update({
-        rating: bookRating + 1,
+        rating: bookLiked ? bookRating + 1 : bookRating - 1,
       });
   };
 
@@ -74,7 +79,7 @@ const BookMap = (props) => {
                 </p>
                 <p>
                   <span className='desc'>Rating: </span>
-                  {book?.rating}{" "}
+                  {isNaN(book?.rating) ? 0 : book?.rating}{" "}
                   <span className='double-tap'>Double Tap to Like</span>
                 </p>
               </div>
