@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Container, CloseButton } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import "../css/Dashboard.css";
-import { Link, useHistory } from "react-router-dom";
-import { db, storage } from "../fire";
+import { useHistory } from "react-router-dom";
+import { db } from "../fire";
 import Recommend from "../components/Recommend";
+import Profile from "../components/Profile";
+import BookMap from "../components/BookMap";
 import {
   TwitterShareButton,
   TwitterIcon,
@@ -12,18 +14,15 @@ import {
   WhatsappIcon,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,
-  LinkedinShareButton,
   LinkedinIcon,
+  LinkedinShareButton,
   TelegramShareButton,
   TelegramIcon,
 } from "react-share";
-import Profile from "../components/Profile";
-import BookMap from "../components/BookMap";
 
 const Dashboard = () => {
-  const [avi, setAvi] = useState();
   const [user, setUser] = useState();
-  const { currentUser, signOut } = useAuth();
+  const { currentUser } = useAuth();
   const [books, setBooks] = useState();
   const history = useHistory();
   const [bookSelected, setBookSelected] = useState(false);
@@ -36,7 +35,6 @@ const Dashboard = () => {
   useEffect(() => {
     getUser();
     getBooks();
-    // getAvi();
   }, []);
 
   const getUser = () => {
@@ -76,22 +74,6 @@ const Dashboard = () => {
       });
   };
 
-  const getAvi = () => {
-    storage
-      .ref("users/" + currentUser.uid + "/" + "Avi")
-      .getDownloadURL()
-      .then((url) => {
-        if (url) {
-          setAvi(url);
-        }
-      })
-      .catch((error) => {
-        setAvi(
-          "https://firebasestorage.googleapis.com/v0/b/lazy-tbr.appspot.com/o/users%2Fdefault-cat-avi.png?alt=media&token=c2872e49-f7d9-4a27-8311-5c3b8b153221"
-        );
-      });
-  };
-
   const copyShareLink = () => {
     document.querySelector("#copyContent").select();
     document.execCommand("copy");
@@ -102,20 +84,6 @@ const Dashboard = () => {
     const hideCopied = () => {
       setCopied(false);
     };
-  };
-
-  const likeBook = (bookId, bookRating) => {
-    db.collection("books")
-      .doc(bookId)
-      .update({
-        rating: bookRating + 1,
-      });
-  };
-
-  const selected = {
-    width: "400px",
-    display: "flex",
-    flexDirection: "row",
   };
 
   return (

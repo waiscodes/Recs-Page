@@ -11,12 +11,9 @@ import BookMap from "../components/BookMap";
 const ProfilePage = () => {
   const { profile } = useParams();
   const [userProfile, setUserProfile] = useState();
-  const [avi, setAvi] = useState();
   const { currentUser } = useAuth();
   const [books, setBooks] = useState();
   const [loading, setLoading] = useState(false);
-  const [bookSelected, setBookSelected] = useState(false);
-  const [bookLiked, setBookLiked] = useState(false);
 
   useEffect(() => {
     getUser(profile);
@@ -38,18 +35,7 @@ const ProfilePage = () => {
         if (snap.docs[0]) {
           setUserProfile(snap.docs[0].data());
           getBooks(snap.docs[0].data());
-          // getAvi(snap.docs[0].data().uid);
         }
-      });
-    setLoading(true);
-  };
-
-  const getAvi = (uid) => {
-    storage
-      .ref("users/" + uid + "/" + "Avi")
-      .getDownloadURL()
-      .then((url) => {
-        setAvi(url);
       });
     setLoading(true);
   };
@@ -80,21 +66,6 @@ const ProfilePage = () => {
         });
         setBooks(result);
       });
-  };
-
-  const likeBook = (bookId, bookRating) => {
-    setBookLiked(!bookLiked);
-    db.collection("books")
-      .doc(bookId)
-      .update({
-        rating: bookLiked ? bookRating + 1 : bookRating - 1,
-      });
-  };
-
-  const selected = {
-    width: "400px",
-    display: "flex",
-    flexDirection: "row",
   };
 
   return (
