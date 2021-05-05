@@ -9,7 +9,7 @@ import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
 import ProfilePage from "./pages/ProfilePage";
 import CompleteProfile from "./pages/CompleteProfile";
-import MyNavbar from "./pages/Navbar";
+import MyNavbar from "./components/Navbar";
 
 function App() {
   return (
