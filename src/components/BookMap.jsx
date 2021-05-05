@@ -12,6 +12,9 @@ const BookMap = (props) => {
     if (isNaN(bookRating)) {
       bookRating = 0;
     }
+    if (bookRating <= 0) {
+      setBookLiked(true);
+    }
     db.collection("books")
       .doc(bookId)
       .update({
