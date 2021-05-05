@@ -25,8 +25,6 @@ const Dashboard = () => {
   const { currentUser } = useAuth();
   const [books, setBooks] = useState();
   const history = useHistory();
-  const [bookSelected, setBookSelected] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   const completeProfile = () => {
     history.push("/complete-profile");
@@ -72,18 +70,6 @@ const Dashboard = () => {
         });
         setBooks(result);
       });
-  };
-
-  const copyShareLink = () => {
-    document.querySelector("#copyContent").select();
-    document.execCommand("copy");
-    setCopied(true);
-
-    setTimeout(() => hideCopied(), 1000);
-
-    const hideCopied = () => {
-      setCopied(false);
-    };
   };
 
   return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Card, Button, Container, Spinner, CloseButton } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { Card, Container, Spinner } from "react-bootstrap";
 import "../css/Profile.css";
-import { auth, db, storage } from "../fire";
+import { db } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
 import Recommend from "../components/Recommend";
 import Profile from "../components/Profile";
