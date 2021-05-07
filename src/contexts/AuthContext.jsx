@@ -37,8 +37,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   auth.onAuthStateChanged((user) => {
-    if (!user?.isAnonymous) {
+    if (user && !user.isAnonymous) {
       setCurrentUser(user);
+    } else {
+      setCurrentUser(null);
     }
     setLoading(false);
   });
