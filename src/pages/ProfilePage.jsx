@@ -16,15 +16,14 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getUser(profile);
     if (!currentUser) {
       anonSignIn();
     }
   }, []);
 
-  const anonSignIn = () => {
-    auth.signInAnonymously();
-    console.log("Anon sign in");
+  const anonSignIn = async () => {
+    await auth.signInAnonymously();
+    getUser(profile);
   };
 
   const getUser = (username) => {
