@@ -55,7 +55,11 @@ const EditProfile = () => {
         .where("username", "==", username)
         .get()
         .then((snap) => {
-          if (snap.docs && snap.docs[0].data()) {
+          if (
+            snap.docs &&
+            snap.docs[0].data() &&
+            snap.docs[0].data().uid !== currentUser.uid
+          ) {
             setError("username is already taken. Please pick a different one");
           }
         })
@@ -115,9 +119,9 @@ const EditProfile = () => {
 
   return (
     <>
-      {/* <Card>
+      <Card>
         <Card.Body>
-          <h2>Complete Profile</h2>
+          <h2>Edit Profile</h2>
           {error && <Alert variant='danger'>{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group>
@@ -156,8 +160,7 @@ const EditProfile = () => {
             </Button>
           </Form>
         </Card.Body>
-      </Card> */}
-      <h1>Not finished yet sorry</h1>
+      </Card>
     </>
   );
 };
