@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import { Card, Form, Button, Alert, ProgressBar } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import debounce from "lodash.debounce";
@@ -6,10 +6,11 @@ import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
 
 const EditProfile = () => {
-  const username = useRef();
+  const usernameRef = useRef();
   const nameRef = useRef();
   const bioRef = useRef();
   const aviRef = useRef();
+  const [user, setUser] = useState();
   const [avi, setAvi] = useState();
   const [progress, setProgress] = useState(false);
   const [aviLink, setAviLink] = useState();
@@ -18,17 +19,34 @@ const EditProfile = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = () => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then((snap) => {
+        setUser(snap.data());
+      });
+  };
+
   const updateWithAvi = (aviURL) => {
+    const name = nameRef.current.value || user.name;
+    const username = usernameRef.current.value.toLowerCase() || user.username;
+    const bio = bioRef.current.value || user.bio;
+
     db.collection("users")
       .doc(currentUser.uid)
       .update({
-        name: nameRef.current.value,
-        username: username.current.value.toLowerCase(),
-        bio: bioRef.current.value,
+        name: name,
+        username: username,
+        bio: bio,
         avi: aviURL,
       })
       .then(() => {
-        // history.push("/");
+        history.push("/");
       })
       .catch((error) => {
         console.log(error);
@@ -36,11 +54,16 @@ const EditProfile = () => {
   };
 
   const updateWithoutAvi = () => {
+    const name = nameRef.current.value || user.name;
+    const username = usernameRef.current.value.toLowerCase() || user.username;
+    const bio = bioRef.current.value || user.bio;
+
     db.collection("users")
       .doc(currentUser.uid)
       .update({
-        username: username.current.value.toLowerCase(),
-        bio: bioRef.current.value,
+        name: name,
+        username: username,
+        bio: bio,
       })
       .then(() => {
         history.push("/");
@@ -133,6 +156,7 @@ const EditProfile = () => {
               <Form.Control
                 type='text'
                 placeholder='Full Name'
+                defaultValue={user?.name}
                 autoComplete='cc-name'
                 ref={nameRef}
               />
@@ -142,7 +166,8 @@ const EditProfile = () => {
               <Form.Control
                 type='text'
                 placeholder='Username'
-                ref={username}
+                ref={usernameRef}
+                defaultValue={user?.username}
                 onChange={handleChange}
               />
             </Form.Group>
