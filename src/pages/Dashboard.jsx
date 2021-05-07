@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Button, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import "../css/Dashboard.css";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { db } from "../fire";
 import Recommend from "../components/Recommend";
 import Profile from "../components/Profile";
@@ -79,9 +79,11 @@ const Dashboard = () => {
         <Profile user={user} />
         <div className='text-center'>
           {user?.profileCompleted ? (
-            <Button onClick={completeProfile}>Complete Profile</Button>
+            <Button onClick={completeProfile}>Edit Profile</Button>
           ) : (
-            <Button>Edit Profile</Button>
+            <Link to='/edit-profile'>
+              <Button>Edit Profile</Button>
+            </Link>
           )}
         </div>
         <hr />

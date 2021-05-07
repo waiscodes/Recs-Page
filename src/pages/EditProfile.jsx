@@ -115,7 +115,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <Card>
+      {/* <Card>
         <Card.Body>
           <h2>Complete Profile</h2>
           {error && <Alert variant='danger'>{error}</Alert>}
@@ -156,7 +156,8 @@ const EditProfile = () => {
             </Button>
           </Form>
         </Card.Body>
-      </Card>
+      </Card> */}
+      <h1>Hello World</h1>
     </>
   );
 };
