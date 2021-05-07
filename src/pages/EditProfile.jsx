@@ -5,7 +5,7 @@ import debounce from "lodash.debounce";
 import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
 
-const CompleteProfile = () => {
+const EditProfile = () => {
   const username = useRef();
   const bioRef = useRef();
   const aviRef = useRef();
@@ -161,4 +161,4 @@ const CompleteProfile = () => {
   );
 };
 
-export default CompleteProfile;
+export default EditProfile;

@@ -20,10 +20,7 @@ function App() {
           <Container className='container'>
             <Switch>
               <PrivateRoute exact path='/' component={Dashboard} />
-              <PrivateRoute
-                path='/complete-profile'
-                component={CompleteProfile}
-              />
+              <PrivateRoute path='/edit-profile' component={CompleteProfile} />
               <Route path='/signup' component={SignupPage} />
               <Route path='/signin' component={SigninPage} />
               <Route path='/:profile' component={ProfilePage} />
