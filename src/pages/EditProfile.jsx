@@ -157,7 +157,7 @@ const EditProfile = () => {
           </Form>
         </Card.Body>
       </Card> */}
-      <h1>Hello World</h1>
+      <h1>Not finished yet sorry</h1>
     </>
   );
 };
