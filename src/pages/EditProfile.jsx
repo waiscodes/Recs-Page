@@ -177,6 +177,7 @@ const EditProfile = () => {
                 as='textarea'
                 rows={3}
                 placeholder='Add your bio here'
+                defaultValue={user?.bio}
                 ref={bioRef}
               />
             </Form.Group>
