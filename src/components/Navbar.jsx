@@ -15,7 +15,7 @@ const MyNavbar = () => {
             Recs <span>page</span>
           </Link>
         </Navbar.Brand>
-        {currentUser ? (
+        {!currentUser?.isAnonymous ? (
           <Nav className='ml-auto'>
             <Nav.Link href='/'>Home</Nav.Link>
             <Nav.Link onClick={() => signOut()}>Logout</Nav.Link>

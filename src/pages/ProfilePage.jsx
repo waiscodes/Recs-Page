@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Container, Spinner } from "react-bootstrap";
 import "../css/Profile.css";
-import { db } from "../fire";
+import { db, auth } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
 import Recommend from "../components/Recommend";
 import Profile from "../components/Profile";
@@ -23,7 +23,7 @@ const ProfilePage = () => {
   }, []);
 
   const anonSignIn = () => {
-    // auth.signInAnonymously();
+    auth.signInAnonymously();
     console.log("Anon sign in");
   };
 
