@@ -7,6 +7,7 @@ import { db, storage } from "../fire";
 
 const EditProfile = () => {
   const username = useRef();
+  const nameRef = useRef();
   const bioRef = useRef();
   const aviRef = useRef();
   const [avi, setAvi] = useState();
@@ -21,12 +22,13 @@ const EditProfile = () => {
     db.collection("users")
       .doc(currentUser.uid)
       .update({
+        name: nameRef.current.value,
         username: username.current.value.toLowerCase(),
         bio: bioRef.current.value,
         avi: aviURL,
       })
       .then(() => {
-        history.push("/");
+        // history.push("/");
       })
       .catch((error) => {
         console.log(error);
@@ -80,8 +82,10 @@ const EditProfile = () => {
       } else {
         setError("Username must be 4 more of characters");
       }
-    } else {
+    } else if (e.target.value?.includes(" ")) {
       setError("This must not contain any spaces");
+    } else {
+      setError(null);
     }
   };
 
@@ -125,11 +129,19 @@ const EditProfile = () => {
           {error && <Alert variant='danger'>{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group>
+              <Form.Label className='d-none'>Display Name</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Full Name'
+                autoComplete='cc-name'
+                ref={nameRef}
+              />
+            </Form.Group>
+            <Form.Group>
               <Form.Label className='d-none'>Username</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Username'
-                required
                 ref={username}
                 onChange={handleChange}
               />
