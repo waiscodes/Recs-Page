@@ -82,7 +82,7 @@ const Recommend = (props) => {
           thumbnail: thumbnail,
           recBy: recRef.current.value,
           reason: reasonRef.current.value,
-          rating: 0,
+          upvotes: 0,
           uid: props.uid,
           createdAt: new Date(),
         })

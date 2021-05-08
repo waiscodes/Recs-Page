@@ -50,7 +50,7 @@ const ProfilePage = () => {
           recBy: doc.data().recBy,
           reason: doc.data().reason,
           thumbnail: doc.data().thumbnail,
-          rating: doc.data().rating,
+          upvotes: doc.data().upvotes,
           createdAt: doc.data().createdAt,
         }));
         result.sort((a, b) => {
@@ -59,8 +59,8 @@ const ProfilePage = () => {
           return 0;
         });
         result.sort((a, b) => {
-          if (a.rating > b.rating) return -1;
-          if (a.rating < b.rating) return +1;
+          if (a.upvotes > b.upvotes) return -1;
+          if (a.upvotes < b.upvotes) return +1;
           return 0;
         });
         setBooks(result);

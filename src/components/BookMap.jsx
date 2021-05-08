@@ -18,7 +18,7 @@ const BookMap = (props) => {
     db.collection("books")
       .doc(bookId)
       .update({
-        rating: bookLiked ? bookRating + 1 : bookRating - 1,
+        upvotes: bookLiked ? bookRating + 1 : bookRating - 1,
       });
   };
 
@@ -36,7 +36,7 @@ const BookMap = (props) => {
             key={book.id}
             className='ind-book'
             style={bookSelected === book.id ? selected : null}
-            onDoubleClick={() => likeBook(book.id, book.rating)}
+            onDoubleClick={() => likeBook(book.id, book.upvotes)}
           >
             <div className='img-div'>
               <img

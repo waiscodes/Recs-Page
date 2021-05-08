@@ -18,7 +18,12 @@
 }
 
 .ind-book {
-  transition: width 5s;
+  transition: width 0.1s;
+  -webkit-transition: width 0.1s;
+  -moz-transition: width 0.1s;
+  -ms-transition: width 0.1s;
+  -o-transition: width 0.1s;
+  min-width: 130px;
 }
 
 .spinner {
