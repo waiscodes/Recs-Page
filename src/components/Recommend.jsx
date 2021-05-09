@@ -175,7 +175,7 @@ const Recommend = (props) => {
                 <Form.Control
                   as='textarea'
                   rows={3}
-                  placeholder='Reason. Why should I read read it'
+                  placeholder='Reason. Why should I read it'
                   ref={reasonRef}
                   required
                 />
