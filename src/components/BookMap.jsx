@@ -51,7 +51,7 @@ const BookMap = (props) => {
               <div className='ind-book-desc'>
                 <p>
                   {book.title.length > 30
-                    ? book.title.substr(0, 30) + "..."
+                    ? book.title.substr(0, 25) + "..."
                     : book.title}
                 </p>
                 <p className='recBy text-muted'>
