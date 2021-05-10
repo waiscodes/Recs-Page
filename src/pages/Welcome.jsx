@@ -4,6 +4,8 @@ const Welcome = () => {
   return (
     <>
       <h1>Welcome to Recs Page</h1>
+      <SigninPage />
+      <SignupPage />
     </>
   );
 };
