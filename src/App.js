@@ -5,11 +5,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./pages/PrivateRoute";
-import SigninPage from "./pages/SigninPage";
-import SignupPage from "./pages/SignupPage";
 import ProfilePage from "./pages/ProfilePage";
 import MyNavbar from "./components/Navbar";
 import EditProfile from "./pages/EditProfile";
+import Welcome from "./pages/Welcome";
 
 function App() {
   return (
@@ -21,8 +20,7 @@ function App() {
             <Switch>
               <PrivateRoute exact path='/' component={Dashboard} />
               <PrivateRoute path='/edit-profile' component={EditProfile} />
-              <Route path='/signup' component={SignupPage} />
-              <Route path='/signin' component={SigninPage} />
+              <Route path='/welcome' component={Welcome} />
               <Route path='/:profile' component={ProfilePage} />
             </Switch>
           </Container>
