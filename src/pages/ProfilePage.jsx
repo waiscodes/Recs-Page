@@ -18,6 +18,8 @@ const ProfilePage = () => {
   useEffect(() => {
     if (!currentUser) {
       anonSignIn();
+    } else {
+      getUser(profile);
     }
   }, []);
 
