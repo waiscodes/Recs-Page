@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { db } from "../fire";
 import { Card, CloseButton } from "react-bootstrap";
+import "../css/Book.css";
 
 const Book = (props) => {
   const book = props.bookObj;
