@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/Profile.css";
 
 const Profile = (props) => {
   const user = props.user;

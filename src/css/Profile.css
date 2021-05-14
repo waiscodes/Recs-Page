@@ -6,18 +6,3 @@
   width: 200px;
   clip-path: circle();
 }
-
-.copy-container {
-  width: 175px;
-  margin: auto;
-}
-
-.social-share > * {
-  margin: 0px;
-  padding: 0px;
-}
-
-.double-tap {
-  opacity: 40%;
-  font-size: 0.9em;
-}
