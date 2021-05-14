@@ -9,7 +9,9 @@ const BookMap = (props) => {
   return (
     <Container className='book-map'>
       {books?.map((book) => (
-        <Book key={book.id} bookObj={book} />
+        <div key={book.id} className='grid-item'>
+          <Book key={book.id} bookObj={book} className='grid-item' />
+        </div>
       ))}
     </Container>
   );

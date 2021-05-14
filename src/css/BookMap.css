@@ -1,5 +1,9 @@
 .book-map {
-  border: solid;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  justify-content: end;
+}
+
+.grid-item > * {
+  margin: auto;
 }
