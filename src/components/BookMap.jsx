@@ -7,7 +7,7 @@ const BookMap = (props) => {
   const books = props.books;
 
   return (
-    <Container className='d-flex flex-wrap book-map'>
+    <Container className='book-map'>
       {books?.map((book) => (
         <Book key={book.id} bookObj={book} />
       ))}

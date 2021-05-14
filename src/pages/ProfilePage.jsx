@@ -83,7 +83,7 @@ const ProfilePage = () => {
             <Profile user={userProfile} />
             <hr />
             <Recommend uid={userProfile && userProfile.uid} />
-            <Container className='books-map'>
+            <div className='books-map'>
               <p>
                 {books && books.length == 0
                   ? `${
@@ -92,7 +92,7 @@ const ProfilePage = () => {
                   : ""}
               </p>
               <BookMap books={books} />
-            </Container>
+            </div>
           </Card.Body>
         </Card>
       )}

@@ -25,8 +25,8 @@ const Book = (props) => {
 
   const selected = {
     width: "400px",
-    display: "flex",
-    flexDirection: "row",
+    // display: "flex",
+    // flexDirection: "row",
   };
   return (
     <>
