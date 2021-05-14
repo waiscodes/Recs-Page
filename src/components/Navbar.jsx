@@ -23,6 +23,7 @@ const MyNavbar = () => {
         ) : (
           <Nav className='ml-auto'>
             <Nav.Link href='/signup'>Register</Nav.Link>
+            <Nav.Link href='/signin'>Login</Nav.Link>
           </Nav>
         )}
       </Navbar>
