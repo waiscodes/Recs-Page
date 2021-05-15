@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { db } from "../fire";
 import { Card, CloseButton } from "react-bootstrap";
+import BookDetails from "./BookDetails.jsx";
+import BookPreview from "./BookPreview.jsx";
 import "../css/Book.css";
 
 const Book = (props) => {
@@ -35,6 +37,8 @@ const Book = (props) => {
         style={bookSelected === book.id ? selected : null}
         onDoubleClick={() => likeBook(book.id, book.upvotes)}
       >
+        <BookPreview />
+        <BookDetails />
         <div className='img-div'>
           <img
             src={book.thumbnail}
