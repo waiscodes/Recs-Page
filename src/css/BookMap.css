@@ -1,10 +1,11 @@
 .book-map {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: end;
+  display: flex;
+  flex-wrap: wrap;
   border: solid;
+  overflow: scroll;
 }
 
-.grid-item > * {
-  margin: auto;
+.book-map > * {
+  border: solid;
+  width: min-content;
 }
