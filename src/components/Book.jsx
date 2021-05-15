@@ -37,32 +37,9 @@ const Book = (props) => {
         style={bookSelected === book.id ? selected : null}
         onDoubleClick={() => likeBook(book.id, book.upvotes)}
       >
-        <BookPreview />
         <BookDetails />
-        <div className='img-div'>
-          <img
-            src={book.thumbnail}
-            alt=''
-            onClick={() => setBookSelected(book.id)}
-          />
-        </div>
-        {bookSelected === book.id ? (
-          ""
-        ) : (
-          <div className='ind-book-desc'>
-            <p>
-              {book.title.length > 30
-                ? book.title.substr(0, 25) + "..."
-                : book.title}
-            </p>
-            <p className='recBy text-muted'>
-              Rec by{" "}
-              {book.recBy.length > 10
-                ? book.recBy.substr(0, 10) + "..."
-                : book.recBy}
-            </p>
-          </div>
-        )}
+        <BookPreview book={book} />
+
         {bookSelected === book.id ? (
           <div className='book-desc'>
             <CloseButton onClick={() => setBookSelected(null)}>
