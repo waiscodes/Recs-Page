@@ -88,17 +88,17 @@ const Dashboard = () => {
         </div>
         <hr />
         <Recommend uid={currentUser.uid} />
-
-        <Container className='books-map'>
-          <p>
-            {books && books.length == 0
-              ? "You don't have any Recommendations yet."
-              : ""}
-          </p>
-
-          <BookMap books={books} />
-        </Container>
       </Card.Body>
+
+      <Container className='books-map'>
+        <p>
+          {books && books.length == 0
+            ? "You don't have any Recommendations yet."
+            : ""}
+        </p>
+
+        <BookMap books={books} />
+      </Container>
     </Card>
   );
 };
