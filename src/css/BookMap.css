@@ -7,5 +7,7 @@
 
 .book-map > * {
   /* border: solid; */
-  width: min-content;
+  min-width: none;
+  max-width: 160px;
+  flex-grow: 1;
 }
