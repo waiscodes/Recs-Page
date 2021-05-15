@@ -7,7 +7,7 @@ const BookPreview = ({ book }) => {
         <img src={book?.thumbnail} alt={book?.title} />
       </div>
       <div className='ind-book-desc'>
-        <p>
+        {/* <p>
           {book?.title.length > 30
             ? book?.title.substr(0, 25) + "..."
             : book?.title}
@@ -17,7 +17,7 @@ const BookPreview = ({ book }) => {
           {book?.recBy.length > 10
             ? book?.recBy.substr(0, 10) + "..."
             : book?.recBy}
-        </p>
+        </p> */}
       </div>
     </>
   );

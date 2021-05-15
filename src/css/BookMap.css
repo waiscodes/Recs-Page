@@ -1,11 +1,11 @@
 .book-map {
   display: flex;
   flex-wrap: wrap;
-  border: solid;
+  /* border: solid; */
   overflow: scroll;
 }
 
 .book-map > * {
-  border: solid;
+  /* border: solid; */
   width: min-content;
 }
