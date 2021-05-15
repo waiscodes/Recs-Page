@@ -25,6 +25,10 @@ const Book = (props) => {
       });
   };
 
+  const closeDetails = () => {
+    setBookSelected(null);
+  };
+
   const selected = {
     width: "400px",
     // display: "flex",
@@ -37,33 +41,10 @@ const Book = (props) => {
         style={bookSelected === book.id ? selected : null}
         onDoubleClick={() => likeBook(book.id, book.upvotes)}
       >
-        <BookDetails />
         <BookPreview book={book} />
 
         {bookSelected === book.id ? (
-          <div className='book-desc'>
-            <CloseButton onClick={() => setBookSelected(null)}>
-              Close
-            </CloseButton>
-            <h4>{book.title}</h4>
-            <p>
-              <span className='desc'>Author: </span>
-              {book.author}
-            </p>
-            <p>
-              <span className='desc'>Rec by: </span>
-              {book.recBy}
-            </p>
-            <p>
-              <span className='desc'>Reason: </span>
-              {book.reason}
-            </p>
-            <p>
-              <span className='desc'>Upvotes: </span>
-              {isNaN(book?.rating) ? 0 : book?.rating}{" "}
-              <span className='double-tap'>Double Tap to Like</span>
-            </p>
-          </div>
+          <BookDetails book={book} close={closeDetails} />
         ) : (
           ""
         )}
