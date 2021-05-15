@@ -3,8 +3,8 @@ import React from "react";
 const BookPreview = ({ book }) => {
   return (
     <>
-      <div>
-        <img src={book?.thumbnail} alt={book?.title} />
+      <div className='thumbnail-container'>
+        <img src={book?.thumbnail} alt={book?.title} className='thumbnail' />
       </div>
       <div className='ind-book-desc'>
         {/* <p>

@@ -2,12 +2,11 @@
   display: flex;
   flex-wrap: wrap;
   /* border: solid; */
-  overflow: scroll;
 }
 
 .book-map > * {
   /* border: solid; */
-  min-width: none;
-  max-width: 160px;
   flex-grow: 1;
+  max-width: 190px;
+  min-width: 100px;
 }
