@@ -6,10 +6,14 @@ import "../css/BookMap.css";
 const BookMap = (props) => {
   const books = props.books;
 
+  const bookSelected = () => {
+    console.log("soemthing");
+  };
+
   return (
     <Container className='book-map'>
       {books?.map((book) => (
-        <Book key={book.id} bookObj={book} className='book' />
+        <Book key={book.id} book={book} click={bookSelected} className='book' />
       ))}
     </Container>
   );
