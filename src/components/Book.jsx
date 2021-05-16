@@ -14,7 +14,7 @@ const Book = ({ book, click }) => {
     <>
       <Card className='ind-book' onClick={click}>
         <BookPreview book={book} />
-        <BookDetails book={book} close={closeDetails} />
+        {/* <BookDetails book={book} close={closeDetails} /> */}
       </Card>
     </>
   );
