@@ -14,7 +14,7 @@ const Book = ({ book, selectBook, closeDetails, bookSelected }) => {
           selectBook(book?.id);
         }}
       >
-        {bookSelected === book?.id ? (
+        {bookSelected == book?.id ? (
           <BookDetails book={book} close={closeDetails} />
         ) : (
           <BookPreview book={book} />

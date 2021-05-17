@@ -7,12 +7,13 @@ const BookMap = (props) => {
   const books = props.books;
   const [bookSelected, setBookSelected] = useState(null);
 
-  const selectBook = (bookId) => {
-    setBookSelected(bookId);
+  const closeDetails = () => {
+    // TODO:Fix close button problem because apparently this doesn't work.
+    setBookSelected(null);
   };
 
-  const closeDetails = (bookId) => {
-    console.log(bookId);
+  const selectBook = (bookId) => {
+    setBookSelected(bookId);
   };
 
   return (
