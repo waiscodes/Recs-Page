@@ -12,7 +12,13 @@ const Book = ({ book, click }) => {
 
   return (
     <>
-      <Card className='ind-book' onClick={click}>
+      <Card
+        className='ind-book'
+        data-bookid={book?.id}
+        onClick={() => {
+          click("okay");
+        }}
+      >
         <BookPreview book={book} />
         {/* <BookDetails book={book} close={closeDetails} /> */}
       </Card>

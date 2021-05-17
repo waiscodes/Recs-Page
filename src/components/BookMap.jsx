@@ -5,11 +5,10 @@ import "../css/BookMap.css";
 
 const BookMap = (props) => {
   const books = props.books;
-  const [bookSelected, setBookSelected] = useState(true);
+  const [bookSelected, setBookSelected] = useState();
 
-  const selectBook = () => {
-    setBookSelected(!bookSelected);
-    console.log(bookSelected);
+  const selectBook = (param) => {
+    console.log(param);
   };
 
   return (
