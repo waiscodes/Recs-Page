@@ -1,13 +1,5 @@
 .book-map {
   display: flex;
   flex-wrap: wrap;
-  /* border: solid; */
   padding: 0px;
-}
-
-.book-map > * {
-  /* border: solid; */
-  flex-grow: 1;
-  max-width: 190px;
-  min-width: 100px;
 }

@@ -1,10 +1,14 @@
+.ind-book {
+  flex-grow: 1;
+  max-width: 190px;
+  min-width: 100px;
+}
+
 .thumbnail-container {
-  /* border: solid pink; */
   width: 100%;
 }
 
 .thumbnail {
-  /* border: solid green; */
   width: 100%;
 }
 
