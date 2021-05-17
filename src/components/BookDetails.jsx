@@ -22,7 +22,7 @@ const BookDetails = ({ book, close }) => {
         <p>
           <span className='desc'>Upvotes: </span>
           {isNaN(book?.rating) ? 0 : book?.rating}{" "}
-          <span className='double-tap'>Double Tap to Like</span>
+          {/* <span className='double-tap'>Double Tap to Like</span> */}
         </p>
       </div>
     </>

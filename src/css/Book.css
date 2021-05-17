@@ -7,3 +7,8 @@
   /* border: solid green; */
   width: 100%;
 }
+
+.book-desc {
+  overflow: scroll;
+  max-height: 220px;
+}
