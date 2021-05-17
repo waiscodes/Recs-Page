@@ -5,18 +5,13 @@ import BookDetails from "./BookDetails.jsx";
 import BookPreview from "./BookPreview.jsx";
 import "../css/Book.css";
 
-const Book = ({ book, click }) => {
-  const closeDetails = () => {
-    // setBookSelected(null);
-  };
-
+const Book = ({ book, selectBook, closeDetails }) => {
   return (
     <>
       <Card
         className='ind-book'
-        data-bookid={book?.id}
         onClick={() => {
-          click("okay");
+          selectBook(book?.id);
         }}
       >
         <BookPreview book={book} />

@@ -7,14 +7,24 @@ const BookMap = (props) => {
   const books = props.books;
   const [bookSelected, setBookSelected] = useState();
 
-  const selectBook = (param) => {
-    console.log(param);
+  const selectBook = (bookId) => {
+    console.log(bookId);
+  };
+
+  const closeDetails = (bookId) => {
+    console.log(bookId);
   };
 
   return (
     <Container className='book-map'>
       {books?.map((book) => (
-        <Book key={book.id} book={book} click={selectBook} className='book' />
+        <Book
+          key={book.id}
+          book={book}
+          selectBook={selectBook}
+          closeDetails={closeDetails}
+          className='book'
+        />
       ))}
     </Container>
   );
