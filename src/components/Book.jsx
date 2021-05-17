@@ -5,15 +5,11 @@ import BookDetails from "./BookDetails.jsx";
 import BookPreview from "./BookPreview.jsx";
 import "../css/Book.css";
 
-const Book = ({ book, selectBook, closeDetails, bookSelected }) => {
+const Book = ({ book, show }) => {
   return (
     <>
       <Card className='ind-book'>
-        {bookSelected == book?.id ? (
-          <BookDetails book={book} close={closeDetails} />
-        ) : (
-          <BookPreview book={book} open={selectBook} />
-        )}
+        <BookPreview book={book} show={show} />
       </Card>
     </>
   );

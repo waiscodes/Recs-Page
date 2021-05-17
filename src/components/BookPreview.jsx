@@ -1,13 +1,13 @@
 import React from "react";
 
-const BookPreview = ({ book, open }) => {
+const BookPreview = ({ book, show }) => {
   return (
     <>
       <div className='thumbnail-container'>
         <img
           src={book?.thumbnail}
           onClick={() => {
-            open(book?.id);
+            show(book?.id);
           }}
           alt={book?.title}
           className='thumbnail'

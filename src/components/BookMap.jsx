@@ -5,28 +5,22 @@ import "../css/BookMap.css";
 
 const BookMap = (props) => {
   const books = props.books;
-  const [bookSelected, setBookSelected] = useState();
+  const [showModal, setShowModal] = useState(false);
 
-  const closeDetails = () => {
-    setBookSelected(null);
+  const handleClose = () => {
+    setShowModal(null);
   };
 
-  const selectBook = (bookId) => {
-    setBookSelected(bookId);
+  const handleShow = (bookId) => {
+    setShowModal(true);
+    console.log(bookId);
   };
 
   return (
     <>
       <Container className='book-map'>
         {books?.map((book) => (
-          <Book
-            key={book.id}
-            book={book}
-            bookSelected={bookSelected}
-            selectBook={selectBook}
-            closeDetails={closeDetails}
-            className='book'
-          />
+          <Book key={book.id} book={book} show={handleShow} className='book' />
         ))}
       </Container>
     </>
