@@ -5,10 +5,10 @@ import "../css/BookMap.css";
 
 const BookMap = (props) => {
   const books = props.books;
-  const [bookSelected, setBookSelected] = useState();
+  const [bookSelected, setBookSelected] = useState(null);
 
   const selectBook = (bookId) => {
-    console.log(bookId);
+    setBookSelected(bookId);
   };
 
   const closeDetails = (bookId) => {
@@ -21,6 +21,7 @@ const BookMap = (props) => {
         <Book
           key={book.id}
           book={book}
+          bookSelected={bookSelected}
           selectBook={selectBook}
           closeDetails={closeDetails}
           className='book'

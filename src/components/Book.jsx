@@ -5,7 +5,7 @@ import BookDetails from "./BookDetails.jsx";
 import BookPreview from "./BookPreview.jsx";
 import "../css/Book.css";
 
-const Book = ({ book, selectBook, closeDetails }) => {
+const Book = ({ book, selectBook, closeDetails, bookSelected }) => {
   return (
     <>
       <Card
@@ -14,8 +14,11 @@ const Book = ({ book, selectBook, closeDetails }) => {
           selectBook(book?.id);
         }}
       >
-        <BookPreview book={book} />
-        {/* <BookDetails book={book} close={closeDetails} /> */}
+        {bookSelected === book?.id ? (
+          <BookDetails book={book} close={closeDetails} />
+        ) : (
+          <BookPreview book={book} />
+        )}
       </Card>
     </>
   );
