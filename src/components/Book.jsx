@@ -8,16 +8,11 @@ import "../css/Book.css";
 const Book = ({ book, selectBook, closeDetails, bookSelected }) => {
   return (
     <>
-      <Card
-        className='ind-book'
-        onClick={() => {
-          selectBook(book?.id);
-        }}
-      >
+      <Card className='ind-book'>
         {bookSelected == book?.id ? (
           <BookDetails book={book} close={closeDetails} />
         ) : (
-          <BookPreview book={book} />
+          <BookPreview book={book} open={selectBook} />
         )}
       </Card>
     </>

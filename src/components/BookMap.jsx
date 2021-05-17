@@ -5,10 +5,9 @@ import "../css/BookMap.css";
 
 const BookMap = (props) => {
   const books = props.books;
-  const [bookSelected, setBookSelected] = useState(null);
+  const [bookSelected, setBookSelected] = useState();
 
   const closeDetails = () => {
-    // TODO:Fix close button problem because apparently this doesn't work.
     setBookSelected(null);
   };
 
