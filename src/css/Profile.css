@@ -1,7 +1,41 @@
 .user-profile {
-  border: solid;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: minmax(50px, auto);
+  grid-template-areas:
+    "header header header header"
+    "avi avi avi edit"
+    "username username username username "
+    "bio bio bio bio";
+}
+
+.header-container {
+  grid-area: header;
+  height: 200px;
+  overflow: scroll;
+}
+
+.header {
+  width: 100%;
 }
 
 .avi {
+  grid-area: avi;
   width: 150px;
+  margin-top: -50px;
+  z-index: 1;
+  border: solid 5px;
+  border-radius: 50%;
+}
+
+.edit {
+  grid-area: edit;
+}
+
+.username {
+  grid-area: username;
+}
+
+.bio {
+  grid-area: bio;
 }
