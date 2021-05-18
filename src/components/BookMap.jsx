@@ -26,7 +26,6 @@ const BookMap = (props) => {
       <DisplayModal
         show={showModal}
         displayBook={displayBook}
-        handleShow={handleShow}
         handleClose={handleClose}
       />
       <Container className='book-map'>
