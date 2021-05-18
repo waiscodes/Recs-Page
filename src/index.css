@@ -25,6 +25,10 @@ code {
   word-wrap: normal !important;
 }
 
+body {
+  min-width: 300px;
+}
+
 .container {
   max-width: 650px;
   padding: 0px;
