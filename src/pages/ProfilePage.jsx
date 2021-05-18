@@ -79,11 +79,9 @@ const ProfilePage = () => {
 
       {loading && (
         <Card>
-          <Card.Body>
-            <Profile user={userProfile} />
-            <hr />
-            <Recommend uid={userProfile && userProfile.uid} />
-          </Card.Body>
+          <Profile user={userProfile} />
+          <hr />
+          <Recommend uid={userProfile && userProfile.uid} />
           <div className='books-map'>
             <p>
               {books && books.length == 0

@@ -75,15 +75,13 @@ const Dashboard = () => {
 
   return (
     <Card>
-      <Card.Body>
-        <Profile user={user}>
-          <Link to='/edit-profile'>
-            <Button>Edit Profile</Button>
-          </Link>
-        </Profile>
-        <hr />
-        <Recommend uid={currentUser.uid} />
-      </Card.Body>
+      <Profile user={user}>
+        <Link to='/edit-profile'>
+          <Button>Edit Profile</Button>
+        </Link>
+      </Profile>
+      <hr />
+      <Recommend uid={currentUser.uid} />
 
       <Container className='books-map'>
         <p>
