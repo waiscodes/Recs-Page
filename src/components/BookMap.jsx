@@ -17,7 +17,7 @@ const BookMap = (props) => {
     const book = books.filter((book) => {
       return book.id === bookId;
     });
-    setDisplayBook(book);
+    setDisplayBook(book[0]);
     setShowModal(true);
   };
 

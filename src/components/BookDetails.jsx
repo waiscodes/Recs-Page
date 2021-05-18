@@ -1,11 +1,9 @@
 import React from "react";
-import { CloseButton } from "react-bootstrap";
 
-const BookDetails = ({ book, close }) => {
+const BookDetails = ({ book }) => {
   return (
     <>
       <div className='book-desc'>
-        <CloseButton onClick={close}>Close</CloseButton>
         <h4>{book?.title}</h4>
         <p>
           <span className='desc'>Author: </span>
