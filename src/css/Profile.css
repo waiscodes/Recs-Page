@@ -26,8 +26,9 @@
   width: 150px;
   margin-top: -80px;
   z-index: 1;
-  border: solid 5px;
+  border: solid white 5px;
   border-radius: 50%;
+  margin-left: 15px;
 }
 
 .edit {
@@ -39,8 +40,10 @@
 
 .username {
   grid-area: username;
+  padding-left: 25px;
 }
 
 .bio {
   grid-area: bio;
+  padding-left: 25px;
 }

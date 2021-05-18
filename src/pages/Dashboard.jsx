@@ -77,7 +77,9 @@ const Dashboard = () => {
     <Card>
       <Profile user={user}>
         <Link to='/edit-profile'>
-          <Button>Edit Profile</Button>
+          <Button variant='outline-primary' className='rounded-pill'>
+            Edit Profile
+          </Button>
         </Link>
       </Profile>
       <hr />
