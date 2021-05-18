@@ -5,7 +5,13 @@ import { Modal } from "react-bootstrap";
 const DisplayModal = ({ show, displayBook, handleClose }) => {
   return (
     <>
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal
+        aria-labelledby='contained-modal-title-vcenter'
+        centered
+        show={show}
+        onHide={handleClose}
+        animation={false}
+      >
         <Modal.Body>
           <BookDetails book={displayBook} close={handleClose} />
         </Modal.Body>
