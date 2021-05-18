@@ -26,6 +26,8 @@ code {
 }
 
 .container {
-  max-width: 750px;
-  padding: 1%;
+  max-width: 650px;
+  padding: 0px;
+  margin: 0px;
+  margin: auto;
 }
