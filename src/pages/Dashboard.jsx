@@ -76,16 +76,11 @@ const Dashboard = () => {
   return (
     <Card>
       <Card.Body>
-        <Profile user={user} />
-        <div className='text-center'>
-          {user?.profileCompleted ? (
-            <Button onClick={completeProfile}>Edit Profile</Button>
-          ) : (
-            <Link to='/edit-profile'>
-              <Button>Edit Profile</Button>
-            </Link>
-          )}
-        </div>
+        <Profile user={user}>
+          <Link to='/edit-profile'>
+            <Button>Edit Profile</Button>
+          </Link>
+        </Profile>
         <hr />
         <Recommend uid={currentUser.uid} />
       </Card.Body>

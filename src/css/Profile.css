@@ -1,8 +1,7 @@
-.user-info {
-  text-align: center;
+.user-profile {
+  border: solid;
 }
 
-.profile-pic {
-  width: 200px;
-  clip-path: circle();
+.avi {
+  width: 150px;
 }
