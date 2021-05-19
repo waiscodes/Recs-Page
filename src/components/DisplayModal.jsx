@@ -1,8 +1,7 @@
 import React from "react";
-import BookDetails from "./BookDetails";
 import { Modal } from "react-bootstrap";
 
-const DisplayModal = ({ show, displayBook, handleClose }) => {
+const DisplayModal = ({ show, handleClose, children }) => {
   return (
     <>
       <Modal
@@ -12,9 +11,7 @@ const DisplayModal = ({ show, displayBook, handleClose }) => {
         onHide={handleClose}
         animation={false}
       >
-        <Modal.Body>
-          <BookDetails book={displayBook} close={handleClose} />
-        </Modal.Body>
+        <Modal.Body>{children}</Modal.Body>
       </Modal>
     </>
   );

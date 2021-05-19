@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import Book from "./Book";
 import "../css/BookMap.css";
 import DisplayModal from "./DisplayModal";
+import BookDetails from "./BookDetails";
 
 const BookMap = (props) => {
   const books = props.books;
@@ -27,7 +28,9 @@ const BookMap = (props) => {
         show={showModal}
         displayBook={displayBook}
         handleClose={handleClose}
-      />
+      >
+        <BookDetails book={displayBook} close={handleClose} />
+      </DisplayModal>
       <Container className='book-map'>
         {books?.map((book) => (
           <Book key={book.id} book={book} show={handleShow} className='book' />
