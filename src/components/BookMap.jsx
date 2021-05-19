@@ -24,11 +24,7 @@ const BookMap = (props) => {
 
   return (
     <>
-      <DisplayModal
-        show={showModal}
-        displayBook={displayBook}
-        handleClose={handleClose}
-      >
+      <DisplayModal show={showModal} handleClose={handleClose}>
         <BookDetails book={displayBook} close={handleClose} />
       </DisplayModal>
       <Container className='book-map'>
