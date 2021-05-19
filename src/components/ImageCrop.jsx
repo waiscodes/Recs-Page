@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
+import { Button } from "react-bootstrap";
 
 const ImageCrop = () => {
+  const imageRef = useRef();
+
+  const triggerFileSelectPopup = () => {
+    imageRef.current.click();
+  };
+
   return (
     <>
-      <h1>Hello world from the image crop component</h1>
+      <input
+        type='file'
+        accept='image/*'
+        ref={imageRef}
+        style={{ display: "none" }}
+      />
+      <Button onClick={triggerFileSelectPopup}>Choose Picture</Button>
     </>
   );
 };

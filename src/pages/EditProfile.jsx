@@ -182,13 +182,16 @@ const EditProfile = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label className=''>Profile Picture</Form.Label>
               <Form.Control
                 type='file'
                 rows={3}
                 ref={aviRef}
                 onChange={(e) => setAvi(e.target.files[0])}
+                style={{ display: "none" }}
               />
+              <Button onClick={() => aviRef.current.click()}>
+                Upload Photo
+              </Button>
             </Form.Group>
             {progress && (
               <ProgressBar now={progress} label={`${Math.round(progress)}%`} />
