@@ -19,7 +19,6 @@ const Welcome = () => {
       <h1>Welcome to Recs Page</h1>
       <Button onClick={handleShow}>Open Modal</Button>
       <DisplayModal size='lg' show={showModal} handleClose={handleClose}>
-        <h1>Hello world</h1>
         <div>
           <ImageCrop />
         </div>
