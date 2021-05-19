@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import debounce from "lodash.debounce";
 import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
+import DisplayModal from "../components/DisplayModal";
 
 const EditProfile = () => {
   const usernameRef = useRef();
@@ -144,6 +145,22 @@ const EditProfile = () => {
     }
   };
 
+  const handleImageFileChange = (e) => {
+    setAvi(e.target.files[0]);
+    setShowModal(true);
+  };
+
+  // MODAL
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => {
+    setShowModal(null);
+  };
+
+  const handleShow = (bookId) => {
+    setShowModal(true);
+  };
+
   return (
     <>
       <Card>
@@ -186,12 +203,16 @@ const EditProfile = () => {
                 type='file'
                 rows={3}
                 ref={aviRef}
-                onChange={(e) => setAvi(e.target.files[0])}
+                onChange={handleImageFileChange}
                 style={{ display: "none" }}
               />
               <Button onClick={() => aviRef.current.click()}>
                 Upload Photo
               </Button>
+
+              <DisplayModal show={showModal} handleClose={handleClose}>
+                <h1>HEllo world</h1>
+              </DisplayModal>
             </Form.Group>
             {progress && (
               <ProgressBar now={progress} label={`${Math.round(progress)}%`} />
