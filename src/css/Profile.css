@@ -1,49 +1,27 @@
-.user-profile {
-  padding: 0px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: minmax(50px, auto);
-  grid-template-areas:
-    "header header header header"
-    "avi avi avi edit"
-    "username username username username "
-    "bio bio bio bio";
-}
-
 .header-container {
-  grid-area: header;
   height: 200px;
   overflow: scroll;
-  margin: 0px;
 }
 
 .header {
   width: 100%;
 }
 
-.avi {
-  grid-area: avi;
-  width: 150px;
-  margin-top: -80px;
-  z-index: 1;
-  border: solid white 5px;
-  border-radius: 50%;
-  margin-left: 15px;
+.user-profile {
+  border: solid;
 }
 
-.edit {
-  grid-area: edit;
+.avi {
+  height: 150px;
+  z-index: 1;
+  margin-top: -100px;
+}
+
+.avi-edit {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
 }
 
 .username {
-  grid-area: username;
-  padding-left: 25px;
-}
-
-.bio {
-  grid-area: bio;
-  padding-left: 25px;
+  border: solid;
 }
