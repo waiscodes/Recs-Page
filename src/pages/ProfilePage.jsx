@@ -21,29 +21,17 @@ const ProfilePage = () => {
     } else {
       getUser(profile);
     }
-    tester();
   }, []);
-
-  const tester = async () => {
-    const okay = await getUserByUsername(profile);
-    console.log(okay);
-  };
 
   const anonSignIn = async () => {
     await auth.signInAnonymously();
     getUser(profile);
   };
 
-  const getUser = (username) => {
-    db.collection("users")
-      .where("username", "==", username.toLowerCase())
-      .get()
-      .then((snap) => {
-        if (snap.docs[0]) {
-          setUserProfile(snap.docs[0].data());
-          getBooks(snap.docs[0].data());
-        }
-      });
+  const getUser = async (username) => {
+    const user = await getUserByUsername(username);
+    setUserProfile(user);
+    getBooks(user);
     setLoading(true);
   };
 
