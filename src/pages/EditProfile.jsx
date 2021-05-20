@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import debounce from "lodash.debounce";
 import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
+import { getUserById } from "../utilities/getUserInfo";
 
 const EditProfile = () => {
   const usernameRef = useRef();
@@ -21,7 +22,13 @@ const EditProfile = () => {
 
   useEffect(() => {
     getUser();
+    tester();
   }, []);
+
+  const tester = async () => {
+    const okay = await getUserById(currentUser.uid);
+    console.log(okay);
+  };
 
   const getUser = () => {
     db.collection("users")

@@ -17,8 +17,7 @@ export const AuthProvider = ({ children }) => {
         uid: cred.user.uid,
         bio: "Click Complete Profile to add Avatar, Username, and Bio",
         username: Date.now(),
-        avi:
-          "https://firebasestorage.googleapis.com/v0/b/lazy-tbr.appspot.com/o/users%2Fdefault-cat-avi.png?alt=media&token=c2872e49-f7d9-4a27-8311-5c3b8b153221",
+        avi: "https://firebasestorage.googleapis.com/v0/b/lazy-tbr.appspot.com/o/users%2Fdefault-cat-avi.png?alt=media&token=c2872e49-f7d9-4a27-8311-5c3b8b153221",
         profileCompleted: false,
       });
     });
