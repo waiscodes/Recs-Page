@@ -35,6 +35,18 @@ export const AuthProvider = ({ children }) => {
     auth.signOut();
   };
 
+  const getUserById = async (uid) => {
+    const user = await db
+      .collection("users")
+      .doc(uid)
+      .get()
+      .then((snap) => {
+        return snap.data();
+      });
+
+    return user;
+  };
+
   auth.onAuthStateChanged((user) => {
     if (user && !user.isAnonymous) {
       setCurrentUser(user);
@@ -56,6 +68,7 @@ export const AuthProvider = ({ children }) => {
     signup,
     signin,
     signOut,
+    getUserById,
   };
 
   return (

@@ -4,7 +4,6 @@ import { useAuth } from "../contexts/AuthContext";
 import debounce from "lodash.debounce";
 import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
-import { getUserById } from "../utilities/getUserInfo";
 
 const EditProfile = () => {
   const usernameRef = useRef();
@@ -15,7 +14,7 @@ const EditProfile = () => {
   const [avi, setAvi] = useState();
   const [progress, setProgress] = useState(false);
   const [aviLink, setAviLink] = useState();
-  const { currentUser } = useAuth();
+  const { currentUser, getUserById } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
