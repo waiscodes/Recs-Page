@@ -2,19 +2,19 @@ import React from "react";
 import "../css/Profile.css";
 
 const Profile = ({ user, children }) => {
+  const aviCSS = {
+    background: `url("${user?.avi}")`,
+  };
+
   return (
     <>
-      <div className='header-container'>
-        <img src={user?.avi} className='header' alt='' />
+      <div className='header-container' style={aviCSS}>
+        {/* <img src={user?.avi} className='header' alt='' /> */}
       </div>
       <div className='user-profile'>
         <div className='avi-edit'>
-          <img
-            className='avi'
-            alt='50x50'
-            src={user?.avi}
-            data-holder-rendered='true'
-          />
+          <div className='avi' style={aviCSS}></div>
+          {/* <img className='avi' src={user?.avi} data-holder-rendered='true' /> */}
           <div className='edit'>{children}</div>
         </div>
         <div className='username'>
