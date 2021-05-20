@@ -21,20 +21,11 @@ const EditProfile = () => {
 
   useEffect(() => {
     getUser();
-    tester();
   }, []);
 
-  const tester = async () => {
-    const okay = await getUserById(currentUser.uid);
-  };
-
-  const getUser = () => {
-    db.collection("users")
-      .doc(currentUser.uid)
-      .get()
-      .then((snap) => {
-        setUser(snap.data());
-      });
+  const getUser = async () => {
+    const user = await getUserById(currentUser.uid);
+    setUser(user);
   };
 
   const updateWithAvi = (aviURL) => {
