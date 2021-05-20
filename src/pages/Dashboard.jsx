@@ -22,7 +22,7 @@ import {
 
 const Dashboard = () => {
   const [user, setUser] = useState();
-  const { currentUser } = useAuth();
+  const { currentUser, getUserById } = useAuth();
   const [books, setBooks] = useState();
   const history = useHistory();
 
@@ -35,13 +35,9 @@ const Dashboard = () => {
     getBooks();
   }, []);
 
-  const getUser = () => {
-    db.collection("users")
-      .doc(currentUser.uid)
-      .get()
-      .then((snap) => {
-        setUser(snap.data());
-      });
+  const getUser = async () => {
+    const user = await getUserById(currentUser.uid);
+    setUser(user);
   };
 
   const getBooks = () => {
