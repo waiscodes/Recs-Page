@@ -29,11 +29,11 @@ export const AuthProvider = ({ children }) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
-  // Sign out
-
   const signOut = () => {
     auth.signOut();
   };
+
+  // Get User Info
 
   const getUserById = async (uid) => {
     const user = await db
@@ -42,6 +42,18 @@ export const AuthProvider = ({ children }) => {
       .get()
       .then((snap) => {
         return snap.data();
+      });
+
+    return user;
+  };
+
+  const getUserByUsername = async (username) => {
+    const user = await db
+      .collection("users")
+      .where("username", "==", username.toLowerCase())
+      .get()
+      .then((snap) => {
+        return snap.docs[0].data();
       });
 
     return user;
@@ -69,6 +81,7 @@ export const AuthProvider = ({ children }) => {
     signin,
     signOut,
     getUserById,
+    getUserByUsername,
   };
 
   return (

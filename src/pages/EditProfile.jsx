@@ -26,7 +26,6 @@ const EditProfile = () => {
 
   const tester = async () => {
     const okay = await getUserById(currentUser.uid);
-    console.log(okay);
   };
 
   const getUser = () => {

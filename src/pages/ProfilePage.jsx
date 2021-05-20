@@ -11,7 +11,7 @@ import BookMap from "../components/BookMap";
 const ProfilePage = () => {
   const { profile } = useParams();
   const [userProfile, setUserProfile] = useState();
-  const { currentUser } = useAuth();
+  const { currentUser, getUserByUsername } = useAuth();
   const [books, setBooks] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -21,7 +21,13 @@ const ProfilePage = () => {
     } else {
       getUser(profile);
     }
+    tester();
   }, []);
+
+  const tester = async () => {
+    const okay = await getUserByUsername(profile);
+    console.log(okay);
+  };
 
   const anonSignIn = async () => {
     await auth.signInAnonymously();
