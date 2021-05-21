@@ -8,7 +8,7 @@
 }
 
 .user-profile {
-  border: solid;
+  padding: 1.5%;
 }
 
 .avi {
@@ -22,6 +22,10 @@
   justify-content: space-between;
 }
 
-.username {
+/* .username {
   border: solid;
-}
+} */
+
+/* 
+  Make the header that SVG thing and then just have the AVI centered like it was. Probably even like TikTok
+*/
