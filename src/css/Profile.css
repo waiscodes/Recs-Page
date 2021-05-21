@@ -1,7 +1,6 @@
 .header-container {
   height: 200px;
   overflow: scroll;
-  border: solid greenyellow;
 }
 
 .header {
@@ -9,15 +8,13 @@
 }
 
 .user-profile {
-  border: solid red;
+  border: solid;
 }
 
 .avi {
-  border: solid;
-  width: 100px;
-  height: 100px;
-  /* border-radius: 50%; */
+  height: 150px;
   z-index: 1;
+  margin-top: -100px;
 }
 
 .avi-edit {
