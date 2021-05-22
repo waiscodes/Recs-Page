@@ -14,13 +14,17 @@
 .avi-container {
   z-index: 1;
   margin-top: -100px;
-  width: 150px;
+  border: solid;
   aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  object-position: center;
+  width: 150px;
 }
 
 .avi {
   object-fit: cover;
-  width: 100%;
+  object-position: center;
 }
 
 .avi-edit {
