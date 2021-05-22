@@ -1,5 +1,5 @@
 .header-container {
-  height: 200px;
+  aspect-ratio: 3 /1;
   overflow: scroll;
 }
 
@@ -11,21 +11,19 @@
   padding: 1.5%;
 }
 
-.avi {
-  height: 150px;
+.avi-container {
   z-index: 1;
   margin-top: -100px;
+  width: 150px;
+  aspect-ratio: 1/1;
+}
+
+.avi {
+  object-fit: cover;
+  width: 100%;
 }
 
 .avi-edit {
   display: flex;
   justify-content: space-between;
 }
-
-/* .username {
-  border: solid;
-} */
-
-/* 
-  Make the header that SVG thing and then just have the AVI centered like it was. Probably even like TikTok
-*/

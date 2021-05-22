@@ -9,12 +9,14 @@ const Profile = ({ user, children }) => {
       </div>
       <div className='user-profile'>
         <div className='avi-edit'>
-          <img
-            className='avi'
-            alt='50x50'
-            src={user?.avi}
-            data-holder-rendered='true'
-          />
+          <div className='avi-container'>
+            <img
+              className='avi'
+              alt='50x50'
+              src={user?.avi}
+              data-holder-rendered='true'
+            />
+          </div>
           <div className='edit'>{children}</div>
         </div>
         <div className='username'>
