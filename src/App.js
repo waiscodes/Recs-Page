@@ -11,6 +11,7 @@ import ProfilePage from "./pages/ProfilePage";
 import MyNavbar from "./components/Navbar";
 import EditProfile from "./pages/EditProfile";
 import Welcome from "./pages/Welcome";
+import NotFound404 from "./pages/NotFound404";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path='/signup' component={SignupPage} />
               <Route path='/welcome' component={Welcome} />
               <Route path='/signin' component={SigninPage} />
+              <Route path='/404' component={NotFound404} />
               <Route path='/:profile' component={ProfilePage} />
             </Switch>
           </Container>

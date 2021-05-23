@@ -53,7 +53,11 @@ export const AuthProvider = ({ children }) => {
       .where("username", "==", username.toLowerCase())
       .get()
       .then((snap) => {
-        return snap.docs[0].data();
+        if (snap.docs[0]) {
+          return snap.docs[0].data();
+        } else {
+          return null;
+        }
       });
 
     return user;

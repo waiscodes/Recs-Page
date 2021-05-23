@@ -6,6 +6,7 @@ import { db, auth } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
 import Recommend from "../components/Recommend";
 import Profile from "../components/Profile";
+import { useHistory } from "react-router-dom";
 import BookMap from "../components/BookMap";
 
 const ProfilePage = () => {
@@ -14,6 +15,7 @@ const ProfilePage = () => {
   const { currentUser, getUserByUsername } = useAuth();
   const [books, setBooks] = useState();
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     if (!currentUser) {
@@ -30,9 +32,13 @@ const ProfilePage = () => {
 
   const getUser = async (username) => {
     const user = await getUserByUsername(username);
-    setUserProfile(user);
-    getBooks(user);
-    setLoading(true);
+    if (user) {
+      setUserProfile(user);
+      getBooks(user);
+      setLoading(true);
+    } else {
+      history.push("/404");
+    }
   };
 
   const getBooks = (user) => {
