@@ -13,13 +13,22 @@
 
 .avi-container {
   z-index: 1;
-  margin-top: -100px;
+  margin-top: -9%;
   border: solid;
-  aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
   object-position: center;
-  width: 150px;
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1/1;
+}
+
+@media screen and (min-width: 313px) {
+  .avi-container {
+    border: solid greenyellow;
+    width: 150px;
+    height: 150px;
+  }
 }
 
 .avi {
