@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Book from "./Book";
 import "../css/BookMap.css";
 import DisplayModal from "./DisplayModal";
@@ -24,6 +24,11 @@ const BookMap = (props) => {
 
   return (
     <>
+      {!books && (
+        <div className='spinner'>
+          <Spinner animation='border' />
+        </div>
+      )}
       <DisplayModal show={showModal} handleClose={handleClose}>
         <BookDetails book={displayBook} close={handleClose} />
       </DisplayModal>
