@@ -4,27 +4,21 @@ import "../css/Profile.css";
 const Profile = ({ user, children }) => {
   return (
     <>
-      <div className='header-container'>
-        <img src={user?.avi} className='header' alt='' />
-      </div>
-      <div className='user-profile'>
-        <div className='avi-edit'>
-          <div className='avi-container'>
-            <img
-              className='avi'
-              alt='50x50'
-              src={user?.avi}
-              data-holder-rendered='true'
-            />
-          </div>
+      <>
+        <div className='user-info'>
+          <img
+            className='profile-pic rounded-circle z-depth-2'
+            alt='100x100'
+            src={user && user.avi}
+            data-holder-rendered='true'
+          />
+
+          <h4 className='display-name'>{user && user.name}</h4>
+          <p className='text-muted'>{user && "@" + user.username}</p>
+          <p>{user && user.bio}</p>
           <div className='edit'>{children}</div>
         </div>
-        <div className='username'>
-          <h4 className='display-name'>{user?.name}</h4>
-          <p className='text-muted'>@{user?.username}</p>
-        </div>
-        <p className='bio'>{user?.bio}</p>
-      </div>
+      </>
     </>
   );
 };

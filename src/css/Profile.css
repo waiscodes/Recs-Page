@@ -1,42 +1,8 @@
-.header-container {
-  aspect-ratio: 3 /1;
-  overflow: scroll;
+.user-info {
+  text-align: center;
 }
 
-.header {
-  width: 100%;
-}
-
-.user-profile {
-  padding: 1.5%;
-}
-
-.avi-container {
-  z-index: 1;
-  margin-top: -9%;
-  border: solid;
-  border-radius: 50%;
-  overflow: hidden;
-  object-position: center;
-  width: 100px;
-  height: 100px;
-  aspect-ratio: 1/1;
-}
-
-@media screen and (min-width: 313px) {
-  .avi-container {
-    border: solid greenyellow;
-    width: 150px;
-    height: 150px;
-  }
-}
-
-.avi {
-  object-fit: cover;
-  object-position: center;
-}
-
-.avi-edit {
-  display: flex;
-  justify-content: space-between;
+.profile-pic {
+  width: 200px;
+  clip-path: circle();
 }
