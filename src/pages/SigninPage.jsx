@@ -3,7 +3,7 @@ import { Card, Form, Button, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-const SigninPage = () => {
+const SigninPage = ({ setAccount }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [error, setError] = useState("");
@@ -60,7 +60,10 @@ const SigninPage = () => {
       </Card>
       <Card>
         <Card.Body>
-          Don't have an account? <Link to='/signup'>Sign up</Link>
+          Don't have an account?{" "}
+          <span className='link' onClick={() => setAccount(false)}>
+            Sign up
+          </span>
         </Card.Body>
       </Card>
     </>

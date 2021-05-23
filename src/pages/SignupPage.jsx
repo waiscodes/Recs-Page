@@ -3,7 +3,7 @@ import { Card, Form, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 
-const SignupPage = () => {
+const SignupPage = ({ setAccount }) => {
   const emailRef = useRef();
   const nameRef = useRef();
   const passwordRef = useRef();
@@ -91,7 +91,10 @@ const SignupPage = () => {
       </Card>
       <Card>
         <Card.Body>
-          Have an account? <Link to='/signin'>Sign in</Link>
+          Have an account?{" "}
+          <span className='link' onClick={() => setAccount(true)}>
+            Sign in
+          </span>
         </Card.Body>
       </Card>
     </>
