@@ -18,7 +18,9 @@ const MyNavbar = () => {
         {currentUser ? (
           <Nav className='ml-auto'>
             <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link onClick={() => signOut()}>Logout</Nav.Link>
+            <Nav.Link href='/welcome' onClick={() => signOut()}>
+              Logout
+            </Nav.Link>
           </Nav>
         ) : (
           <Nav className='ml-auto'>
