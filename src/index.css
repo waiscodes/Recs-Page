@@ -35,3 +35,10 @@ body {
   margin: 0px;
   margin: auto;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}

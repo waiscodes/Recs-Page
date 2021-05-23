@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Container } from "react-bootstrap";
+import { Card, Button, Container, Spinner } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import "../css/Dashboard.css";
 import { Link, useHistory } from "react-router-dom";
@@ -24,6 +24,7 @@ const Dashboard = () => {
   const [user, setUser] = useState();
   const { currentUser, getUserById } = useAuth();
   const [books, setBooks] = useState();
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const completeProfile = () => {
@@ -38,6 +39,7 @@ const Dashboard = () => {
   const getUser = async () => {
     const user = await getUserById(currentUser.uid);
     setUser(user);
+    setLoading(true);
   };
 
   const getBooks = () => {
@@ -70,27 +72,37 @@ const Dashboard = () => {
   };
 
   return (
-    <Card>
-      <Profile user={user}>
-        <Link to='/edit-profile'>
-          <Button variant='outline-primary' className='rounded-pill'>
-            Edit Profile
-          </Button>
-        </Link>
-      </Profile>
-      <hr />
-      <Recommend uid={currentUser.uid} />
+    <>
+      {!loading && (
+        <div className='spinner'>
+          <Spinner animation='border' />
+        </div>
+      )}
 
-      <Container className='books-map'>
-        <p>
-          {books && books.length == 0
-            ? "You don't have any Recommendations yet."
-            : ""}
-        </p>
+      {loading && (
+        <Card>
+          <Profile user={user}>
+            <Link to='/edit-profile'>
+              <Button variant='outline-primary' className='rounded-pill'>
+                Edit Profile
+              </Button>
+            </Link>
+          </Profile>
+          <hr />
+          <Recommend uid={currentUser.uid} />
 
-        <BookMap books={books} />
-      </Container>
-    </Card>
+          <Container className='books-map'>
+            <p>
+              {books && books.length == 0
+                ? "You don't have any Recommendations yet."
+                : ""}
+            </p>
+
+            <BookMap books={books} />
+          </Container>
+        </Card>
+      )}
+    </>
   );
 };
 
