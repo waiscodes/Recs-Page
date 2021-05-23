@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { auth, db } from "../fire";
+import { useHistory } from "react-router-dom";
 
 const AuthContext = React.createContext();
 export const useAuth = () => {
@@ -8,6 +9,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+  const history = useHistory();
 
   // Register
   const signup = (name, email, password) => {
@@ -31,6 +33,7 @@ export const AuthProvider = ({ children }) => {
 
   const signOut = () => {
     auth.signOut();
+    history.push("/welcome");
   };
 
   // Get User Info
