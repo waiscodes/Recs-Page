@@ -2,7 +2,15 @@
   text-align: center;
 }
 
-.profile-pic {
-  width: 170px;
-  clip-path: circle();
+.avi-border {
+  border: solid white;
+  width: 130px;
+  overflow: hidden;
+  margin: auto;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+.avi {
+  height: 100%;
 }

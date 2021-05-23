@@ -6,12 +6,11 @@ const Profile = ({ user, children }) => {
     <>
       <>
         <div className='user-info'>
-          <img
-            className='profile-pic rounded-circle z-depth-2'
-            alt='100x100'
-            src={user && user.avi}
-            data-holder-rendered='true'
-          />
+          <div className='avi-container'>
+            <div className='avi-border'>
+              <img className='avi' alt='100x100' src={user?.avi} />
+            </div>
+          </div>
 
           <h4 className='display-name'>{user && user.name}</h4>
           <p className='text-muted'>{user && "@" + user.username}</p>
