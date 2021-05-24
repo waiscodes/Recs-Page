@@ -8,12 +8,13 @@ const Welcome = () => {
 
   return (
     <>
-      <h1>Welcome to Recs Page</h1>
-      {account ? (
-        <SigninPage setAccount={setAccount} />
-      ) : (
-        <SignupPage setAccount={setAccount} />
-      )}
+      <div className='accounts'>
+        {account ? (
+          <SigninPage setAccount={setAccount} />
+        ) : (
+          <SignupPage setAccount={setAccount} />
+        )}
+      </div>
     </>
   );
 };

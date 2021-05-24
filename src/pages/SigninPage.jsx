@@ -18,11 +18,12 @@ const SigninPage = ({ setAccount }) => {
       setError("");
       setLoading(true);
       await signin(emailRef.current.value, passwordRef.current.value);
+      setLoading(false);
       history.push("/");
     } catch {
       setError("Failed to sign in");
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
