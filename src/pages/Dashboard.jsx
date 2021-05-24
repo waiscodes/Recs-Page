@@ -89,7 +89,7 @@ const Dashboard = () => {
             </Link>
           </Profile>
           <hr />
-          <Recommend uid={currentUser.uid} />
+          <Recommend uid={currentUser?.uid} />
 
           <Container className='books-map'>
             <p className='no-books'>

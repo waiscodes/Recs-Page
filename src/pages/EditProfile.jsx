@@ -92,7 +92,7 @@ const EditProfile = () => {
   const handleChange = (e) => {
     const longEnough = e.target.value.length >= 4;
 
-    if (e.target.value && !e.target.value.includes(" ")) {
+    if (!e.target.value?.includes(" ")) {
       setError(false);
       if (longEnough) {
         setError(false);
