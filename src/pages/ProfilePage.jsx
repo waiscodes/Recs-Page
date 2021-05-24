@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Container, Spinner } from "react-bootstrap";
+import { Card, Spinner } from "react-bootstrap";
 import "../css/Profile.css";
 import { db, auth } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
@@ -23,6 +23,7 @@ const ProfilePage = () => {
     } else {
       getUser(profile);
     }
+    // eslint-disable-next-line
   }, []);
 
   const anonSignIn = async () => {
@@ -84,7 +85,7 @@ const ProfilePage = () => {
           <Recommend uid={userProfile?.uid} />
           <div className='books-map'>
             <p className='no-books'>
-              {books?.length == 0
+              {books?.length === 0
                 ? `${userProfile?.name} doesn't have any recommendations yet. Recommend them a Book`
                 : ""}
             </p>

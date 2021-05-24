@@ -2,7 +2,7 @@ import React, { useRef, useState, useCallback, useEffect } from "react";
 import { Card, Form, Button, Alert, ProgressBar } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import debounce from "lodash.debounce";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { db, storage } from "../fire";
 
 const EditProfile = () => {
@@ -13,7 +13,6 @@ const EditProfile = () => {
   const [user, setUser] = useState();
   const [avi, setAvi] = useState();
   const [progress, setProgress] = useState(false);
-  const [aviLink, setAviLink] = useState();
   const { currentUser, getUserById } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,6 +20,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     getUser();
+    // eslint-disable-next-line
   }, []);
 
   const getUser = async () => {

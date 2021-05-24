@@ -2,38 +2,34 @@ import React, { useState, useEffect } from "react";
 import { Card, Button, Container, Spinner } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import "../css/Dashboard.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { db } from "../fire";
 import Recommend from "../components/Recommend";
 import Profile from "../components/Profile";
 import BookMap from "../components/BookMap";
-import {
-  TwitterShareButton,
-  TwitterIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
-  LinkedinIcon,
-  LinkedinShareButton,
-  TelegramShareButton,
-  TelegramIcon,
-} from "react-share";
+// import {
+//   TwitterShareButton,
+//   TwitterIcon,
+//   WhatsappShareButton,
+//   WhatsappIcon,
+//   FacebookMessengerShareButton,
+//   FacebookMessengerIcon,
+//   LinkedinIcon,
+//   LinkedinShareButton,
+//   TelegramShareButton,
+//   TelegramIcon,
+// } from "react-share";
 
 const Dashboard = () => {
   const [user, setUser] = useState();
   const { currentUser, getUserById } = useAuth();
   const [books, setBooks] = useState();
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
-
-  const completeProfile = () => {
-    history.push("/complete-profile");
-  };
 
   useEffect(() => {
     getUser();
     getBooks();
+    // eslint-disable-next-line
   }, []);
 
   const getUser = async () => {
@@ -93,7 +89,7 @@ const Dashboard = () => {
 
           <Container className='books-map'>
             <p className='no-books'>
-              {books && books.length == 0
+              {books && books.length === 0
                 ? "You don't have any Recommendations yet."
                 : ""}
             </p>
