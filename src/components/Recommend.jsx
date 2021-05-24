@@ -3,7 +3,6 @@ import { Container, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import { db } from "../fire";
 import debounce from "lodash.debounce";
-import { useHistory } from "react-router";
 import "../css/Recommend.css";
 
 const Recommend = (props) => {
@@ -17,8 +16,6 @@ const Recommend = (props) => {
   const [selectBook, setSelectBook] = useState(false);
   const [selectedBookDesc, setSelectedBookDesc] = useState(false);
   const [highlightedBook, setHighlightedBook] = useState(false);
-  const [error, setError] = useState("");
-  const history = useHistory();
 
   const pickBook = (e) => {
     setShowForm(true);

@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { db } from "../fire";
+import React from "react";
 import { Card } from "react-bootstrap";
-import BookDetails from "./BookDetails.jsx";
 import BookPreview from "./BookPreview.jsx";
 import "../css/Book.css";
 
