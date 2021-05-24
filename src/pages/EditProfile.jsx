@@ -115,7 +115,7 @@ const EditProfile = () => {
     if (!error) {
       if (avi) {
         const storageRef = storage
-          .ref("users/" + currentUser.uid + "/" + "Avi")
+          .ref("users/" + currentUser.uid + "/Avi")
           .put(avi);
 
         storageRef.on(
