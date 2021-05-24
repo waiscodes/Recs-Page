@@ -12,6 +12,17 @@
   width: 100%;
 }
 
+/* Book Details */
+
+.book-detail {
+  display: flex;
+}
+
+.book-title {
+  text-align: center;
+}
+
 .book-desc {
   overflow: scroll;
+  padding: 10px;
 }
