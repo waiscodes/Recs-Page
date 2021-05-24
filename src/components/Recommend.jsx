@@ -24,8 +24,8 @@ const Recommend = (props) => {
     setShowForm(true);
 
     const selectedTitle = e.target.attributes.getNamedItem("data-title").value;
-    const selectedThumbnail = e.target.attributes.getNamedItem("data-thumbnail")
-      .value;
+    const selectedThumbnail =
+      e.target.attributes.getNamedItem("data-thumbnail").value;
     let selectedAuthor = "";
 
     // For some books that don't have authors assigned to them
@@ -122,29 +122,22 @@ const Recommend = (props) => {
           </div>
         )}
         <div className='books-result d-flex'>
-          {result &&
-            result.map((book) => (
-              <div
-                key={book.id}
-                onClick={() => setHighlightedBook(book.id)}
-                style={highlightedBook === book.id ? highlightCSS : null}
-              >
-                <img
-                  src={
-                    book.volumeInfo.imageLinks &&
-                    book.volumeInfo.imageLinks.thumbnail
-                  }
-                  alt=''
-                  data-title={book.volumeInfo.title}
-                  data-authors={book.volumeInfo.authors}
-                  data-thumbnail={
-                    book.volumeInfo.imageLinks &&
-                    book.volumeInfo.imageLinks.thumbnail
-                  }
-                  onClick={pickBook}
-                />
-              </div>
-            ))}
+          {result?.map((book) => (
+            <div
+              key={book.id}
+              onClick={() => setHighlightedBook(book.id)}
+              style={highlightedBook === book.id ? highlightCSS : null}
+            >
+              <img
+                src={book.volumeInfo.imageLinks?.thumbnail}
+                alt=''
+                data-title={book.volumeInfo.title}
+                data-authors={book.volumeInfo.authors}
+                data-thumbnail={book.volumeInfo.imageLinks?.thumbnail}
+                onClick={pickBook}
+              />
+            </div>
+          ))}
         </div>
         <Form onSubmit={handleSubmit}>
           <Form.Group>

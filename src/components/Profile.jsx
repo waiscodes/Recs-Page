@@ -12,9 +12,9 @@ const Profile = ({ user, children }) => {
             </div>
           </div>
 
-          <h4 className='display-name'>{user && user.name}</h4>
-          <p className='text-muted'>{user && "@" + user.username}</p>
-          <p>{user && user.bio}</p>
+          <h4 className='display-name'>{user?.name}</h4>
+          <p className='text-muted'>{"@" + user?.username}</p>
+          <p>{user?.bio}</p>
           <div className='edit'>{children}</div>
         </div>
       </>
