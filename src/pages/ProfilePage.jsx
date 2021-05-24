@@ -37,7 +37,7 @@ const ProfilePage = () => {
       getBooks(user);
       setLoading(true);
     } else {
-      history.push("/404");
+      history.push(`/404/${username}`);
     }
   };
 
