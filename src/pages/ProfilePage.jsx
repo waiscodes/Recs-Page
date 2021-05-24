@@ -83,7 +83,7 @@ const ProfilePage = () => {
           <hr />
           <Recommend uid={userProfile && userProfile.uid} />
           <div className='books-map'>
-            <p>
+            <p className='no-books'>
               {books && books.length == 0
                 ? `${
                     userProfile && userProfile.name

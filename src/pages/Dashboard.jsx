@@ -92,7 +92,7 @@ const Dashboard = () => {
           <Recommend uid={currentUser.uid} />
 
           <Container className='books-map'>
-            <p>
+            <p className='no-books'>
               {books && books.length == 0
                 ? "You don't have any Recommendations yet."
                 : ""}
