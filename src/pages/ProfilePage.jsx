@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import "../css/Profile.css";
 import { db, auth } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
