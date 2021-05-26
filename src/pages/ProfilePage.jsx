@@ -79,7 +79,7 @@ const ProfilePage = () => {
       )}
 
       {loading && (
-        <Card>
+        <div>
           <Profile user={userProfile} />
           <hr />
           <Recommend uid={userProfile?.uid} />
@@ -91,7 +91,7 @@ const ProfilePage = () => {
             </p>
             <BookMap books={books} />
           </div>
-        </Card>
+        </div>
       )}
     </>
   );
