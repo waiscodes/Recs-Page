@@ -87,7 +87,7 @@ const Dashboard = () => {
           </Profile>
 
           <Container className='books-map'>
-            <BookMap books={books} />
+            <BookMap books={books} uid={currentUser.uid} />
             <p className='no-books'>
               {books && books.length === 0
                 ? "You don't have any Recommendations yet."
