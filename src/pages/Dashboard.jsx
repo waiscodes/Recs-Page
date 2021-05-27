@@ -86,18 +86,13 @@ const Dashboard = () => {
             </Link>
           </Profile>
 
-          <MapNav />
-
-          <Recommend uid={currentUser?.uid} />
-
           <Container className='books-map'>
+            <BookMap books={books} />
             <p className='no-books'>
               {books && books.length === 0
                 ? "You don't have any Recommendations yet."
                 : ""}
             </p>
-
-            <BookMap books={books} />
           </Container>
         </Card>
       )}
