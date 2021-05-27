@@ -21,7 +21,7 @@ function App() {
           <MyNavbar />
           <Container className='container'>
             <Switch>
-              <PrivateRoute exact path='/' component={Dashboard} />
+              <PrivateRoute path='/home' component={Dashboard} />
               <PrivateRoute path='/edit-profile' component={EditProfile} />
               <Route path='/signup' component={SignupPage} />
               <Route path='/welcome' component={Welcome} />

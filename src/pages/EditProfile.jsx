@@ -42,7 +42,7 @@ const EditProfile = () => {
         avi: aviURL,
       })
       .then(() => {
-        history.push("/");
+        history.push("/home");
       })
       .catch((error) => {
         console.log(error);
@@ -62,7 +62,7 @@ const EditProfile = () => {
         bio: bio,
       })
       .then(() => {
-        history.push("/");
+        history.push("/home");
       })
       .catch((error) => {
         console.log(error);

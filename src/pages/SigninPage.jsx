@@ -19,7 +19,7 @@ const SigninPage = ({ setAccount }) => {
       setLoading(true);
       await signin(emailRef.current.value, passwordRef.current.value);
       setLoading(false);
-      history.push("/");
+      history.push("/home");
     } catch {
       setError("Failed to sign in");
       setLoading(false);
