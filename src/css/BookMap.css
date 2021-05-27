@@ -3,7 +3,7 @@
   grid-template-columns: auto auto auto;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 420px) {
   .book-map {
     grid-template-columns: auto auto auto auto;
   }
