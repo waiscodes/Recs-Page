@@ -1,12 +1,13 @@
 import React from "react";
+import "../css/MapNav.css";
 
 const MapNav = () => {
   return (
     <>
-      <nav>
+      <nav className='map-nav'>
         <ul>
-          <li>Previews</li>
-          <li>Details</li>
+          <li>TBR</li>
+          <li>Read</li>
         </ul>
       </nav>
     </>
