@@ -4,9 +4,10 @@ import Book from "./Book";
 import "../css/BookMap.css";
 import DisplayModal from "./DisplayModal";
 import BookDetails from "./BookDetails";
+import Recommend from "./Recommend";
+import MapNav from "./MapNav";
 
-const BookMap = (props) => {
-  const books = props.books;
+const BookMap = ({ books, uid }) => {
   const [showModal, setShowModal] = useState(false);
   const [displayBook, setDisplayBook] = useState(null);
 
@@ -29,6 +30,11 @@ const BookMap = (props) => {
           <Spinner animation='border' />
         </div>
       )}
+
+      <MapNav />
+
+      <Recommend uid={uid} />
+
       <DisplayModal show={showModal} handleClose={handleClose}>
         <BookDetails book={displayBook} close={handleClose} />
       </DisplayModal>
