@@ -85,9 +85,8 @@ const ProfilePage = () => {
           <BookMap books={books} uid={userProfile?.uid} />
           <div className='books-map'>
             <p className='no-books'>
-              {books?.length === 0
-                ? `${userProfile?.name} doesn't have any recommendations yet. Recommend them a Book`
-                : ""}
+              {books?.length === 0 &&
+                `${userProfile?.name} doesn't have any recommendations yet. Recommend them a Book`}
             </p>
           </div>
         </div>

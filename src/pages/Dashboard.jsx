@@ -93,9 +93,7 @@ const Dashboard = () => {
             </Route>
 
             <p className='no-books'>
-              {books && books.length === 0
-                ? "You don't have any Recommendations yet."
-                : ""}
+              {books?.length === 0 && "You don't have any Recommendations yet."}
             </p>
           </Container>
         </Card>
