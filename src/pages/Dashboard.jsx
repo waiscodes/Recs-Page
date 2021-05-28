@@ -22,12 +22,12 @@ import BookMap from "../components/BookMap";
 const Dashboard = () => {
   const [user, setUser] = useState();
   const { currentUser, getUserById } = useAuth();
-  const [books, setBooks] = useState();
+  const [recs, setRecs] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getUser();
-    getBooks();
+    getRecs();
     // eslint-disable-next-line
   }, []);
 
@@ -37,7 +37,7 @@ const Dashboard = () => {
     setLoading(true);
   };
 
-  const getBooks = () => {
+  const getRecs = () => {
     db.collection("books")
       .where("uid", "==", currentUser.uid)
       .onSnapshot((snap) => {
@@ -62,7 +62,7 @@ const Dashboard = () => {
           if (a.rating < b.rating) return +1;
           return 0;
         });
-        setBooks(result);
+        setRecs(result);
       });
   };
 
@@ -86,14 +86,14 @@ const Dashboard = () => {
 
           <Container className='books-map'>
             <Route exact path='/home/'>
-              <BookMap books={books} uid={currentUser.uid} />
+              <BookMap books={recs} uid={currentUser.uid} />
             </Route>
             <Route path='/home/read'>
-              <BookMap books={books} uid={currentUser.uid} />
+              <BookMap books={recs} uid={currentUser.uid} />
             </Route>
 
             <p className='no-books'>
-              {books?.length === 0 && "You don't have any Recommendations yet."}
+              {recs?.length === 0 && "You don't have any Recommendations yet."}
             </p>
           </Container>
         </Card>
