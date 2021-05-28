@@ -4,6 +4,7 @@ import axios from "axios";
 import { db } from "../fire";
 import debounce from "lodash.debounce";
 import "../css/Recommend.css";
+import { recBook } from "../utilities/GetBooks";
 
 const Recommend = (props) => {
   const [title, setTitle] = useState("");
@@ -71,24 +72,22 @@ const Recommend = (props) => {
   };
 
   const addToRecs = () => {
+    const bookRec = {
+      title: title,
+      author: author,
+      thumbnail: thumbnail,
+      recBy: recRef.current.value,
+      reason: reasonRef.current.value,
+      upvotes: 0,
+      uid: props.uid,
+      createdAt: new Date(),
+    };
     try {
-      db.collection("books")
-        .add({
-          title: title,
-          author: author,
-          thumbnail: thumbnail,
-          recBy: recRef.current.value,
-          reason: reasonRef.current.value,
-          upvotes: 0,
-          uid: props.uid,
-          createdAt: new Date(),
-        })
-        .then(() => {
-          setShowForm(false);
-          setSelectBook(false);
-          setResult(false);
-          setAuthor(false);
-        });
+      recBook(bookRec);
+      setShowForm(false);
+      setSelectBook(false);
+      setResult(false);
+      setAuthor(false);
     } catch {
       console.log("Failed to add book");
     }
