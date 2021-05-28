@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../css/MapNav.css";
 
 const MapNav = ({ profileUrl }) => {
-  console.log(profileUrl);
   return (
     <>
       <nav className='map-nav'>
