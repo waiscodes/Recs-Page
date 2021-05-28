@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../css/MapNav.css";
 
 const MapNav = () => {
@@ -6,8 +7,12 @@ const MapNav = () => {
     <>
       <nav className='map-nav'>
         <ul>
-          <li>TBR</li>
-          <li>Read</li>
+          <li>
+            <Link to='/home/tbr'>TBR</Link>
+          </li>
+          <li>
+            <Link to='/home/read'>Read</Link>
+          </li>
         </ul>
       </nav>
     </>

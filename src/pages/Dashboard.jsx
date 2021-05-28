@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Card, Button, Container, Spinner } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import "../css/Dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { db } from "../fire";
 import Recommend from "../components/Recommend";
 import Profile from "../components/Profile";
 import BookMap from "../components/BookMap";
 import MapNav from "../components/MapNav";
+import AReview from "../components/AReview";
 // import {
 //   TwitterShareButton,
 //   TwitterIcon,
@@ -87,7 +88,13 @@ const Dashboard = () => {
           </Profile>
 
           <Container className='books-map'>
-            <BookMap books={books} uid={currentUser.uid} />
+            <Route path='/home/tbr'>
+              <BookMap books={books} uid={currentUser.uid} />
+            </Route>
+            <Route path='/home/read'>
+              <AReview />
+            </Route>
+
             <p className='no-books'>
               {books && books.length === 0
                 ? "You don't have any Recommendations yet."
