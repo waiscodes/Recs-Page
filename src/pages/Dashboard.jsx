@@ -25,11 +25,13 @@ const Dashboard = () => {
   const [user, setUser] = useState();
   const { currentUser, getUserById } = useAuth();
   const [recs, setRecs] = useState();
+  const [reviews, setReviews] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getUser();
     getRecs();
+    getReviews();
     // eslint-disable-next-line
   }, []);
 
@@ -37,6 +39,35 @@ const Dashboard = () => {
     const user = await getUserById(currentUser.uid);
     setUser(user);
     setLoading(true);
+  };
+
+  const getReviews = () => {
+    db.collection("reviews")
+      .where("uid", "==", currentUser.uid)
+      .onSnapshot((snap) => {
+        let result = snap.docs.map((doc) => ({
+          id: doc.id,
+          title: doc.data().title,
+          author: doc.data().author,
+          recBy: doc.data().recBy,
+          reason: doc.data().reason,
+          thumbnail: doc.data().thumbnail,
+          rating: doc.data().rating,
+          createdAt: doc.data().createdAt,
+          profileCompleted: doc.data().profileCompleted,
+        }));
+        result.sort((a, b) => {
+          if (a.createdAt > b.createdAt) return -1;
+          if (a.createdAt < b.createdAt) return +1;
+          return 0;
+        });
+        result.sort((a, b) => {
+          if (a.rating > b.rating) return -1;
+          if (a.rating < b.rating) return +1;
+          return 0;
+        });
+        setReviews(result);
+      });
   };
 
   const getRecs = () => {
@@ -102,7 +133,7 @@ const Dashboard = () => {
               </BookMap>
             </Route>
             <Route path='/home/read'>
-              <BookMap books={recs}>
+              <BookMap books={reviews}>
                 <Recommend uid={currentUser.uid} />
               </BookMap>
             </Route>

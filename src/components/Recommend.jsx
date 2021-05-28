@@ -70,7 +70,7 @@ const Recommend = (props) => {
     setSelectedBookDesc(false);
   };
 
-  const addToFirestore = () => {
+  const addToRecs = () => {
     try {
       db.collection("books")
         .add({
@@ -97,7 +97,7 @@ const Recommend = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    addToFirestore();
+    addToRecs();
     setTitle("");
   };
 

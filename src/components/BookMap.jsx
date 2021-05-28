@@ -4,8 +4,6 @@ import Book from "./Book";
 import "../css/BookMap.css";
 import DisplayModal from "./DisplayModal";
 import BookDetails from "./BookDetails";
-import Recommend from "./Recommend";
-import MapNav from "./MapNav";
 
 const BookMap = ({ books, children }) => {
   const [showModal, setShowModal] = useState(false);
