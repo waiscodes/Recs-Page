@@ -13,7 +13,7 @@ const ProfilePage = () => {
   const { profile } = useParams();
   const [userProfile, setUserProfile] = useState();
   const { currentUser, getUserByUsername } = useAuth();
-  const [books, setBooks] = useState();
+  const [recs, setRecs] = useState();
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -35,14 +35,14 @@ const ProfilePage = () => {
     const user = await getUserByUsername(username);
     if (user) {
       setUserProfile(user);
-      getBooks(user);
+      getRecs(user);
       setLoading(true);
     } else {
       history.push(`/404/${username}`);
     }
   };
 
-  const getBooks = (user) => {
+  const getRecs = (user) => {
     db.collection("books")
       .where("uid", "==", user.uid)
       .onSnapshot((snap) => {
@@ -66,7 +66,7 @@ const ProfilePage = () => {
           if (a.upvotes < b.upvotes) return +1;
           return 0;
         });
-        setBooks(result);
+        setRecs(result);
       });
   };
 
@@ -82,10 +82,10 @@ const ProfilePage = () => {
         <div>
           <Profile user={userProfile} />
           <hr />
-          <BookMap books={books} uid={userProfile?.uid} />
+          <BookMap books={recs} uid={userProfile?.uid} />
           <div className='books-map'>
             <p className='no-books'>
-              {books?.length === 0 &&
+              {recs?.length === 0 &&
                 `${userProfile?.name} doesn't have any recommendations yet. Recommend them a Book`}
             </p>
           </div>
