@@ -8,7 +8,7 @@ const MapNav = () => {
       <nav className='map-nav'>
         <ul>
           <li>
-            <Link to='/home/tbr'>TBR</Link>
+            <Link to='/home/'>TBR</Link>
           </li>
           <li>
             <Link to='/home/read'>Read</Link>
