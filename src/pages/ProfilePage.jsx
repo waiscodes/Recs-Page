@@ -84,10 +84,12 @@ const ProfilePage = () => {
           <Profile user={userProfile} />
           <hr />
           <Route exact path={`/${profileUrl}`}>
-            <BookMap books={recs} uid={userProfile.uid} />
+            <BookMap books={recs}>
+              <Recommend uid={userProfile.uid} />
+            </BookMap>
           </Route>
           <Route path={`/${profileUrl}/read`}>
-            <BookMap books={recs} uid={userProfile.uid} />
+            <BookMap books={recs} />
           </Route>
 
           <div className='books-map'>

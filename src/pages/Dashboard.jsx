@@ -6,6 +6,7 @@ import { Link, Route } from "react-router-dom";
 import { db } from "../fire";
 import Profile from "../components/Profile";
 import BookMap from "../components/BookMap";
+import Recommend from "../components/Recommend";
 // import {
 //   TwitterShareButton,
 //   TwitterIcon,
@@ -86,10 +87,14 @@ const Dashboard = () => {
 
           <Container className='books-map'>
             <Route exact path='/home/'>
-              <BookMap books={recs} uid={currentUser.uid} />
+              <BookMap books={recs}>
+                <Recommend uid={currentUser.uid} />
+              </BookMap>
             </Route>
             <Route path='/home/read'>
-              <BookMap books={recs} uid={currentUser.uid} />
+              <BookMap books={recs}>
+                <Recommend uid={currentUser.uid} />
+              </BookMap>
             </Route>
 
             <p className='no-books'>

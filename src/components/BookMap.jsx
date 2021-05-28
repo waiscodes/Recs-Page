@@ -7,7 +7,7 @@ import BookDetails from "./BookDetails";
 import Recommend from "./Recommend";
 import MapNav from "./MapNav";
 
-const BookMap = ({ books, uid }) => {
+const BookMap = ({ books, children }) => {
   const [showModal, setShowModal] = useState(false);
   const [displayBook, setDisplayBook] = useState(null);
 
@@ -33,9 +33,13 @@ const BookMap = ({ books, uid }) => {
 
       <MapNav />
 
+      {/* This is the recommend component coming from profilePage && dashboard */}
+      {children}
+
       <DisplayModal show={showModal} handleClose={handleClose}>
         <BookDetails book={displayBook} close={handleClose} />
       </DisplayModal>
+
       <Container className='book-map'>
         {books?.map((book) => (
           <Book key={book.id} book={book} show={handleShow} className='book' />
