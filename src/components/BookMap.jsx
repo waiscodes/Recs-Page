@@ -31,8 +31,6 @@ const BookMap = ({ books, children }) => {
         </div>
       )}
 
-      <MapNav />
-
       {/* This is the recommend component coming from profilePage && dashboard */}
       {children}
 

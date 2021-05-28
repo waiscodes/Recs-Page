@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import "../css/Profile.css";
 import { db, auth } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
@@ -9,6 +9,7 @@ import { Link, Route } from "react-router-dom";
 import Profile from "../components/Profile";
 import { useHistory } from "react-router-dom";
 import BookMap from "../components/BookMap";
+import MapNav from "../components/MapNav";
 
 const ProfilePage = () => {
   const { profileUrl } = useParams();
@@ -83,21 +84,30 @@ const ProfilePage = () => {
         <div>
           <Profile user={userProfile} />
           <hr />
-          <Route exact path={`/${profileUrl}`}>
-            <BookMap books={recs}>
-              <Recommend uid={userProfile.uid} />
-            </BookMap>
-          </Route>
-          <Route path={`/${profileUrl}/read`}>
-            <BookMap books={recs} />
-          </Route>
+          <Container className='books-map'>
+            <MapNav>
+              <li>
+                <Link to={`/${profileUrl}`}>TBR</Link>
+              </li>
+              <li>
+                <Link to={`/${profileUrl}/read`}>Read</Link>
+              </li>
+            </MapNav>
 
-          <div className='books-map'>
+            <Route exact path={`/${profileUrl}`}>
+              <BookMap books={recs}>
+                <Recommend uid={userProfile.uid} />
+              </BookMap>
+            </Route>
+            <Route path={`/${profileUrl}/read`}>
+              <BookMap books={recs} />
+            </Route>
+
             <p className='no-books'>
               {recs?.length === 0 &&
                 `${userProfile?.name} doesn't have any recommendations yet. Recommend them a Book`}
             </p>
-          </div>
+          </Container>
         </div>
       )}
     </>

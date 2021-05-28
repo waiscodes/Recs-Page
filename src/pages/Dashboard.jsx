@@ -7,6 +7,7 @@ import { db } from "../fire";
 import Profile from "../components/Profile";
 import BookMap from "../components/BookMap";
 import Recommend from "../components/Recommend";
+import MapNav from "../components/MapNav";
 // import {
 //   TwitterShareButton,
 //   TwitterIcon,
@@ -86,6 +87,15 @@ const Dashboard = () => {
           </Profile>
 
           <Container className='books-map'>
+            <MapNav>
+              <li>
+                <Link to='/home/'>TBR</Link>
+              </li>
+              <li>
+                <Link to='/home/read'>Read</Link>
+              </li>
+            </MapNav>
+
             <Route exact path='/home/'>
               <BookMap books={recs}>
                 <Recommend uid={currentUser.uid} />
