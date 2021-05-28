@@ -5,12 +5,13 @@ import "../css/Profile.css";
 import { db, auth } from "../fire";
 import { useAuth } from "../contexts/AuthContext";
 import Recommend from "../components/Recommend";
+import { Link, Route } from "react-router-dom";
 import Profile from "../components/Profile";
 import { useHistory } from "react-router-dom";
 import BookMap from "../components/BookMap";
 
 const ProfilePage = () => {
-  const { profile } = useParams();
+  const { profileUrl } = useParams();
   const [userProfile, setUserProfile] = useState();
   const { currentUser, getUserByUsername } = useAuth();
   const [recs, setRecs] = useState();
@@ -21,14 +22,14 @@ const ProfilePage = () => {
     if (!currentUser) {
       anonSignIn();
     } else {
-      getUser(profile);
+      getUser(profileUrl);
     }
     // eslint-disable-next-line
   }, []);
 
   const anonSignIn = async () => {
     await auth.signInAnonymously();
-    getUser(profile);
+    getUser(profileUrl);
   };
 
   const getUser = async (username) => {
@@ -82,7 +83,17 @@ const ProfilePage = () => {
         <div>
           <Profile user={userProfile} />
           <hr />
-          <BookMap books={recs} uid={userProfile?.uid} />
+          <Route exact path={`/${profileUrl}`}>
+            <BookMap books={recs} uid={userProfile.uid} />
+          </Route>
+          <Route path={`/${profileUrl}/read`}>
+            <BookMap
+              books={recs}
+              uid={userProfile.uid}
+              profileUrl={profileUrl}
+            />
+          </Route>
+
           <div className='books-map'>
             <p className='no-books'>
               {recs?.length === 0 &&

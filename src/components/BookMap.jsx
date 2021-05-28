@@ -7,7 +7,7 @@ import BookDetails from "./BookDetails";
 import Recommend from "./Recommend";
 import MapNav from "./MapNav";
 
-const BookMap = ({ books, uid }) => {
+const BookMap = ({ books, uid, profileUrl }) => {
   const [showModal, setShowModal] = useState(false);
   const [displayBook, setDisplayBook] = useState(null);
 
@@ -31,9 +31,9 @@ const BookMap = ({ books, uid }) => {
         </div>
       )}
 
-      <MapNav />
+      <MapNav profileUrl={profileUrl} />
 
-      <Recommend uid={uid} />
+      {!profileUrl && <Recommend uid={uid} />}
 
       <DisplayModal show={showModal} handleClose={handleClose}>
         <BookDetails book={displayBook} close={handleClose} />

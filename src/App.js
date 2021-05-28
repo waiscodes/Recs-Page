@@ -27,7 +27,7 @@ function App() {
               <Route path='/welcome' component={Welcome} />
               <Route path='/signin' component={SigninPage} />
               <Route path='/404/:username' component={NotFound404} />
-              <Route path='/:profile' component={ProfilePage} />
+              <Route path='/:profileUrl' component={ProfilePage} />
             </Switch>
           </Container>
         </AuthProvider>
