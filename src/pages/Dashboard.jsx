@@ -129,12 +129,12 @@ const Dashboard = () => {
 
             <Route exact path='/home/'>
               <BookMap books={recs}>
-                <Recommend uid={currentUser.uid} />
+                <Recommend uid={currentUser.uid} AddToFirebase={"recs"} />
               </BookMap>
             </Route>
             <Route path='/home/read'>
               <BookMap books={reviews}>
-                <Recommend uid={currentUser.uid} />
+                <Recommend uid={currentUser.uid} AddToFirebase={"reviews"} />
               </BookMap>
             </Route>
 

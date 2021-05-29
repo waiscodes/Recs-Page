@@ -4,7 +4,7 @@ import axios from "axios";
 import { db } from "../fire";
 import debounce from "lodash.debounce";
 import "../css/Recommend.css";
-import { recBook } from "../utilities/PostBooks";
+import { recBook, revBook } from "../utilities/PostBooks";
 
 const Recommend = (props) => {
   const [title, setTitle] = useState("");
@@ -71,7 +71,7 @@ const Recommend = (props) => {
     setSelectedBookDesc(false);
   };
 
-  const addToRecs = () => {
+  const addToFirebase = () => {
     const bookRec = {
       title: title,
       author: author,
@@ -82,8 +82,16 @@ const Recommend = (props) => {
       uid: props.uid,
       createdAt: new Date(),
     };
+    console.log(props.addToFirebase);
     try {
-      recBook(bookRec);
+      if (props.addToFirebase === "recs") {
+        recBook(bookRec);
+        console.log("recd");
+      } else if (props.addToFirebase === "reviews") {
+        revBook(bookRec);
+        console.log("revd");
+      }
+
       setShowForm(false);
       setSelectBook(false);
       setResult(false);
@@ -96,7 +104,7 @@ const Recommend = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    addToRecs();
+    addToFirebase();
     setTitle("");
   };
 
