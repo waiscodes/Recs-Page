@@ -3,15 +3,15 @@ import { Container } from "react-bootstrap";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Dashboard from "./pages/Dashboard";
-import PrivateRoute from "./pages/PrivateRoute";
-import SigninPage from "./pages/SigninPage";
-import SignupPage from "./pages/SignupPage";
-import ProfilePage from "./pages/ProfilePage";
+import Dashboard from "./components/pages/Dashboard";
+import PrivateRoute from "./components/pages/PrivateRoute";
+import SigninPage from "./components/pages/SigninPage";
+import SignupPage from "./components/pages/SignupPage";
+import ProfilePage from "./components/pages/ProfilePage";
 import MyNavbar from "./components/Navbar";
-import EditProfile from "./pages/EditProfile";
-import Welcome from "./pages/Welcome";
-import NotFound404 from "./pages/NotFound404";
+import EditProfile from "./components/pages/EditProfile";
+import Welcome from "./components/pages/Welcome";
+import NotFound404 from "./components/pages/NotFound404";
 
 function App() {
   return (
