@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import Profile from "../Profile";
+import Profile from "../templates/Profile";
 import { useParams } from "react-router-dom";
 import "../../css/NotFound404.css";
 

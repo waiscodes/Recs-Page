@@ -8,7 +8,7 @@ import PrivateRoute from "./components/pages/PrivateRoute";
 import SigninPage from "./components/accounts/SigninPage";
 import SignupPage from "./components/accounts/SignupPage";
 import ProfilePage from "./components/pages/ProfilePage";
-import MyNavbar from "./components/Navbar";
+import MyNavbar from "./components/templates/Navbar";
 import EditProfile from "./components/accounts/EditProfile";
 import Welcome from "./components/pages/Welcome";
 import NotFound404 from "./components/pages/NotFound404";

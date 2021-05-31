@@ -6,10 +6,10 @@ import { db, auth } from "../../fire";
 import { useAuth } from "../../contexts/AuthContext";
 import Recommend from "../addBook/Recommend";
 import { Link, Route } from "react-router-dom";
-import Profile from "../Profile";
+import Profile from "../templates/Profile";
 import { useHistory } from "react-router-dom";
 import BookMap from "../maps/BookMap";
-import MapNav from "../MapNav";
+import MapNav from "../templates/MapNav";
 
 const ProfilePage = () => {
   const { profileUrl } = useParams();

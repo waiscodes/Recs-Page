@@ -3,10 +3,10 @@ import { Card, Button, Container, Spinner } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, Route } from "react-router-dom";
 import { db } from "../../fire";
-import Profile from "../Profile";
+import Profile from "../templates/Profile";
 import BookMap from "../maps/BookMap";
 import Recommend from "../addBook/Recommend";
-import MapNav from "../MapNav";
+import MapNav from "../templates/MapNav";
 import "../../css/Dashboard.css";
 // import {
 //   TwitterShareButton,

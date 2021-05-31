@@ -1,8 +1,8 @@
 import React from "react";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../css/MyNavbar.css";
+import "../../css/MyNavbar.css";
 
 const MyNavbar = () => {
   const { currentUser, signOut } = useAuth();
