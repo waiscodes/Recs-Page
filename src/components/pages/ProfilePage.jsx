@@ -8,7 +8,7 @@ import Recommend from "../Recommend";
 import { Link, Route } from "react-router-dom";
 import Profile from "../Profile";
 import { useHistory } from "react-router-dom";
-import BookMap from "../BookMap";
+import BookMap from "../maps/BookMap";
 import MapNav from "../MapNav";
 
 const ProfilePage = () => {

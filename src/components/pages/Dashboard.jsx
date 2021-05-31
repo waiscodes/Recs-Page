@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { Link, Route } from "react-router-dom";
 import { db } from "../../fire";
 import Profile from "../Profile";
-import BookMap from "../BookMap";
+import BookMap from "../maps/BookMap";
 import Recommend from "../Recommend";
 import MapNav from "../MapNav";
 import "../../css/Dashboard.css";
