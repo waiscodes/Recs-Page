@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Container, Spinner } from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext";
-import "../css/Dashboard.css";
+import { useAuth } from "../../contexts/AuthContext";
 import { Link, Route } from "react-router-dom";
-import { db } from "../fire";
-import Profile from "../components/Profile";
-import BookMap from "../components/BookMap";
-import Recommend from "../components/Recommend";
-import MapNav from "../components/MapNav";
+import { db } from "../../fire";
+import Profile from "../Profile";
+import BookMap from "../BookMap";
+import Recommend from "../Recommend";
+import MapNav from "../MapNav";
+import "../../css/Dashboard.css";
 // import {
 //   TwitterShareButton,
 //   TwitterIcon,

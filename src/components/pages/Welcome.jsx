@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SigninPage from "./SigninPage";
 import SignupPage from "./SignupPage";
-import "../css/Welcome.css";
+import "../../css/Welcome.css";
 
 const Welcome = () => {
   const [account, setAccount] = useState(true);

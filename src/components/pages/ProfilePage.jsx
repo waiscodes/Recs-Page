@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Spinner } from "react-bootstrap";
-import "../css/Profile.css";
-import { db, auth } from "../fire";
-import { useAuth } from "../contexts/AuthContext";
-import Recommend from "../components/Recommend";
+import "../../css/Profile.css";
+import { db, auth } from "../../fire";
+import { useAuth } from "../../contexts/AuthContext";
+import Recommend from "../Recommend";
 import { Link, Route } from "react-router-dom";
-import Profile from "../components/Profile";
+import Profile from "../Profile";
 import { useHistory } from "react-router-dom";
-import BookMap from "../components/BookMap";
-import MapNav from "../components/MapNav";
+import BookMap from "../BookMap";
+import MapNav from "../MapNav";
 
 const ProfilePage = () => {
   const { profileUrl } = useParams();

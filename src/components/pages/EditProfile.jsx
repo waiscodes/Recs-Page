@@ -1,9 +1,9 @@
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import { Card, Form, Button, Alert, ProgressBar } from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import debounce from "lodash.debounce";
 import { useHistory } from "react-router-dom";
-import { db, storage } from "../fire";
+import { db, storage } from "../../fire";
 
 const EditProfile = () => {
   const usernameRef = useRef();
