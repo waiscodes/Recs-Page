@@ -5,7 +5,7 @@ import { Link, Route } from "react-router-dom";
 import { db } from "../../fire";
 import Profile from "../Profile";
 import BookMap from "../maps/BookMap";
-import Recommend from "../Recommend";
+import Recommend from "../addBook/Recommend";
 import MapNav from "../MapNav";
 import "../../css/Dashboard.css";
 // import {

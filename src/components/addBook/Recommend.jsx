@@ -1,10 +1,10 @@
 import React, { useRef, useState, useCallback } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
-import { db } from "../fire";
+import { db } from "../../fire";
 import debounce from "lodash.debounce";
-import "../css/Recommend.css";
-import { recBook, revBook } from "../utilities/PostBooks";
+import "../../css/Recommend.css";
+import { recBook, revBook } from "../../utilities/PostBooks";
 
 const Recommend = (props) => {
   const [title, setTitle] = useState("");

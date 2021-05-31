@@ -4,7 +4,7 @@ import { Container, Spinner } from "react-bootstrap";
 import "../../css/Profile.css";
 import { db, auth } from "../../fire";
 import { useAuth } from "../../contexts/AuthContext";
-import Recommend from "../Recommend";
+import Recommend from "../addBook/Recommend";
 import { Link, Route } from "react-router-dom";
 import Profile from "../Profile";
 import { useHistory } from "react-router-dom";
