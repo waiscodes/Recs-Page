@@ -21,7 +21,7 @@ const App = () => {
           <MyNavbar />
           <Container className='container'>
             <Switch>
-              <PrivateRoute path='/home' component={Dashboard} />
+              <PrivateRoute path='/' component={Dashboard} />
               <PrivateRoute path='/edit-profile' component={EditProfile} />
               <Route path='/signup' component={SignupPage} />
               <Route path='/welcome' component={Welcome} />

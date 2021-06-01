@@ -120,19 +120,19 @@ const Dashboard = () => {
           <Container className='books-map'>
             <MapNav>
               <li>
-                <Link to='/home/'>TBR</Link>
+                <Link to='/'>TBR</Link>
               </li>
               <li>
-                <Link to='/home/read'>Read</Link>
+                <Link to='/read'>Read</Link>
               </li>
             </MapNav>
 
-            <Route exact path='/home/'>
+            <Route exact path='/'>
               <BookMap books={recs}>
                 <Recommend uid={currentUser.uid} AddToFirebase={"recs"} />
               </BookMap>
             </Route>
-            <Route path='/home/read'>
+            <Route path='/read'>
               <BookMap books={reviews}>
                 <Recommend uid={currentUser.uid} AddToFirebase={"reviews"} />
               </BookMap>
