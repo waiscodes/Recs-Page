@@ -21,6 +21,21 @@ const BookMap = ({ books, children }) => {
     setShowModal(true);
   };
 
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
   return (
     <>
       {!books && (

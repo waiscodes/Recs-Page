@@ -4,6 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../css/MyNavbar.css";
 import DisplayModal from "../DisplayModal";
+import Authentication from "../accounts/Authentication";
 
 const MyNavbar = () => {
   const { currentUser, signOut } = useAuth();
@@ -28,7 +29,7 @@ const MyNavbar = () => {
   return (
     <>
       <DisplayModal show={showModal} handleClose={handleClose}>
-        <h1>Hello World</h1>
+        <Authentication />
       </DisplayModal>
 
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>
