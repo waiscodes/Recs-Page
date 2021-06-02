@@ -1,36 +1,14 @@
-import React, { useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
+import React from "react";
+import { useAuth } from "../contexts/AuthContext";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../../css/MyNavbar.css";
-import DisplayModal from "../DisplayModal";
+import "../css/MyNavbar.css";
 
 const MyNavbar = () => {
   const { currentUser, signOut } = useAuth();
-  const [showModal, setShowModal] = useState(false);
-  const [displayBook, setDisplayBook] = useState(null);
-
-  const signUp = () => {
-    setShowModal(true);
-  };
-  const signIn = () => {
-    setShowModal(true);
-  };
-
-  const handleClose = () => {
-    setShowModal(null);
-  };
-
-  const handleShow = (bookId) => {
-    setShowModal(true);
-  };
 
   return (
     <>
-      <DisplayModal show={showModal} handleClose={handleClose}>
-        <h1>Hello World</h1>
-      </DisplayModal>
-
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>
         <Navbar.Brand>
           <Link to='/' className='remove-href'>
@@ -46,8 +24,8 @@ const MyNavbar = () => {
           </Nav>
         ) : (
           <Nav className='ml-auto'>
-            <Nav.Link onClick={signUp}>Register</Nav.Link>
-            <Nav.Link onClick={signIn}>Login</Nav.Link>
+            <Nav.Link href='/signup'>Register</Nav.Link>
+            <Nav.Link href='/signin'>Login</Nav.Link>
           </Nav>
         )}
       </Navbar>

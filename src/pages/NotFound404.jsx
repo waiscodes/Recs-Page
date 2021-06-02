@@ -1,8 +1,8 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import Profile from "../templates/Profile";
+import Profile from "../components/Profile";
 import { useParams } from "react-router-dom";
-import "../../css/NotFound404.css";
+import "../css/NotFound404.css";
 
 const NotFound404 = () => {
   const { username } = useParams();

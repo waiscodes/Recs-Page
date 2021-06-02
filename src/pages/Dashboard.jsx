@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Container, Spinner } from "react-bootstrap";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
+import "../css/Dashboard.css";
 import { Link, Route } from "react-router-dom";
-import { db } from "../../fire";
-import Profile from "../templates/Profile";
-import BookMap from "../maps/BookMap";
-import Recommend from "../addBook/Recommend";
-import MapNav from "../templates/MapNav";
-import "../../css/Dashboard.css";
+import { db } from "../fire";
+import Profile from "../components/Profile";
+import BookMap from "../components/BookMap";
+import Recommend from "../components/Recommend";
+import MapNav from "../components/MapNav";
 // import {
 //   TwitterShareButton,
 //   TwitterIcon,
@@ -120,21 +120,21 @@ const Dashboard = () => {
           <Container className='books-map'>
             <MapNav>
               <li>
-                <Link to='/'>TBR</Link>
+                <Link to='/home/'>TBR</Link>
               </li>
               <li>
-                <Link to='/read'>Read</Link>
+                <Link to='/home/read'>Read</Link>
               </li>
             </MapNav>
 
-            <Route exact path='/'>
+            <Route exact path='/home/'>
               <BookMap books={recs}>
-                <Recommend uid={currentUser.uid} AddToFirebase={"recs"} />
+                <Recommend uid={currentUser.uid} />
               </BookMap>
             </Route>
-            <Route path='/read'>
+            <Route path='/home/read'>
               <BookMap books={reviews}>
-                <Recommend uid={currentUser.uid} AddToFirebase={"reviews"} />
+                <Recommend uid={currentUser.uid} />
               </BookMap>
             </Route>
 

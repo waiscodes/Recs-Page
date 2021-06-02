@@ -1,9 +1,10 @@
 import React, { useRef, useState, useCallback } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
+import { db } from "../fire";
 import debounce from "lodash.debounce";
-import "../../css/Recommend.css";
-import { recBook, revBook } from "../../utilities/PostBooks";
+import "../css/Recommend.css";
+import { recBook } from "../utilities/PostBooks";
 
 const Recommend = (props) => {
   const [title, setTitle] = useState("");
@@ -70,7 +71,7 @@ const Recommend = (props) => {
     setSelectedBookDesc(false);
   };
 
-  const addToFirebase = () => {
+  const addToRecs = () => {
     const bookRec = {
       title: title,
       author: author,
@@ -81,16 +82,8 @@ const Recommend = (props) => {
       uid: props.uid,
       createdAt: new Date(),
     };
-    console.log(props.addToFirebase);
     try {
-      if (props.addToFirebase === "recs") {
-        recBook(bookRec);
-        console.log("recd");
-      } else if (props.addToFirebase === "reviews") {
-        revBook(bookRec);
-        console.log("revd");
-      }
-
+      recBook(bookRec);
       setShowForm(false);
       setSelectBook(false);
       setResult(false);
@@ -103,7 +96,7 @@ const Recommend = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    addToFirebase();
+    addToRecs();
     setTitle("");
   };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import BookPreview from "./BookPreview.jsx";
-import "../../css/Book.css";
+import "../css/Book.css";
 
 const Book = ({ book, show }) => {
   return (
