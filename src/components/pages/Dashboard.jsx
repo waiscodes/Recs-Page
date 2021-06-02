@@ -86,8 +86,8 @@ const Dashboard = () => {
           profileCompleted: doc.data().profileCompleted,
         }));
         result.sort((a, b) => {
-          if (a.createdAt > b.createdAt) return -1;
-          if (a.createdAt < b.createdAt) return +1;
+          if (a.createdAt.seconds > b.createdAt.seconds) return -1;
+          if (a.createdAt.seconds < b.createdAt.seconds) return +1;
           return 0;
         });
         result.sort((a, b) => {
