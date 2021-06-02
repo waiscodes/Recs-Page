@@ -51,9 +51,10 @@ const BookMap = ({ books, children }) => {
         <BookDetails book={displayBook} close={handleClose} />
       </DisplayModal>
 
+      <h5>{months[books && books[0]?.createdAt.toDate().getMonth()]}</h5>
       <Container className='book-map'>
         {books?.map((book) => (
-          <Book key={book.id} book={book} show={handleShow} className='book' />
+          <Book key={book?.id} book={book} show={handleShow} className='book' />
         ))}
       </Container>
     </>
