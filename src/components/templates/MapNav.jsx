@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/MapNav.css";
+import "../../css/MapNav.css";
 
 const MapNav = ({ children }) => {
   return (

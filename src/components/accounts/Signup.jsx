@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
+import { Link, useHistory } from "react-router-dom";
 
-const SignupPage = ({ setAccount }) => {
+const Signup = () => {
   const emailRef = useRef();
   const nameRef = useRef();
   const passwordRef = useRef();
@@ -29,7 +29,7 @@ const SignupPage = ({ setAccount }) => {
         passwordRef.current.value
       );
       setLoading(false);
-      history.push("/home");
+      history.push("/");
     } catch {
       setError("Failed to create account");
       setLoading(false);
@@ -91,14 +91,11 @@ const SignupPage = ({ setAccount }) => {
       </Card>
       <Card>
         <Card.Body>
-          Have an account?{" "}
-          <span className='link' onClick={() => setAccount(true)}>
-            Sign in
-          </span>
+          Have an account? <Link to='/signin'>Sign in</Link>
         </Card.Body>
       </Card>
     </>
   );
 };
 
-export default SignupPage;
+export default Signup;

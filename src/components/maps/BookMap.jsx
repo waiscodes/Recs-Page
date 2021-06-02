@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
-import Book from "./Book";
-import "../css/BookMap.css";
-import DisplayModal from "./DisplayModal";
-import BookDetails from "./BookDetails";
+import Book from "../books/Book";
+import "../../css/BookMap.css";
+import DisplayModal from "../DisplayModal";
+import BookDetails from "../books/BookDetails";
 
 const BookMap = ({ books, children }) => {
   const [showModal, setShowModal] = useState(false);
