@@ -2,6 +2,20 @@ import React from "react";
 import { CloseButton } from "react-bootstrap";
 
 const BookDetails = ({ book, close }) => {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   return (
     <>
       <CloseButton onClick={close}>Close</CloseButton>
@@ -23,6 +37,7 @@ const BookDetails = ({ book, close }) => {
             <span className='text-muted'>Reason: </span>
             {book?.reason}
           </p>
+          <p>{months[book?.createdAt.toDate().getMonth()]}</p>
         </div>
       </div>
     </>
