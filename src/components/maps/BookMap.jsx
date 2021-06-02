@@ -8,6 +8,7 @@ import BookDetails from "../books/BookDetails";
 const BookMap = ({ books, children }) => {
   const [showModal, setShowModal] = useState(false);
   const [displayBook, setDisplayBook] = useState(null);
+  const [months, setMonths] = useState(books);
 
   const handleClose = () => {
     setShowModal(null);
@@ -21,7 +22,7 @@ const BookMap = ({ books, children }) => {
     setShowModal(true);
   };
 
-  const months = [
+  const monthNames = [
     "January",
     "February",
     "March",
@@ -51,7 +52,9 @@ const BookMap = ({ books, children }) => {
         <BookDetails book={displayBook} close={handleClose} />
       </DisplayModal>
 
-      <h5>{months[books && books[0]?.createdAt.toDate().getMonth()]}</h5>
+      <h6>
+        {/* { months && months.map((book) => monthNames[book.createdAt.toDate().getMonth()])} */}
+      </h6>
       <Container className='book-map'>
         {books?.map((book) => (
           <Book key={book?.id} book={book} show={handleShow} className='book' />
