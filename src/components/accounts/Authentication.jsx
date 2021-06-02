@@ -3,7 +3,7 @@ import SigninPage from "./SigninPage";
 import SignupPage from "./SignupPage";
 
 const Authentication = () => {
-  const [haveAccount, setHaveAccount] = useState(true);
+  const [haveAccount, setHaveAccount] = useState(false);
 
   return (
     <>
