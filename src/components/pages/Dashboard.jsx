@@ -8,6 +8,7 @@ import BookMap from "../maps/BookMap";
 import Recommend from "../addBook/Recommend";
 import MapNav from "../templates/MapNav";
 import "../../css/Dashboard.css";
+import { getBookRecs } from "../../utilities/GetBooks";
 // import {
 //   TwitterShareButton,
 //   TwitterIcon,
@@ -70,7 +71,7 @@ const Dashboard = () => {
       });
   };
 
-  const getRecs = () => {
+  const getRecs = async () => {
     db.collection("books")
       .where("uid", "==", currentUser.uid)
       .onSnapshot((snap) => {
@@ -95,7 +96,7 @@ const Dashboard = () => {
           if (a.rating < b.rating) return +1;
           return 0;
         });
-        setRecs(result);
+        return result;
       });
   };
 

@@ -11,6 +11,8 @@ const MyNavbar = () => {
   const [showModal, setShowModal] = useState(false);
   const [displayBook, setDisplayBook] = useState(null);
 
+  // TODO: Close modal after log in is successful.
+
   const signUp = () => {
     setShowModal(true);
   };
