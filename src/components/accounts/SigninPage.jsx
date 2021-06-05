@@ -3,7 +3,7 @@ import { Card, Form, Button, Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
-const SigninPage = ({ setAccount }) => {
+const SigninPage = ({ setAccount, handleClose }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [error, setError] = useState("");
@@ -20,6 +20,7 @@ const SigninPage = ({ setAccount }) => {
       await signin(emailRef.current.value, passwordRef.current.value);
       setLoading(false);
       history.push("/");
+      handleClose();
     } catch {
       setError("Failed to sign in");
       setLoading(false);

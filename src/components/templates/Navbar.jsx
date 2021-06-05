@@ -31,7 +31,7 @@ const MyNavbar = () => {
   return (
     <>
       <DisplayModal show={showModal} handleClose={handleClose}>
-        <Authentication />
+        <Authentication handleClose={handleClose} />
       </DisplayModal>
 
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>

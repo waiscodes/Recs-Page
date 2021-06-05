@@ -3,7 +3,7 @@ import { Card, Form, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 
-const SignupPage = ({ setAccount }) => {
+const SignupPage = ({ setAccount, handleClose }) => {
   const emailRef = useRef();
   const nameRef = useRef();
   const passwordRef = useRef();
@@ -30,6 +30,7 @@ const SignupPage = ({ setAccount }) => {
       );
       setLoading(false);
       history.push("/");
+      handleClose();
     } catch {
       setError("Failed to create account");
       setLoading(false);

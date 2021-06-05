@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import SigninPage from "./SigninPage";
 import SignupPage from "./SignupPage";
 
-const Authentication = () => {
+const Authentication = ({ handleClose }) => {
   const [haveAccount, setHaveAccount] = useState(false);
 
   return (
     <>
       {haveAccount ? (
-        <SigninPage setAccount={setHaveAccount} />
+        <SigninPage setAccount={setHaveAccount} handleClose={handleClose} />
       ) : (
-        <SignupPage setAccount={setHaveAccount} />
+        <SignupPage setAccount={setHaveAccount} handleClose={handleClose} />
       )}
     </>
   );
