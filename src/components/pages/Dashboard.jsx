@@ -9,6 +9,8 @@ import Recommend from "../addBook/Recommend";
 import MapNav from "../templates/MapNav";
 import "../../css/Dashboard.css";
 import { getBookRecs } from "../../utilities/GetBooks";
+import EditProfile from "../accounts/EditProfile";
+import DisplayModal from "../DisplayModal";
 // import {
 //   TwitterShareButton,
 //   TwitterIcon,
@@ -28,6 +30,7 @@ const Dashboard = () => {
   const [recs, setRecs] = useState();
   const [reviews, setReviews] = useState();
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     getUser();
@@ -100,6 +103,10 @@ const Dashboard = () => {
       });
   };
 
+  const handleClose = () => {
+    setShowModal(null);
+  };
+
   return (
     <>
       {!loading && (
@@ -111,11 +118,16 @@ const Dashboard = () => {
       {loading && (
         <Card>
           <Profile user={user}>
-            <Link to='/edit-profile'>
-              <Button variant='outline-primary' className='rounded-pill'>
-                Edit Profile
-              </Button>
-            </Link>
+            <Button
+              variant='outline-primary'
+              className='rounded-pill'
+              onClick={() => setShowModal(true)}
+            >
+              Edit Profile
+            </Button>
+            <DisplayModal show={showModal} handleClose={handleClose}>
+              <EditProfile handleClose={handleClose} />
+            </DisplayModal>
           </Profile>
 
           <Container className='books-map'>

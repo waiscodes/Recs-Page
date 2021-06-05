@@ -5,7 +5,7 @@ import debounce from "lodash.debounce";
 import { useHistory } from "react-router-dom";
 import { db, storage } from "../../fire";
 
-const EditProfile = () => {
+const EditProfile = ({ handleClose }) => {
   const usernameRef = useRef();
   const nameRef = useRef();
   const bioRef = useRef();
@@ -42,7 +42,7 @@ const EditProfile = () => {
         avi: aviURL,
       })
       .then(() => {
-        history.push("/");
+        handleClose();
       })
       .catch((error) => {
         console.log(error);
@@ -62,7 +62,7 @@ const EditProfile = () => {
         bio: bio,
       })
       .then(() => {
-        history.push("/");
+        handleClose();
       })
       .catch((error) => {
         console.log(error);
