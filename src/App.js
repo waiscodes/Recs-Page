@@ -28,7 +28,6 @@ const App = () => {
               <Route path='/welcome' component={Welcome} />
               <Route path='/signin' component={SigninPage} />
               <Route path='/404/:username' component={NotFound404} />
-              <Route path='/modal' component={DisplayModal} />
               <Route path='/:profileUrl' component={ProfilePage} />
             </Switch>
           </Container>
