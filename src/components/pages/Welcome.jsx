@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SigninPage from "../accounts/SigninPage";
-import SignupPage from "../accounts/SignupPage";
+import SignIn from "../accounts/SignIn";
+import SignUp from "../accounts/SignUp";
 import "../../css/Welcome.css";
 
 const Welcome = () => {
@@ -10,9 +10,9 @@ const Welcome = () => {
     <>
       <div className='accounts'>
         {account ? (
-          <SigninPage setAccount={setAccount} />
+          <SignIn setAccount={setAccount} />
         ) : (
-          <SignupPage setAccount={setAccount} />
+          <SignUp setAccount={setAccount} />
         )}
       </div>
     </>

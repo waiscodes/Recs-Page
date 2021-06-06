@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SigninPage from "./SigninPage";
-import SignupPage from "./SignupPage";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 const Authentication = ({ handleClose }) => {
   const [haveAccount, setHaveAccount] = useState(false);
@@ -8,9 +8,9 @@ const Authentication = ({ handleClose }) => {
   return (
     <>
       {haveAccount ? (
-        <SigninPage setAccount={setHaveAccount} handleClose={handleClose} />
+        <SignIn setAccount={setHaveAccount} handleClose={handleClose} />
       ) : (
-        <SignupPage setAccount={setHaveAccount} handleClose={handleClose} />
+        <SignUp setAccount={setHaveAccount} handleClose={handleClose} />
       )}
     </>
   );
