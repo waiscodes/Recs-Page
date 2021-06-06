@@ -9,9 +9,6 @@ import Authentication from "../accounts/Authentication";
 const MyNavbar = () => {
   const { currentUser, signOut } = useAuth();
   const [showModal, setShowModal] = useState(false);
-  const [displayBook, setDisplayBook] = useState(null);
-
-  // TODO: Close modal after log in is successful.
 
   const signUp = () => {
     setShowModal(true);
@@ -22,10 +19,6 @@ const MyNavbar = () => {
 
   const handleClose = () => {
     setShowModal(null);
-  };
-
-  const handleShow = (bookId) => {
-    setShowModal(true);
   };
 
   return (

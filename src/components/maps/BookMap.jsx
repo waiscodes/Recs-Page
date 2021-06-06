@@ -8,7 +8,6 @@ import BookDetails from "../books/BookDetails";
 const BookMap = ({ books, children }) => {
   const [showModal, setShowModal] = useState(false);
   const [displayBook, setDisplayBook] = useState(null);
-  const [months, setMonths] = useState(books);
 
   const handleClose = () => {
     setShowModal(null);
@@ -22,20 +21,20 @@ const BookMap = ({ books, children }) => {
     setShowModal(true);
   };
 
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  // const monthNames = [
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  //   "August",
+  //   "September",
+  //   "October",
+  //   "November",
+  //   "December",
+  // ];
 
   return (
     <>

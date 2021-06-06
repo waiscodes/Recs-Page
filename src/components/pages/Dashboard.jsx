@@ -8,7 +8,6 @@ import BookMap from "../maps/BookMap";
 import Recommend from "../addBook/Recommend";
 import MapNav from "../templates/MapNav";
 import "../../css/Dashboard.css";
-import { getBookRecs } from "../../utilities/GetBooks";
 import EditProfile from "../accounts/EditProfile";
 import DisplayModal from "../DisplayModal";
 // import {

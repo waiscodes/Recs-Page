@@ -2,7 +2,6 @@ import React, { useRef, useState, useCallback, useEffect } from "react";
 import { Card, Form, Button, Alert, ProgressBar } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import debounce from "lodash.debounce";
-import { useHistory } from "react-router-dom";
 import { db, storage } from "../../fire";
 
 const EditProfile = ({ handleClose }) => {
@@ -16,7 +15,6 @@ const EditProfile = ({ handleClose }) => {
   const { currentUser, getUserById } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
 
   useEffect(() => {
     getUser();
