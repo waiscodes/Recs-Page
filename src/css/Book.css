@@ -32,3 +32,9 @@
   overflow: scroll;
   padding: 10px;
 }
+
+.icons {
+  padding: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}

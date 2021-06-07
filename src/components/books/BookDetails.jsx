@@ -2,6 +2,13 @@ import React from "react";
 import { CloseButton } from "react-bootstrap";
 
 const BookDetails = ({ book, close }) => {
+  const likeBook = () => {
+    console.log("book liked");
+  };
+
+  const takeBook = () => {
+    console.log("book added to your TBR");
+  };
   const months = [
     "January",
     "February",
@@ -24,8 +31,8 @@ const BookDetails = ({ book, close }) => {
         <div className='thumbnail-div'>
           <img src={book?.thumbnail} alt='' />
           <div className='icons'>
-            <i className='fas fa-book'></i>
-            <i className='far fa-heart'></i>
+            <i className='fas fa-book' onClick={takeBook}></i>
+            <i className='far fa-heart' onClick={likeBook}></i>
           </div>
         </div>
         <div className='book-desc'>
