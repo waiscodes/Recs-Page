@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-const Authentication = ({ handleClose }) => {
-  const [haveAccount, setHaveAccount] = useState(false);
+const Authentication = ({ handleClose, doesUserExist }) => {
+  const [haveAccount, setHaveAccount] = useState(doesUserExist);
 
   return (
     <>

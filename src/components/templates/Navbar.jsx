@@ -8,12 +8,15 @@ import Authentication from "../accounts/Authentication";
 
 const MyNavbar = () => {
   const { currentUser, signOut } = useAuth();
+  const [haveAccount, setHaveAccount] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const signUp = () => {
+    setHaveAccount(false);
     setShowModal(true);
   };
   const signIn = () => {
+    setHaveAccount(true);
     setShowModal(true);
   };
 
@@ -24,7 +27,7 @@ const MyNavbar = () => {
   return (
     <>
       <DisplayModal show={showModal} handleClose={handleClose}>
-        <Authentication handleClose={handleClose} />
+        <Authentication handleClose={handleClose} doesUserExist={haveAccount} />
       </DisplayModal>
 
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>
