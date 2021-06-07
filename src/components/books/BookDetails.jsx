@@ -23,6 +23,10 @@ const BookDetails = ({ book, close }) => {
       <div className='book-detail'>
         <div className='thumbnail-div'>
           <img src={book?.thumbnail} alt='' />
+          <div className='icons'>
+            <i className='fas fa-book'></i>
+            <i className='far fa-heart'></i>
+          </div>
         </div>
         <div className='book-desc'>
           <p>
