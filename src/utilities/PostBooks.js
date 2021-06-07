@@ -20,6 +20,10 @@ const recBook = (book) => {
     });
 };
 
+const addReadBook = (book) => {
+  console.log(book);
+};
+
 const revBook = (book) => {
   db.collection("reviews")
     .add({
@@ -44,8 +48,8 @@ const likeBook = (book, uid) => {
   console.log(uid + " liked " + book.title);
 };
 
-const addToFinishedList = (book, user) => {
+const addToFinishedList = (book, uid) => {
   console.log(uid + " finished " + book.title);
 };
 
-export { recBook, revBook, likeBook, addToFinishedList };
+export { recBook, addReadBook, revBook, likeBook, addToFinishedList };
