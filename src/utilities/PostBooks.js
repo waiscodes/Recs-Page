@@ -44,7 +44,7 @@ const revBook = (book) => {
     });
 };
 
-const likeBook = (book, uid) => {
+const likeThisBook = (book, uid) => {
   console.log(uid + " liked " + book.title);
 };
 
@@ -52,4 +52,4 @@ const addToFinishedList = (book, uid) => {
   console.log(uid + " finished " + book.title);
 };
 
-export { recBook, addReadBook, revBook, likeBook, addToFinishedList };
+export { recBook, addReadBook, revBook, likeThisBook, addToFinishedList };

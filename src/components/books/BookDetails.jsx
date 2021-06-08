@@ -1,9 +1,12 @@
 import React from "react";
 import { CloseButton } from "react-bootstrap";
+import { likeThisBook } from "../../utilities/PostBooks";
+import { useAuth } from "../../contexts/AuthContext";
 
 const BookDetails = ({ book, close }) => {
-  const likeBook = () => {
-    console.log("book liked");
+  const { currentUser } = useAuth();
+  const likeBook = (e) => {
+    likeThisBook(book, currentUser.uid);
   };
 
   const takeBook = () => {
