@@ -36,5 +36,18 @@
 .icons {
   padding: 5px;
   display: flex;
-  justify-content: space-evenly;
+}
+
+.icon {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.icon > p {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.icon > i {
+  cursor: pointer;
 }
