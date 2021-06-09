@@ -1,10 +1,15 @@
 import React from "react";
-import { CloseButton } from "react-bootstrap";
-import { likeThisBook, grabThisRec } from "../../utilities/PostBooks";
+import { CloseButton, Button } from "react-bootstrap";
+import {
+  likeThisBook,
+  grabThisRec,
+  addToFinishedList,
+} from "../../utilities/PostBooks";
 import { useAuth } from "../../contexts/AuthContext";
 
 const BookDetails = ({ book, close }) => {
   const { currentUser } = useAuth();
+
   const likeBook = (e) => {
     likeThisBook(book, currentUser.uid);
   };
@@ -12,6 +17,11 @@ const BookDetails = ({ book, close }) => {
   const grabRec = () => {
     grabThisRec(book, currentUser.uid);
   };
+
+  const finishedBook = () => {
+    addToFinishedList(book, currentUser.uid);
+  };
+
   const months = [
     "January",
     "February",
@@ -36,6 +46,9 @@ const BookDetails = ({ book, close }) => {
           <div className='icons'>
             <i className='fas fa-book' onClick={grabRec}></i>
             <i className='far fa-heart' onClick={likeBook}></i>
+            {book?.userId && (
+              <i className='far fa-check-square' onClick={finishedBook}></i>
+            )}
           </div>
         </div>
         <div className='book-desc'>

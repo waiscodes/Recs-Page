@@ -87,6 +87,7 @@ const Dashboard = () => {
           rating: doc.data().rating,
           createdAt: doc.data().createdAt,
           profileCompleted: doc.data().profileCompleted,
+          userId: doc.data().uid,
         }));
         result.sort((a, b) => {
           if (a.createdAt.seconds > b.createdAt.seconds) return -1;
