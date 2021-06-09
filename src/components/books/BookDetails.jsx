@@ -1,6 +1,6 @@
 import React from "react";
 import { CloseButton } from "react-bootstrap";
-import { likeThisBook } from "../../utilities/PostBooks";
+import { likeThisBook, grabThisRec } from "../../utilities/PostBooks";
 import { useAuth } from "../../contexts/AuthContext";
 
 const BookDetails = ({ book, close }) => {
@@ -9,8 +9,8 @@ const BookDetails = ({ book, close }) => {
     likeThisBook(book, currentUser.uid);
   };
 
-  const takeBook = () => {
-    console.log("book added to your TBR");
+  const grabRec = () => {
+    grabThisRec(book, currentUser.uid);
   };
   const months = [
     "January",
@@ -34,7 +34,7 @@ const BookDetails = ({ book, close }) => {
         <div className='thumbnail-div'>
           <img src={book?.thumbnail} alt='' />
           <div className='icons'>
-            <i className='fas fa-book' onClick={takeBook}></i>
+            <i className='fas fa-book' onClick={grabRec}></i>
             <i className='far fa-heart' onClick={likeBook}></i>
           </div>
         </div>

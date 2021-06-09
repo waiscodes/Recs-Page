@@ -48,8 +48,19 @@ const likeThisBook = (book, uid) => {
   console.log(uid + " liked " + book.title);
 };
 
+const grabThisRec = (book, uid) => {
+  console.log(uid + " grabbed " + book.title);
+};
+
 const addToFinishedList = (book, uid) => {
   console.log(uid + " finished " + book.title);
 };
 
-export { recBook, addReadBook, revBook, likeThisBook, addToFinishedList };
+export {
+  recBook,
+  addReadBook,
+  revBook,
+  likeThisBook,
+  addToFinishedList,
+  grabThisRec,
+};
