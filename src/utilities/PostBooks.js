@@ -52,6 +52,10 @@ const likeThisBook = (book, uid) => {
 const grabThisRec = (book, uid) => {
   console.log(uid + " grabbed " + book.title);
   // TODO: make copy to add to user profile???
+
+  if (window.confirm("Grab this recommendation to add to your own profile")) {
+    console.log("Added to your profile");
+  }
 };
 
 const addToFinishedList = (book, uid) => {

@@ -44,7 +44,7 @@ const BookDetails = ({ book, close }) => {
         <div className='thumbnail-div'>
           <img src={book?.thumbnail} alt='' />
           <div className='icons'>
-            <i className='fas fa-book' onClick={grabRec}></i>
+            <i className='far fa-hand-rock' onClick={grabRec}></i>
             <i className='far fa-heart' onClick={likeBook}></i>
             {book?.userId && (
               <i className='far fa-check-square' onClick={finishedBook}></i>
