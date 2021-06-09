@@ -44,10 +44,12 @@ const BookDetails = ({ book, close }) => {
         <div className='thumbnail-div'>
           <img src={book?.thumbnail} alt='' />
           <div className='icons'>
-            <div className='icon' onClick={grabRec}>
-              <i className='far fa-hand-rock'></i>
-              <p className='text-muted'>Grab</p>
-            </div>
+            {!book?.userId && (
+              <div className='icon' onClick={grabRec}>
+                <i className='far fa-hand-rock'></i>
+                <p className='text-muted'>Grab</p>
+              </div>
+            )}
             <div className='icon' onClick={likeBook}>
               <i className='far fa-heart'></i>
               <p className='text-muted'>Like</p>
