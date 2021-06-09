@@ -40,21 +40,21 @@ const BookDetails = ({ book, close }) => {
     <>
       <CloseButton onClick={close}>Close</CloseButton>
       <h4 className='book-title'>{book?.title}</h4>
-      <div className='book-detail'>
+      <div className='book-detail' onDoubleClick={likeBook}>
         <div className='thumbnail-div'>
           <img src={book?.thumbnail} alt='' />
           <div className='icons'>
-            <div className='icon'>
-              <i className='far fa-hand-rock' onClick={grabRec}></i>
+            <div className='icon' onClick={grabRec}>
+              <i className='far fa-hand-rock'></i>
               <p className='text-muted'>Grab</p>
             </div>
-            <div className='icon'>
-              <i className='far fa-heart' onClick={likeBook}></i>
+            <div className='icon' onClick={likeBook}>
+              <i className='far fa-heart'></i>
               <p className='text-muted'>Like</p>
             </div>
             {book?.userId && (
-              <div className='icon'>
-                <i className='far fa-check-square' onClick={finishedBook}></i>
+              <div className='icon' onClick={finishedBook}>
+                <i className='far fa-check-square'></i>
                 <p className='text-muted'>Done</p>
               </div>
             )}

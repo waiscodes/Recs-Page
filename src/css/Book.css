@@ -41,13 +41,10 @@
 .icon {
   text-align: center;
   flex-grow: 1;
+  cursor: pointer;
 }
 
 .icon > p {
   font-size: 13px;
   font-weight: 300;
-}
-
-.icon > i {
-  cursor: pointer;
 }
