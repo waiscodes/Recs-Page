@@ -46,14 +46,17 @@ const revBook = (book) => {
 
 const likeThisBook = (book, uid) => {
   console.log(uid + " liked " + book.title);
+  // TODO: Add an array and add username to the liked array. First check to see if name already exists.
 };
 
 const grabThisRec = (book, uid) => {
   console.log(uid + " grabbed " + book.title);
+  // TODO: make copy to add to user profile???
 };
 
 const addToFinishedList = (book, uid) => {
   console.log(uid + " finished " + book.title);
+  // TODO: update book where it just says finished
 };
 
 export {
