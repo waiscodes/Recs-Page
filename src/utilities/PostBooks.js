@@ -59,19 +59,17 @@ const grabThisRec = (book, uid) => {
 };
 
 const addToFinishedList = (book, uid) => {
-  console.log(uid + " finished " + book.title);
-  // TODO: update book where it just says finished
   if (window.confirm("Are you finished this book?")) {
     db.collection("books")
       .doc(book.id)
       .update({
-        finished: true,
+        finishedBy: uid,
       })
       .then(() => {
-        console.log("added to finished");
+        console.log(uid + " finished " + book.title);
       })
       .catch(() => {
-        console.log("don't gottem");
+        console.log("Yikes couldn't add this book");
       });
   }
 };
