@@ -53,7 +53,7 @@ const grabThisRec = (book, uid) => {
   console.log(uid + " grabbed " + book.title);
   // TODO: make copy to add to user profile???
 
-  if (window.confirm("Grab this recommendation to add to your own profile")) {
+  if (window.confirm("Grab this recommendation to add to your TBR")) {
     console.log("Added to your profile");
   }
 };
@@ -61,6 +61,19 @@ const grabThisRec = (book, uid) => {
 const addToFinishedList = (book, uid) => {
   console.log(uid + " finished " + book.title);
   // TODO: update book where it just says finished
+  if (window.confirm("Are you finished this book?")) {
+    db.collection("books")
+      .doc(book.id)
+      .update({
+        finished: true,
+      })
+      .then(() => {
+        console.log("added to finished");
+      })
+      .catch(() => {
+        console.log("don't gottem");
+      });
+  }
 };
 
 export {
