@@ -81,15 +81,8 @@ const Recommend = (props) => {
       uid: props.uid,
       createdAt: new Date(),
     };
-    console.log(props.addToFirebase);
     try {
-      if (props.addToFirebase === "recs") {
-        recBook(bookRec);
-        console.log("recd");
-      } else if (props.addToFirebase === "reviews") {
-        revBook(bookRec);
-        console.log("revd");
-      }
+      recBook(bookRec);
 
       setShowForm(false);
       setSelectBook(false);
