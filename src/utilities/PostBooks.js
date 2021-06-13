@@ -49,8 +49,8 @@ const likeThisBook = (book, uid) => {
   // TODO: Add an array and add username to the liked array. First check to see if name already exists.
 };
 
-const grabThisRec = (book, uid) => {
-  console.log(uid + " grabbed " + book.title);
+const grabThisRec = (book, currentUser) => {
+  console.log(currentUser.uid + " grabbed " + book.title);
   // TODO: make copy to add to user profile???
 
   if (window.confirm("Grab this recommendation to add to your TBR")) {
@@ -58,18 +58,14 @@ const grabThisRec = (book, uid) => {
   }
 };
 
-const addToFinishedList = (book, uid) => {
+const addToFinishedList = (book, currentUser) => {
   if (window.confirm("Are you finished this book?")) {
     db.collection("books")
       .doc(book.id)
-      .update({
-        finishedBy: uid,
-      })
-      .then(() => {
-        console.log(uid + " finished " + book.title);
-      })
-      .catch(() => {
-        console.log("Yikes couldn't add this book");
+      .collection("done")
+      .doc(currentUser.uid)
+      .add({
+        uid: currentUser.uid,
       });
   }
 };

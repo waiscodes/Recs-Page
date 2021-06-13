@@ -1,5 +1,5 @@
 import React from "react";
-import { CloseButton, Button } from "react-bootstrap";
+import { CloseButton } from "react-bootstrap";
 import {
   likeThisBook,
   grabThisRec,
