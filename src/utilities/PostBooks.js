@@ -1,23 +1,16 @@
 import { db } from "../fire";
 
 const recBook = (book) => {
-  db.collection("books")
-    .add({
-      title: book.title,
-      author: book.author,
-      thumbnail: book.thumbnail,
-      recBy: book.recBy,
-      reason: book.reason,
-      upvotes: 0,
-      uid: book.uid,
-      createdAt: new Date(),
-    })
-    .then(() => {
-      console.log("added to Rec");
-    })
-    .catch(() => {
-      console.log("don't gottem");
-    });
+  db.collection("books").add({
+    title: book.title,
+    author: book.author,
+    thumbnail: book.thumbnail,
+    recBy: book.recBy,
+    reason: book.reason,
+    upvotes: 0,
+    uid: book.uid,
+    createdAt: new Date(),
+  });
 };
 
 const addReadBook = (book) => {
@@ -60,13 +53,10 @@ const grabThisRec = (book, currentUser) => {
 
 const addToFinishedList = (book, currentUser) => {
   if (window.confirm("Are you finished this book?")) {
-    db.collection("books")
-      .doc(book.id)
-      .collection("done")
-      .doc(currentUser.uid)
-      .add({
-        uid: currentUser.uid,
-      });
+    // db.collection("books").doc(book.id).collection("finishedBy").set({
+    //   uid: currentUser.uid,
+    //   finishedOn: new Date(),
+    // });
   }
 };
 
