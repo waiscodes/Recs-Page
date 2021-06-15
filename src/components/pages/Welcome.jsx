@@ -7,7 +7,6 @@ import "../../css/Welcome.css";
 import { Button } from "react-bootstrap";
 
 const Welcome = () => {
-  const { currentUser, signOut } = useAuth();
   const [haveAccount, setHaveAccount] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -25,16 +24,19 @@ const Welcome = () => {
   };
   return (
     <>
-      <div className='accounts'>
+      <div className='landing-page'>
         <DisplayModal show={showModal} handleClose={handleClose}>
           <Authentication
             handleClose={handleClose}
             doesUserExist={haveAccount}
           />
         </DisplayModal>
+
+        <div className='create-account'>
+          <h6>Sign up for an account</h6>
+          <Button onClick={signUp}>Sign Up</Button>
+        </div>
       </div>
-      <Button onClick={signIn}>Sign In</Button>
-      <Button onClick={signUp}>Sign Up</Button>
     </>
   );
 };

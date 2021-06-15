@@ -6,3 +6,16 @@
 .link:hover {
   text-decoration: underline;
 }
+
+.landing-page {
+  /* border: solid; */
+}
+
+.create-account {
+  width: fit-content;
+  margin: auto;
+}
+
+.create-account > * {
+  width: 100%;
+}
