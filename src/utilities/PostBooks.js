@@ -31,12 +31,21 @@ const grabThisRec = (book, currentUser) => {
   }
 };
 
-const addToFinishedList = (book, currentUser) => {
+const addToFinishedList = async (book, currentUser) => {
   if (window.confirm("Are you finished this book?")) {
-    // db.collection("books").doc(book.id).collection("finishedBy").set({
-    //   uid: currentUser.uid,
-    //   finishedOn: new Date(),
-    // });
+    try {
+      const finishedByRoute = await db
+        .collection("books")
+        .doc(book.id)
+        .collection("finishedBy")
+        .doc();
+
+      finishedByRoute.set({
+        sum: "okay",
+      });
+    } catch (e) {
+      console.log(e.message);
+    }
   }
 };
 
