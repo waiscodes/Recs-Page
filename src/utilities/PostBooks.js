@@ -40,9 +40,14 @@ const addToFinishedList = async (book, currentUser) => {
         .collection("finishedBy")
         .doc();
 
-      finishedByRoute.set({
-        sum: "okay",
-      });
+      finishedByRoute
+        .set({
+          uid: currentUser,
+          finishedOn: new Date(),
+        })
+        .then(() => {
+          console.log("done");
+        });
     } catch (e) {
       console.log(e.message);
     }
