@@ -17,9 +17,25 @@ const addReadBook = (book) => {
   console.log(book);
 };
 
-const likeThisBook = (book, uid) => {
-  console.log(uid + " liked " + book.title);
-  // TODO: Add an array and add username to the liked array. First check to see if name already exists.
+const likeThisBook = async (book, currentUser) => {
+  try {
+    const likedByRoute = await db
+      .collection("books")
+      .doc(book.id)
+      .collection("likedBy")
+      .doc();
+
+    likedByRoute
+      .set({
+        uid: currentUser,
+        finishedOn: new Date(),
+      })
+      .then(() => {
+        console.log("done");
+      });
+  } catch (e) {
+    console.log(e.message);
+  }
 };
 
 const grabThisRec = (book, currentUser) => {
