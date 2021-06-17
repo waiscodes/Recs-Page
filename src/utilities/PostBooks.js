@@ -23,11 +23,11 @@ const likeThisBook = (book, uid) => {
 };
 
 const grabThisRec = (book, currentUser) => {
-  console.log(currentUser.uid + " grabbed " + book.title);
-  // TODO: make copy to add to user profile???
-
   if (window.confirm("Grab this recommendation to add to your TBR")) {
-    console.log("Added to your profile");
+    book.id = currentUser;
+    if (book.id !== currentUser) {
+      recBook(book);
+    }
   }
 };
 
