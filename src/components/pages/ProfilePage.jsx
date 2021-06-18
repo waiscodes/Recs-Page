@@ -50,6 +50,7 @@ const ProfilePage = () => {
       .onSnapshot((snap) => {
         let result = snap.docs.map((doc) => ({
           id: doc.id,
+          uid: doc.data().uid,
           title: doc.data().title,
           author: doc.data().author,
           recBy: doc.data().recBy,

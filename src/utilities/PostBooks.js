@@ -1,16 +1,23 @@
 import { db } from "../fire";
 
 const recBook = (book) => {
-  db.collection("books").add({
-    title: book.title,
-    author: book.author,
-    thumbnail: book.thumbnail,
-    recBy: book.recBy,
-    reason: book.reason,
-    upvotes: 0,
-    uid: book.uid,
-    createdAt: new Date(),
-  });
+  db.collection("books")
+    .add({
+      title: book.title,
+      author: book.author,
+      thumbnail: book.thumbnail,
+      recBy: book.recBy,
+      reason: book.reason,
+      upvotes: 0,
+      uid: book.uid,
+      createdAt: new Date(),
+    })
+    .then((e) => {
+      console.log("gottem");
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 };
 
 const addReadBook = (book) => {
@@ -40,9 +47,13 @@ const likeThisBook = async (book, currentUser) => {
 
 const grabThisRec = (book, currentUser) => {
   if (window.confirm("Grab this recommendation to add to your TBR")) {
-    book.id = currentUser;
-    if (book.id !== currentUser) {
-      recBook(book);
+    try {
+      if (book.id !== currentUser) {
+        book.uid = currentUser;
+        recBook(book);
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 };

@@ -50,6 +50,7 @@ const Dashboard = () => {
       .onSnapshot((snap) => {
         let result = snap.docs.map((doc) => ({
           id: doc.id,
+          uid: doc.uid,
           title: doc.data().title,
           author: doc.data().author,
           recBy: doc.data().recBy,
@@ -79,6 +80,7 @@ const Dashboard = () => {
       .onSnapshot((snap) => {
         let result = snap.docs.map((doc) => ({
           id: doc.id,
+          uid: doc.data().uid,
           title: doc.data().title,
           author: doc.data().author,
           recBy: doc.data().recBy,
