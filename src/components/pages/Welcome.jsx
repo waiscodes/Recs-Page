@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Authentication from "../accounts/Authentication";
-import { useAuth } from "../../contexts/AuthContext";
-import SignUp from "../accounts/SignUp";
 import DisplayModal from "../DisplayModal";
 import "../../css/Welcome.css";
 import { Button } from "react-bootstrap";
@@ -12,10 +10,6 @@ const Welcome = () => {
 
   const signUp = () => {
     setHaveAccount(false);
-    setShowModal(true);
-  };
-  const signIn = () => {
-    setHaveAccount(true);
     setShowModal(true);
   };
 

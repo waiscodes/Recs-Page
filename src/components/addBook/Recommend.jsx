@@ -3,7 +3,7 @@ import { Container, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import debounce from "lodash.debounce";
 import "../../css/Recommend.css";
-import { recBook, revBook } from "../../utilities/PostBooks";
+import { recBook } from "../../utilities/PostBooks";
 
 const Recommend = (props) => {
   const [title, setTitle] = useState("");
