@@ -4,6 +4,7 @@ import {
   likeThisBook,
   grabThisRec,
   addToFinishedList,
+  deleteThisRec,
 } from "../../utilities/PostBooks";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -23,8 +24,7 @@ const BookDetails = ({ book, close }) => {
   };
 
   const deleteRec = () => {
-    // TODO: Add delete rec functionality and get icons
-    console.log("deleting rec");
+    deleteThisRec(book);
   };
 
   const months = [

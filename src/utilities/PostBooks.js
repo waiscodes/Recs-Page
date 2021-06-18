@@ -81,4 +81,21 @@ const addToFinishedList = async (book, currentUser) => {
   }
 };
 
-export { recBook, addReadBook, likeThisBook, addToFinishedList, grabThisRec };
+const deleteThisRec = (book) => {
+  db.collection("books")
+    .doc(book.id)
+    .delete()
+    .then((e) => console.log("deleted successfully"))
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+export {
+  recBook,
+  addReadBook,
+  likeThisBook,
+  addToFinishedList,
+  grabThisRec,
+  deleteThisRec,
+};
