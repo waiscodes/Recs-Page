@@ -25,6 +25,7 @@ const BookDetails = ({ book, close }) => {
 
   const deleteRec = () => {
     deleteThisRec(book);
+    close();
   };
 
   const months = [
