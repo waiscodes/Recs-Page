@@ -22,6 +22,11 @@ const BookDetails = ({ book, close }) => {
     addToFinishedList(book, currentUser.uid);
   };
 
+  const deleteRec = () => {
+    // TODO: Add delete rec functionality and get icons
+    console.log("deleting rec");
+  };
+
   const months = [
     "January",
     "February",
@@ -58,6 +63,12 @@ const BookDetails = ({ book, close }) => {
               <div className='icon' onClick={finishedBook}>
                 <i className='far fa-check-square'></i>
                 <p className='text-muted'>Done</p>
+              </div>
+            )}
+            {book?.userId && (
+              <div className='icon' onClick={deleteRec}>
+                <i className='far fa-trash-alt'></i>
+                <p className='text-muted'>Delete</p>
               </div>
             )}
           </div>
