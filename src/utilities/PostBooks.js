@@ -1,4 +1,5 @@
 import { db } from "../fire";
+import firebase from "firebase";
 
 const recBook = (book) => {
   db.collection("books")
@@ -26,11 +27,13 @@ const addReadBook = (book) => {
 
 const likeThisBook = async (book, currentUser) => {
   try {
-    const likedByRoute = await db
-      .collection("books")
-      .doc(book.id)
-      .collection("likedBy")
-      .doc();
+    const thisBook = db.collection("books").doc(book.id);
+
+    const increment = firebase.firestore.FieldValue.increment(1);
+
+    thisBook.update({ upvotes: increment });
+
+    const likedByRoute = await thisBook.collection("likedBy").doc();
 
     likedByRoute
       .set({
@@ -38,7 +41,7 @@ const likeThisBook = async (book, currentUser) => {
         finishedOn: new Date(),
       })
       .then(() => {
-        console.log("done");
+        console.log(book.upvotes);
       });
   } catch (e) {
     console.log(e.message);
