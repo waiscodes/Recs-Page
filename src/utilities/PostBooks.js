@@ -26,9 +26,20 @@ const addReadBook = (book) => {
 };
 
 const likeThisBook = (book, currentUser) => {
+  const increment = firebase.firestore.FieldValue.increment(1);
   try {
     db.collection("likes")
       .add({
+        bookLiked: book.id,
+        title: book.title,
+        author: book.author,
+        thumbnail: book.thumbnail,
+        recBy: book.recBy,
+        reason: book.reason,
+        upvotes: increment,
+        uid: book.uid,
+        createdAt: new Date(),
+        // Liked by section
         likedBy: currentUser,
         likedOn: new Date(),
       })
@@ -41,11 +52,7 @@ const likeThisBook = (book, currentUser) => {
 
     const thisBook = db.collection("books").doc(book.id);
 
-    const increment = firebase.firestore.FieldValue.increment(1);
-
     thisBook.update({ upvotes: increment });
-
-    // TODO: Create a separate likes collection and collect all of them there.
   } catch (e) {
     console.log(e.message);
   }
