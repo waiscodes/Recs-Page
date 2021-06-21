@@ -25,24 +25,27 @@ const addReadBook = (book) => {
   console.log(book);
 };
 
-const likeThisBook = async (book, currentUser) => {
+const likeThisBook = (book, currentUser) => {
   try {
+    db.collection("likes")
+      .add({
+        likedBy: currentUser,
+        likedOn: new Date(),
+      })
+      .then(() => {
+        console.log("book liked");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
     const thisBook = db.collection("books").doc(book.id);
 
     const increment = firebase.firestore.FieldValue.increment(1);
 
     thisBook.update({ upvotes: increment });
 
-    const likedByRoute = await thisBook.collection("likedBy").doc();
-
-    likedByRoute
-      .set({
-        uid: currentUser,
-        finishedOn: new Date(),
-      })
-      .then(() => {
-        console.log(book.upvotes);
-      });
+    // TODO: Create a separate likes collection and collect all of them there.
   } catch (e) {
     console.log(e.message);
   }
