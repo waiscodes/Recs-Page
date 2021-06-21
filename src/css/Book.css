@@ -48,3 +48,7 @@
   font-size: 13px;
   font-weight: 300;
 }
+
+.icon > span {
+  font-size: 14px;
+}
