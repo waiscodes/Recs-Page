@@ -11,7 +11,7 @@ import { useAuth } from "../../contexts/AuthContext";
 const BookDetails = ({ book, close }) => {
   const { currentUser } = useAuth();
 
-  const likeBook = (e) => {
+  const likeBook = () => {
     likeThisBook(book, currentUser.uid);
   };
 
@@ -58,7 +58,7 @@ const BookDetails = ({ book, close }) => {
             )}
             <div className='icon' onClick={likeBook}>
               <i className='far fa-heart'></i>
-              <span> {book.upvotes}</span>
+              <span> {book?.upvotes}</span>
               <p className='text-muted'>Like</p>
             </div>
             {book?.userId && (
