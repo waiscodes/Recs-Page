@@ -82,7 +82,6 @@ const addToFinishedList = async (book, currentUser) => {
           thumbnail: book.thumbnail,
           recBy: book.recBy,
           reason: book.reason,
-          upvotes: increment,
           uid: book.uid,
           createdAt: new Date(),
           // finished by section
