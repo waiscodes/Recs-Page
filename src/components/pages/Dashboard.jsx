@@ -45,7 +45,7 @@ const Dashboard = () => {
   };
 
   const getReviews = () => {
-    db.collection("reviews")
+    db.collection("finished")
       .where("uid", "==", currentUser.uid)
       .onSnapshot((snap) => {
         let result = snap.docs.map((doc) => ({
