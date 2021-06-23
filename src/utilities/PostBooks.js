@@ -74,19 +74,26 @@ const grabThisRec = (book, currentUser) => {
 const addToFinishedList = async (book, currentUser) => {
   if (window.confirm("Are you finished this book?")) {
     try {
-      const finishedByRoute = await db
-        .collection("books")
-        .doc(book.id)
-        .collection("finishedBy")
-        .doc();
-
-      finishedByRoute
-        .set({
-          uid: currentUser,
+      db.collection("finished")
+        .add({
+          bookLiked: book.id,
+          title: book.title,
+          author: book.author,
+          thumbnail: book.thumbnail,
+          recBy: book.recBy,
+          reason: book.reason,
+          upvotes: increment,
+          uid: book.uid,
+          createdAt: new Date(),
+          // finished by section
+          finishedBy: currentUser,
           finishedOn: new Date(),
         })
         .then(() => {
-          console.log("done");
+          console.log("book finished");
+        })
+        .catch((e) => {
+          console.log(e);
         });
     } catch (e) {
       console.log(e.message);
