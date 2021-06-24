@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CloseButton } from "react-bootstrap";
 import {
   likeThisBook,
@@ -13,6 +13,11 @@ const BookDetails = ({ book, close }) => {
   const { currentUser } = useAuth();
   const [isBookLiked, setIsBookLiked] = useState(false);
 
+  useEffect(() => {
+    checkIfBookIsLiked();
+    // eslint-disable-next-line
+  }, []);
+
   const checkIfBookIsLiked = () => {
     const likeId = book.id + currentUser.uid;
 
@@ -21,9 +26,9 @@ const BookDetails = ({ book, close }) => {
       .get()
       .then((snap) => {
         if (snap.data()) {
-          isBookLiked(true);
+          setIsBookLiked(true);
         } else {
-          isBookLiked(false);
+          setIsBookLiked(false);
         }
       });
   };
@@ -62,7 +67,7 @@ const BookDetails = ({ book, close }) => {
             <div className='icon' onClick={likeBook}>
               <i className='far fa-heart'></i>
               <span> {book?.upvotes}</span>
-              <p className='text-muted'>Like</p>
+              {isBookLiked && <p className='text-muted'>Like</p>}
             </div>
             {book?.userId && (
               <div className='icon' onClick={finishedBook}>
