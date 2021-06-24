@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CloseButton } from "react-bootstrap";
 import {
   likeThisBook,
@@ -6,10 +6,27 @@ import {
   addToFinishedList,
   deleteThisRec,
 } from "../../utilities/PostBooks";
+import { db } from "../../fire";
 import { useAuth } from "../../contexts/AuthContext";
 
 const BookDetails = ({ book, close }) => {
   const { currentUser } = useAuth();
+  const [isBookLiked, setIsBookLiked] = useState(false);
+
+  const checkIfBookIsLiked = () => {
+    const likeId = book.id + currentUser.uid;
+
+    db.collection("likes")
+      .doc(likeId)
+      .get()
+      .then((snap) => {
+        if (snap.data()) {
+          isBookLiked(true);
+        } else {
+          isBookLiked(false);
+        }
+      });
+  };
 
   const likeBook = () => {
     likeThisBook(book, currentUser.uid);
