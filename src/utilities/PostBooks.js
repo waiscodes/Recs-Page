@@ -27,28 +27,41 @@ const addReadBook = (book) => {
 
 const likeThisBook = (book, currentUser) => {
   const increment = firebase.firestore.FieldValue.increment(1);
+  const likeId = book.id + currentUser;
   try {
     db.collection("likes")
-      .add({
-        bookLiked: book.id,
-        title: book.title,
-        author: book.author,
-        thumbnail: book.thumbnail,
-        recBy: book.recBy,
-        reason: book.reason,
-        upvotes: increment,
-        uid: book.uid,
-        createdAt: new Date(),
-        // Liked by section
-        likedBy: currentUser,
-        likedOn: new Date(),
-      })
-      .then(() => {
-        console.log("book liked");
-      })
-      .catch((e) => {
-        console.log(e);
+      .doc(likeId)
+      .get()
+      .then((snap) => {
+        if (snap.data()) {
+          console.log(snap.data());
+        } else {
+          console.log("sorry don't got em");
+        }
       });
+
+    // db.collection("likes")
+    //   .doc(likeId)
+    //   .set({
+    //     bookLiked: book.id,
+    //     title: book.title,
+    //     author: book.author,
+    //     thumbnail: book.thumbnail,
+    //     recBy: book.recBy,
+    //     reason: book.reason,
+    //     upvotes: increment,
+    //     uid: book.uid,
+    //     createdAt: new Date(),
+    //     // Liked by section
+    //     likedBy: currentUser,
+    //     likedOn: new Date(),
+    //   })
+    //   .then(() => {
+    //     console.log("book liked");
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
 
     const thisBook = db.collection("books").doc(book.id);
 
@@ -74,6 +87,16 @@ const grabThisRec = (book, currentUser) => {
 const addToFinishedList = async (book, currentUser) => {
   if (window.confirm("Are you finished this book?")) {
     try {
+      db.collection("finished")
+        .doc(book.id)
+        .get()
+        .then((snap) => {
+          if (snap.exists) {
+            console.log("already finished");
+            return;
+          }
+        });
+
       db.collection("finished")
         .add({
           bookLiked: book.id,
