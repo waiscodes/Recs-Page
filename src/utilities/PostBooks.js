@@ -25,9 +25,8 @@ const addReadBook = (book) => {
   console.log(book);
 };
 
-const likeThisBook = (book, currentUser) => {
+const likeThisBook = (book, currentUser, likeId) => {
   const increment = firebase.firestore.FieldValue.increment(1);
-  const likeId = book.id + currentUser;
   try {
     db.collection("likes")
       .doc(likeId)
@@ -100,39 +99,44 @@ const addToFinishedList = async (book, currentUser) => {
   if (window.confirm("Are you finished this book?")) {
     try {
       db.collection("finished")
-        .doc(book.id)
+        .where("finishedBy", "==", currentUser)
         .get()
         .then((snap) => {
-          if (snap.exists) {
-            console.log("already finished");
+          if (snap.docs[0].data()) {
+            removeFromFinishedList(book.id);
             return;
+          } else {
+            console.log("book finished");
           }
         });
 
-      db.collection("finished")
-        .add({
-          bookLiked: book.id,
-          title: book.title,
-          author: book.author,
-          thumbnail: book.thumbnail,
-          recBy: book.recBy,
-          reason: book.reason,
-          uid: book.uid,
-          createdAt: new Date(),
-          // finished by section
-          finishedBy: currentUser,
-          finishedOn: new Date(),
-        })
-        .then(() => {
-          console.log("book finished");
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      // db.collection("finished")
+      //   .add({
+      //     title: book.title,
+      //     author: book.author,
+      //     thumbnail: book.thumbnail,
+      //     recBy: book.recBy,
+      //     reason: book.reason,
+      //     uid: book.uid,
+      //     createdAt: new Date(),
+      //     // finished by section
+      //     finishedBy: currentUser,
+      //     finishedOn: new Date(),
+      //   })
+      //   .then(() => {
+      //     console.log("book finished");
+      //   })
+      //   .catch((e) => {
+      //     console.log(e);
+      //   });
     } catch (e) {
       console.log(e.message);
     }
   }
+};
+
+const removeFromFinishedList = (bookId) => {
+  console.log(bookId + " removed from finished List");
 };
 
 const deleteThisRec = (book) => {
