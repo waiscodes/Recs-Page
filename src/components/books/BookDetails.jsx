@@ -76,7 +76,7 @@ const BookDetails = ({ book, close }) => {
                 <i className='far fa-heart'></i>
               )}
               <span> {book?.upvotes}</span>
-              <p className='text-muted'>Like</p>
+              <p className='text-muted'>{isBookLiked ? "Liked" : "Like"}</p>
             </div>
             {book?.userId && (
               <div className='icon' onClick={finishedBook}>
