@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import Signup from "./Signup";
 
 const Authentication = ({ handleClose, doesUserExist }) => {
   const [haveAccount, setHaveAccount] = useState(doesUserExist);
@@ -10,7 +10,7 @@ const Authentication = ({ handleClose, doesUserExist }) => {
       {haveAccount ? (
         <SignIn setAccount={setHaveAccount} handleClose={handleClose} />
       ) : (
-        <SignUp setAccount={setHaveAccount} handleClose={handleClose} />
+        <Signup setAccount={setHaveAccount} handleClose={handleClose} />
       )}
     </>
   );
