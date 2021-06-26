@@ -34,7 +34,12 @@ const BookDetails = ({ book, close }) => {
   };
 
   const likeBook = () => {
-    likeThisBook(book, currentUser.uid);
+    // check if book is already liked or not
+    if (isBookLiked) {
+      // Unlike this book
+    } else {
+      likeThisBook(book, currentUser.uid);
+    }
   };
 
   const grabRec = () => {
