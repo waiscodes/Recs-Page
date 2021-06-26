@@ -27,14 +27,14 @@ const Dashboard = () => {
   const [user, setUser] = useState();
   const { currentUser, getUserById } = useAuth();
   const [recs, setRecs] = useState();
-  const [reviews, setReviews] = useState();
+  const [finished, setFinished] = useState();
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     getUser();
     getRecs();
-    getReviews();
+    getFinished();
     // eslint-disable-next-line
   }, []);
 
@@ -44,7 +44,7 @@ const Dashboard = () => {
     setLoading(true);
   };
 
-  const getReviews = () => {
+  const getFinished = () => {
     db.collection("finished")
       .where("uid", "==", currentUser.uid)
       .onSnapshot((snap) => {
@@ -70,7 +70,7 @@ const Dashboard = () => {
           if (a.upvotes < b.upvotes) return +1;
           return 0;
         });
-        setReviews(result);
+        setFinished(result);
       });
   };
 
@@ -148,7 +148,7 @@ const Dashboard = () => {
               </BookMap>
             </Route>
             <Route path='/read'>
-              <BookMap books={reviews}>
+              <BookMap books={finished}>
                 <Recommend uid={currentUser.uid} />
               </BookMap>
             </Route>
