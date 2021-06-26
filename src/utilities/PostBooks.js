@@ -102,7 +102,7 @@ const addToFinishedList = async (book, currentUser) => {
         .where("finishedBy", "==", currentUser)
         .get()
         .then((snap) => {
-          if (snap.docs[0].data()) {
+          if (snap.docs[0]?.data()) {
             removeFromFinishedList(book.id);
             return;
           } else {
@@ -136,7 +136,15 @@ const addToFinishedList = async (book, currentUser) => {
 };
 
 const removeFromFinishedList = (bookId) => {
-  console.log(bookId + " removed from finished List");
+  db.collection("finished")
+    .doc(bookId)
+    .delete()
+    .then(() => {
+      console.log(bookId + " removed from finished List");
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 };
 
 const deleteThisRec = (book) => {
