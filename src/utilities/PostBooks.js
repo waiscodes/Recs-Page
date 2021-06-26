@@ -71,6 +71,18 @@ const likeThisBook = (book, currentUser) => {
   }
 };
 
+const unlikeThisBook = (book, likeId) => {
+  const decrement = firebase.firestore.FieldValue.increment(-1);
+
+  try {
+    db.collection("likes").doc(likeId).get().delete();
+
+    db.collection("books").doc(book.id).update({ upvotes: decrement });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const grabThisRec = (book, currentUser) => {
   if (window.confirm("Grab this recommendation to add to your TBR")) {
     try {
