@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CloseButton } from "react-bootstrap";
 import {
   likeThisBook,
+  unlikeThisBook,
   grabThisRec,
   addToFinishedList,
   deleteThisRec,
@@ -34,9 +35,10 @@ const BookDetails = ({ book, close }) => {
   };
 
   const likeBook = () => {
+    const likeId = book.id + currentUser.uid;
     // check if book is already liked or not
     if (isBookLiked) {
-      // Unlike this book
+      unlikeThisBook(book, likeId);
     } else {
       likeThisBook(book, currentUser.uid);
     }
