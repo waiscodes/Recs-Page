@@ -40,7 +40,7 @@ const BookDetails = ({ book, close }) => {
     if (isBookLiked) {
       unlikeThisBook(book, likeId);
     } else {
-      likeThisBook(book, currentUser.uid);
+      likeThisBook(book, currentUser.uid, likeId);
     }
   };
 
