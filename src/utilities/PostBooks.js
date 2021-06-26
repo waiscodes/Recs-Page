@@ -105,30 +105,28 @@ const addToFinishedList = async (book, currentUser) => {
           if (snap.docs[0]?.data()) {
             removeFromFinishedList(book.id);
             return;
-          } else {
-            console.log("book finished");
           }
         });
 
-      // db.collection("finished")
-      //   .add({
-      //     title: book.title,
-      //     author: book.author,
-      //     thumbnail: book.thumbnail,
-      //     recBy: book.recBy,
-      //     reason: book.reason,
-      //     uid: book.uid,
-      //     createdAt: new Date(),
-      //     // finished by section
-      //     finishedBy: currentUser,
-      //     finishedOn: new Date(),
-      //   })
-      //   .then(() => {
-      //     console.log("book finished");
-      //   })
-      //   .catch((e) => {
-      //     console.log(e);
-      //   });
+      db.collection("finished")
+        .add({
+          title: book.title,
+          author: book.author,
+          thumbnail: book.thumbnail,
+          recBy: book.recBy,
+          reason: book.reason,
+          uid: book.uid,
+          createdAt: new Date(),
+          // finished by section
+          finishedBy: currentUser,
+          finishedOn: new Date(),
+        })
+        .then(() => {
+          console.log("book finished");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     } catch (e) {
       console.log(e.message);
     }
