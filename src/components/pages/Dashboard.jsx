@@ -28,6 +28,7 @@ const Dashboard = () => {
   const { currentUser, getUserById } = useAuth();
   const [recs, setRecs] = useState();
   const [finished, setFinished] = useState();
+  const [likes, setLikes] = useState();
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -37,6 +38,7 @@ const Dashboard = () => {
     getUser();
     getRecs();
     getFinished();
+    getLikes();
     // eslint-disable-next-line
   }, []);
 
@@ -74,6 +76,37 @@ const Dashboard = () => {
           return 0;
         });
         setFinished(result);
+      });
+  };
+
+  const getLikes = () => {
+    db.collection("likes")
+      .where("uid", "==", currentUser.uid)
+      .onSnapshot((snap) => {
+        let result = snap.docs.map((doc) => ({
+          id: doc.id,
+          uid: doc.data().uid,
+          title: doc.data().title,
+          author: doc.data().author,
+          recBy: doc.data().recBy,
+          reason: doc.data().reason,
+          thumbnail: doc.data().thumbnail,
+          upvotes: doc.data().upvotes,
+          createdAt: doc.data().createdAt,
+          profileCompleted: doc.data().profileCompleted,
+          userId: doc.data().uid,
+        }));
+        result.sort((a, b) => {
+          if (a.createdAt > b.createdAt) return -1;
+          if (a.createdAt < b.createdAt) return +1;
+          return 0;
+        });
+        result.sort((a, b) => {
+          if (a.upvotes > b.upvotes) return -1;
+          if (a.upvotes < b.upvotes) return +1;
+          return 0;
+        });
+        setLikes(result);
       });
   };
 
@@ -170,6 +203,11 @@ const Dashboard = () => {
             </Route>
             <Route path='/home/finished'>
               <BookMap books={finished} isBookFinished={true}>
+                <Recommend uid={currentUser.uid} />
+              </BookMap>
+            </Route>
+            <Route path='/home/likes'>
+              <BookMap books={likes} isBookFinished={false}>
                 <Recommend uid={currentUser.uid} />
               </BookMap>
             </Route>
