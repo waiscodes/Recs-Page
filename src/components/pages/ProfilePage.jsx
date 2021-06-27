@@ -20,6 +20,8 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+  const isCurrentPage = window.location.pathname;
+
   useEffect(() => {
     if (!currentUser) {
       anonSignIn();
@@ -118,10 +120,21 @@ const ProfilePage = () => {
           <hr />
           <Container className='books-map'>
             <MapNav>
-              <li>
+              <li
+                className={
+                  !isCurrentPage.includes("/finished") &&
+                  !isCurrentPage.includes("/likes")
+                    ? "current-page"
+                    : ""
+                }
+              >
                 <Link to={`/${profileUrl}`}>TBR</Link>
               </li>
-              <li>
+              <li
+                className={
+                  isCurrentPage.includes("/finished") ? "current-page" : ""
+                }
+              >
                 <Link to={`/${profileUrl}/finished`}>Finished</Link>
               </li>
             </MapNav>
