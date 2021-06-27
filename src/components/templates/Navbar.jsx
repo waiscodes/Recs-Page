@@ -39,7 +39,7 @@ const MyNavbar = () => {
         {currentUser ? (
           <Nav className='ml-auto'>
             <Nav.Link href='/home'>Home</Nav.Link>
-            <Nav.Link href='/welcome' onClick={() => signOut()}>
+            <Nav.Link href='/' onClick={() => signOut()}>
               Logout
             </Nav.Link>
           </Nav>

@@ -19,7 +19,7 @@ const App = () => {
           <Container className='container'>
             <Switch>
               <PrivateRoute path='/home' component={Dashboard} />
-              <Route path='/welcome' component={Welcome} />
+              <Route exact path='/' component={Welcome} />
               <Route path='/404/:username' component={NotFound404} />
               <Route path='/:profileUrl' component={ProfilePage} />
             </Switch>
