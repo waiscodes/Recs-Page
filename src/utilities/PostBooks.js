@@ -24,10 +24,6 @@ const recBook = (book) => {
   }
 };
 
-const addReadBook = (book) => {
-  console.log(book);
-};
-
 const likeThisBook = (book, currentUser, likeId) => {
   const increment = firebase.firestore.FieldValue.increment(1);
   try {
@@ -167,7 +163,6 @@ const deleteThisRec = (book) => {
 
 export {
   recBook,
-  addReadBook,
   likeThisBook,
   unlikeThisBook,
   addToFinishedList,
