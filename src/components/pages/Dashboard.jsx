@@ -31,6 +31,8 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  const isCurrentPage = window.location.pathname;
+
   useEffect(() => {
     getUser();
     getRecs();
@@ -135,10 +137,10 @@ const Dashboard = () => {
 
           <Container className='books-map'>
             <MapNav>
-              <li>
+              <li className={isCurrentPage}>
                 <Link to='/home'>TBR</Link>
               </li>
-              <li>
+              <li className={isCurrentPage}>
                 <Link to='/home/finished'>Finished</Link>
               </li>
             </MapNav>
