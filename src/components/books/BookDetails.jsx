@@ -49,7 +49,11 @@ const BookDetails = ({ book, isBookFinished, close }) => {
   };
 
   const finishedBook = () => {
-    addToFinishedList(book, currentUser.uid);
+    if (isBookFinished) {
+      // remove from finished list
+    } else {
+      addToFinishedList(book, currentUser.uid);
+    }
   };
 
   const deleteRec = () => {
