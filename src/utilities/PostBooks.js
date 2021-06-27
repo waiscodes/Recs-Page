@@ -121,6 +121,8 @@ const addToFinishedList = async (book, currentUser) => {
       console.log(e.message);
     }
   }
+
+  // TODO: Once you finish
 };
 
 const removeFromFinishedList = (book) => {
@@ -139,6 +141,8 @@ const removeFromFinishedList = (book) => {
         console.log(e);
       });
   }
+
+  // TODO: Once you finish removing from finished list, add to recs list
 };
 
 const deleteThisRec = (book) => {
