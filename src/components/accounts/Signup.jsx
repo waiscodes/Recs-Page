@@ -29,7 +29,7 @@ const SignUp = ({ setAccount, handleClose }) => {
         passwordRef.current.value
       );
       setLoading(false);
-      history.push("/");
+      history.push("/home");
       handleClose();
     } catch {
       setError("Failed to create account");

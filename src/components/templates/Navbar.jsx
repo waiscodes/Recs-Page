@@ -32,13 +32,13 @@ const MyNavbar = () => {
 
       <Navbar bg='dark' variant='dark' className='navbar' sticky='top'>
         <Navbar.Brand>
-          <Link to='/' className='remove-href'>
+          <Link to='/home' className='remove-href'>
             Recs <span>page</span>
           </Link>
         </Navbar.Brand>
         {currentUser ? (
           <Nav className='ml-auto'>
-            <Nav.Link href='/'>Home</Nav.Link>
+            <Nav.Link href='/home'>Home</Nav.Link>
             <Nav.Link href='/welcome' onClick={() => signOut()}>
               Logout
             </Nav.Link>

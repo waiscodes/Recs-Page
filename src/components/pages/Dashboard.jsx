@@ -135,7 +135,7 @@ const Dashboard = () => {
           <Container className='books-map'>
             <MapNav>
               <li>
-                <Link to='/'>TBR</Link>
+                <Link to='/home'>TBR</Link>
               </li>
               <li>
                 <Link to='/read'>Read</Link>
