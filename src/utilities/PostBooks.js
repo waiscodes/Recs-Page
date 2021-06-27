@@ -117,13 +117,11 @@ const removeFromFinishedList = (book, close) => {
 };
 
 const deleteThisRec = (book) => {
-  db.collection("books")
-    .doc(book.id)
-    .delete()
-    .then((e) => console.log("deleted successfully"))
-    .catch((e) => {
-      console.log(e);
-    });
+  try {
+    db.collection("books").doc(book.id).delete();
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export {
