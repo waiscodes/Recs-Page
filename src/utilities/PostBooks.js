@@ -27,32 +27,22 @@ const recBook = (book) => {
 const likeThisBook = (book, currentUser, likeId) => {
   const increment = firebase.firestore.FieldValue.increment(1);
   try {
-    db.collection("likes")
-      .doc(likeId)
-      .set({
-        bookLiked: book.id,
-        title: book.title,
-        author: book.author,
-        thumbnail: book.thumbnail,
-        recBy: book.recBy,
-        reason: book.reason,
-        upvotes: increment,
-        uid: book.uid,
-        createdAt: new Date(),
-        // Liked by section
-        likedBy: currentUser,
-        likedOn: new Date(),
-      })
-      .then(() => {
-        console.log("book liked");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    db.collection("likes").doc(likeId).set({
+      bookLiked: book.id,
+      title: book.title,
+      author: book.author,
+      thumbnail: book.thumbnail,
+      recBy: book.recBy,
+      reason: book.reason,
+      upvotes: increment,
+      uid: book.uid,
+      createdAt: new Date(),
+      // Liked by section
+      likedBy: currentUser,
+      likedOn: new Date(),
+    });
 
-    const thisBook = db.collection("books").doc(book.id);
-
-    thisBook.update({ upvotes: increment });
+    db.collection("books").doc(book.id).update({ upvotes: increment });
   } catch (e) {
     console.log(e.message);
   }
