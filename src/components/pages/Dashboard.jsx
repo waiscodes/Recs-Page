@@ -137,10 +137,18 @@ const Dashboard = () => {
 
           <Container className='books-map'>
             <MapNav>
-              <li className={isCurrentPage}>
+              <li
+                className={
+                  !isCurrentPage.includes("/finished") ? "current-page" : ""
+                }
+              >
                 <Link to='/home'>TBR</Link>
               </li>
-              <li className={isCurrentPage}>
+              <li
+                className={
+                  isCurrentPage.includes("/finished") ? "current-page" : ""
+                }
+              >
                 <Link to='/home/finished'>Finished</Link>
               </li>
             </MapNav>
