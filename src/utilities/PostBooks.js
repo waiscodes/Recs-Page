@@ -2,7 +2,12 @@ import { db } from "../fire";
 import firebase from "firebase";
 
 const recBook = (book) => {
-  console.log(book);
+  let upvotes;
+  if (book.upvotes) {
+    upvotes = book.upvotes;
+  } else {
+    upvotes = 0;
+  }
   db.collection("books")
     .add({
       title: book.title,
@@ -10,7 +15,7 @@ const recBook = (book) => {
       thumbnail: book.thumbnail,
       recBy: book.recBy,
       reason: book.reason,
-      upvotes: 0,
+      upvotes: upvotes,
       uid: book.uid,
       createdAt: new Date(),
     })
@@ -97,6 +102,7 @@ const grabThisRec = (book, currentUser) => {
 };
 
 const addToFinishedList = async (book, currentUser, close) => {
+  console.log(book);
   if (window.confirm("Are you finished this book?")) {
     try {
       db.collection("finished")
@@ -130,6 +136,7 @@ const addToFinishedList = async (book, currentUser, close) => {
 };
 
 const removeFromFinishedList = (book, close) => {
+  console.log(book);
   if (
     window.confirm(
       "Are you sure you want to remove from this from finished list?"
