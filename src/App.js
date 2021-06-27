@@ -18,7 +18,7 @@ const App = () => {
           <MyNavbar />
           <Container className='container'>
             <Switch>
-              <PrivateRoute exact path='/' component={Dashboard} />
+              <PrivateRoute path='/home' component={Dashboard} />
               <Route path='/welcome' component={Welcome} />
               <Route path='/404/:username' component={NotFound404} />
               <Route path='/:profileUrl' component={ProfilePage} />
