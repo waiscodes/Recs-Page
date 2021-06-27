@@ -29,17 +29,6 @@ const likeThisBook = (book, currentUser, likeId) => {
   try {
     db.collection("likes")
       .doc(likeId)
-      .get()
-      .then((snap) => {
-        if (snap.data()) {
-          console.log(snap.data());
-        } else {
-          console.log("sorry don't got em");
-        }
-      });
-
-    db.collection("likes")
-      .doc(likeId)
       .set({
         bookLiked: book.id,
         title: book.title,
