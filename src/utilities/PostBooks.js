@@ -124,15 +124,21 @@ const addToFinishedList = async (book, currentUser) => {
 };
 
 const removeFromFinishedList = (book) => {
-  db.collection("finished")
-    .doc(book.id)
-    .delete()
-    .then(() => {
-      console.log(book.id + " removed from finished List");
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+  if (
+    window.confirm(
+      "Are you sure you want to remove from this from finished list?"
+    )
+  ) {
+    db.collection("finished")
+      .doc(book.id)
+      .delete()
+      .then(() => {
+        console.log(book.id + " removed from finished List");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
 };
 
 const deleteThisRec = (book) => {
