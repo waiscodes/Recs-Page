@@ -144,12 +144,12 @@ const Dashboard = () => {
             </MapNav>
 
             <Route exact path='/home/'>
-              <BookMap books={recs}>
+              <BookMap books={recs} isBookFinished={false}>
                 <Recommend uid={currentUser.uid} />
               </BookMap>
             </Route>
             <Route path='/home/finished'>
-              <BookMap books={finished}>
+              <BookMap books={finished} isBookFinished={true}>
                 <Recommend uid={currentUser.uid} />
               </BookMap>
             </Route>

@@ -10,7 +10,7 @@ import {
 import { db } from "../../fire";
 import { useAuth } from "../../contexts/AuthContext";
 
-const BookDetails = ({ book, close }) => {
+const BookDetails = ({ book, isBookFinished, close }) => {
   const { currentUser } = useAuth();
   const [isBookLiked, setIsBookLiked] = useState(false);
 
@@ -82,7 +82,11 @@ const BookDetails = ({ book, close }) => {
             </div>
             {book?.userId && (
               <div className='icon' onClick={finishedBook}>
-                <i className='far fa-check-square'></i>
+                {isBookFinished ? (
+                  <i class='fas fa-check-square'></i>
+                ) : (
+                  <i className='far fa-check-square'></i>
+                )}
                 <p className='text-muted'>Done</p>
               </div>
             )}

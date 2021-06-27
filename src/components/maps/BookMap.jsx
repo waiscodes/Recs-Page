@@ -5,7 +5,7 @@ import "../../css/BookMap.css";
 import DisplayModal from "../DisplayModal";
 import BookDetails from "../books/BookDetails";
 
-const BookMap = ({ books, children }) => {
+const BookMap = ({ books, isBookFinished, children }) => {
   const [showModal, setShowModal] = useState(false);
   const [displayBook, setDisplayBook] = useState(null);
 
@@ -33,7 +33,11 @@ const BookMap = ({ books, children }) => {
       {children}
 
       <DisplayModal show={showModal} handleClose={handleClose}>
-        <BookDetails book={displayBook} close={handleClose} />
+        <BookDetails
+          book={displayBook}
+          close={handleClose}
+          isBookFinished={isBookFinished}
+        />
       </DisplayModal>
 
       <h6>
