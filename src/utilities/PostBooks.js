@@ -77,26 +77,19 @@ const addToFinishedList = async (book, currentUser, close) => {
   console.log(book);
   if (window.confirm("Are you finished this book?")) {
     try {
-      db.collection("finished")
-        .add({
-          title: book.title,
-          author: book.author,
-          thumbnail: book.thumbnail,
-          recBy: book.recBy,
-          reason: book.reason,
-          uid: book.uid,
-          createdAt: new Date(),
-          upvotes: book.upvotes,
-          // finished by section
-          finishedBy: currentUser,
-          finishedOn: new Date(),
-        })
-        .then(() => {
-          console.log("book finished");
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      db.collection("finished").add({
+        title: book.title,
+        author: book.author,
+        thumbnail: book.thumbnail,
+        recBy: book.recBy,
+        reason: book.reason,
+        uid: book.uid,
+        createdAt: new Date(),
+        upvotes: book.upvotes,
+        // finished by section
+        finishedBy: currentUser,
+        finishedOn: new Date(),
+      });
     } catch (e) {
       console.log(e.message);
     }
