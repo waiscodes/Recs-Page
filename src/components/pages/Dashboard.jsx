@@ -139,7 +139,10 @@ const Dashboard = () => {
             <MapNav>
               <li
                 className={
-                  !isCurrentPage.includes("/finished") ? "current-page" : ""
+                  !isCurrentPage.includes("/finished") &&
+                  !isCurrentPage.includes("/likes")
+                    ? "current-page"
+                    : ""
                 }
               >
                 <Link to='/home'>TBR</Link>
@@ -150,6 +153,13 @@ const Dashboard = () => {
                 }
               >
                 <Link to='/home/finished'>Finished</Link>
+              </li>
+              <li
+                className={
+                  isCurrentPage.includes("/likes") ? "current-page" : ""
+                }
+              >
+                <Link to='/home/likes'>Likes</Link>
               </li>
             </MapNav>
 
