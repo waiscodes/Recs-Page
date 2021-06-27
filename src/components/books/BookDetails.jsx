@@ -5,6 +5,7 @@ import {
   unlikeThisBook,
   grabThisRec,
   addToFinishedList,
+  removeFromFinishedList,
   deleteThisRec,
 } from "../../utilities/PostBooks";
 import { db } from "../../fire";
@@ -51,6 +52,7 @@ const BookDetails = ({ book, isBookFinished, close }) => {
   const finishedBook = () => {
     if (isBookFinished) {
       // remove from finished list
+      removeFromFinishedList(book);
     } else {
       addToFinishedList(book, currentUser.uid);
     }
@@ -87,7 +89,7 @@ const BookDetails = ({ book, isBookFinished, close }) => {
             {book?.userId && (
               <div className='icon' onClick={finishedBook}>
                 {isBookFinished ? (
-                  <i class='fas fa-check-square'></i>
+                  <i className='fas fa-check-square'></i>
                 ) : (
                   <i className='far fa-check-square'></i>
                 )}

@@ -99,16 +99,6 @@ const addToFinishedList = async (book, currentUser) => {
   if (window.confirm("Are you finished this book?")) {
     try {
       db.collection("finished")
-        .where("finishedBy", "==", currentUser)
-        .get()
-        .then((snap) => {
-          if (snap.docs[0]?.data()) {
-            removeFromFinishedList(book.id);
-            return;
-          }
-        });
-
-      db.collection("finished")
         .add({
           title: book.title,
           author: book.author,
@@ -133,12 +123,12 @@ const addToFinishedList = async (book, currentUser) => {
   }
 };
 
-const removeFromFinishedList = (bookId) => {
+const removeFromFinishedList = (book) => {
   db.collection("finished")
-    .doc(bookId)
+    .doc(book.id)
     .delete()
     .then(() => {
-      console.log(bookId + " removed from finished List");
+      console.log(book.id + " removed from finished List");
     })
     .catch((e) => {
       console.log(e);
@@ -161,6 +151,7 @@ export {
   likeThisBook,
   unlikeThisBook,
   addToFinishedList,
+  removeFromFinishedList,
   grabThisRec,
   deleteThisRec,
 };
