@@ -95,7 +95,6 @@ const addToFinishedList = async (book, currentUser, close) => {
     }
   }
 
-  // TODO: Once you finish
   deleteThisRec(book);
   close();
 };
@@ -108,18 +107,12 @@ const removeFromFinishedList = (book, close) => {
     )
   ) {
     try {
-      db.collection("finished")
-        .doc(book.id)
-        .delete()
-        .then(() => {
-          console.log(book.id + " removed from finished List");
-          recBook(book);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      db.collection("finished").doc(book.id).delete();
+
       close();
-    } catch {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 };
 
