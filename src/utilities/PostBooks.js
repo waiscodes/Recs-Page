@@ -8,8 +8,8 @@ const recBook = (book) => {
   } else {
     upvotes = 0;
   }
-  db.collection("books")
-    .add({
+  try {
+    db.collection("books").add({
       title: book.title,
       author: book.author,
       thumbnail: book.thumbnail,
@@ -18,13 +18,10 @@ const recBook = (book) => {
       upvotes: upvotes,
       uid: book.uid,
       createdAt: new Date(),
-    })
-    .then((e) => {
-      console.log("gottem");
-    })
-    .catch((e) => {
-      console.log(e);
     });
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const addReadBook = (book) => {
