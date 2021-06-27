@@ -122,7 +122,7 @@ const ProfilePage = () => {
                 <Link to={`/${profileUrl}`}>TBR</Link>
               </li>
               <li>
-                <Link to={`/${profileUrl}/read`}>Read</Link>
+                <Link to={`/${profileUrl}/finished`}>Finished</Link>
               </li>
             </MapNav>
 
@@ -131,8 +131,8 @@ const ProfilePage = () => {
                 <Recommend uid={userProfile.uid} />
               </BookMap>
             </Route>
-            <Route path={`/${profileUrl}/read`}>
-              <BookMap books={recs} />
+            <Route path={`/${profileUrl}/finished`}>
+              <BookMap books={finished} />
             </Route>
 
             <p className='no-books'>
