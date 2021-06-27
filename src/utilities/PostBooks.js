@@ -2,6 +2,7 @@ import { db } from "../fire";
 import firebase from "firebase";
 
 const recBook = (book) => {
+  console.log(book);
   db.collection("books")
     .add({
       title: book.title,
@@ -107,6 +108,7 @@ const addToFinishedList = async (book, currentUser) => {
           reason: book.reason,
           uid: book.uid,
           createdAt: new Date(),
+          upvotes: book.upvotes,
           // finished by section
           finishedBy: currentUser,
           finishedOn: new Date(),
@@ -123,6 +125,8 @@ const addToFinishedList = async (book, currentUser) => {
   }
 
   // TODO: Once you finish
+  // deleteThisRec(book);
+  console.log(book);
 };
 
 const removeFromFinishedList = (book) => {
@@ -131,18 +135,19 @@ const removeFromFinishedList = (book) => {
       "Are you sure you want to remove from this from finished list?"
     )
   ) {
-    db.collection("finished")
-      .doc(book.id)
-      .delete()
-      .then(() => {
-        console.log(book.id + " removed from finished List");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    try {
+      recBook(book);
+      // db.collection("finished")
+      //   .doc(book.id)
+      //   .delete()
+      //   .then(() => {
+      //     console.log(book.id + " removed from finished List");
+      //   })
+      //   .catch((e) => {
+      //     console.log(e);
+      //   });
+    } catch {}
   }
-
-  // TODO: Once you finish removing from finished list, add to recs list
 };
 
 const deleteThisRec = (book) => {
