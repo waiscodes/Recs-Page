@@ -187,13 +187,13 @@ const Dashboard = () => {
               >
                 <Link to='/home/finished'>Finished</Link>
               </li>
-              <li
+              {/* <li
                 className={
                   isCurrentPage.includes("/likes") ? "current-page" : ""
                 }
               >
                 <Link to='/home/likes'>Likes</Link>
-              </li>
+              </li> */}
             </MapNav>
 
             <Route exact path='/home/'>
