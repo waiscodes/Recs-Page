@@ -4,7 +4,9 @@ import "../../css/MapNav.css";
 const MapNav = ({ children }) => {
   return (
     <>
-      <nav className='map-nav'>{/* <ul>{children}</ul> */}</nav>
+      <nav className='map-nav'>
+        <ul>{children}</ul>
+      </nav>
     </>
   );
 };

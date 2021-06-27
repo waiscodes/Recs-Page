@@ -139,7 +139,7 @@ const Dashboard = () => {
                 <Link to='/home'>TBR</Link>
               </li>
               <li>
-                <Link to='/read'>Read</Link>
+                <Link to='/home/finished'>Finished</Link>
               </li>
             </MapNav>
 
