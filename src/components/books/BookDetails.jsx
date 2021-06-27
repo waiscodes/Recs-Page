@@ -52,9 +52,9 @@ const BookDetails = ({ book, isBookFinished, close }) => {
   const finishedBook = () => {
     if (isBookFinished) {
       // remove from finished list
-      removeFromFinishedList(book);
+      removeFromFinishedList(book, close);
     } else {
-      addToFinishedList(book, currentUser.uid);
+      addToFinishedList(book, currentUser.uid, close);
     }
   };
 

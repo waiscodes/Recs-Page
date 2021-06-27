@@ -96,7 +96,7 @@ const grabThisRec = (book, currentUser) => {
   }
 };
 
-const addToFinishedList = async (book, currentUser) => {
+const addToFinishedList = async (book, currentUser, close) => {
   if (window.confirm("Are you finished this book?")) {
     try {
       db.collection("finished")
@@ -125,27 +125,28 @@ const addToFinishedList = async (book, currentUser) => {
   }
 
   // TODO: Once you finish
-  // deleteThisRec(book);
-  console.log(book);
+  deleteThisRec(book);
+  close();
 };
 
-const removeFromFinishedList = (book) => {
+const removeFromFinishedList = (book, close) => {
   if (
     window.confirm(
       "Are you sure you want to remove from this from finished list?"
     )
   ) {
     try {
-      recBook(book);
-      // db.collection("finished")
-      //   .doc(book.id)
-      //   .delete()
-      //   .then(() => {
-      //     console.log(book.id + " removed from finished List");
-      //   })
-      //   .catch((e) => {
-      //     console.log(e);
-      //   });
+      db.collection("finished")
+        .doc(book.id)
+        .delete()
+        .then(() => {
+          console.log(book.id + " removed from finished List");
+          recBook(book);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      close();
     } catch {}
   }
 };
