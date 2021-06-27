@@ -16,6 +16,7 @@ const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState();
   const { currentUser, getUserByUsername } = useAuth();
   const [recs, setRecs] = useState();
+  const [finished, setFinished] = useState();
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -38,10 +39,40 @@ const ProfilePage = () => {
     if (user) {
       setUserProfile(user);
       getRecs(user);
+      getFinishedBooks(user);
       setLoading(true);
     } else {
       history.push(`/404/${username}`);
     }
+  };
+
+  const getFinishedBooks = (user) => {
+    db.collection("finished")
+      .where("uid", "==", user.uid)
+      .onSnapshot((snap) => {
+        let result = snap.docs.map((doc) => ({
+          id: doc.id,
+          uid: doc.data().uid,
+          title: doc.data().title,
+          author: doc.data().author,
+          recBy: doc.data().recBy,
+          reason: doc.data().reason,
+          thumbnail: doc.data().thumbnail,
+          upvotes: doc.data().upvotes,
+          createdAt: doc.data().createdAt,
+        }));
+        result.sort((a, b) => {
+          if (a.createdAt.seconds > b.createdAt.seconds) return -1;
+          if (a.createdAt.seconds < b.createdAt.seconds) return +1;
+          return 0;
+        });
+        result.sort((a, b) => {
+          if (a.upvotes > b.upvotes) return -1;
+          if (a.upvotes < b.upvotes) return +1;
+          return 0;
+        });
+        setFinished(result);
+      });
   };
 
   const getRecs = (user) => {
