@@ -10,18 +10,18 @@ import MapNav from "../templates/MapNav";
 import "../../css/Dashboard.css";
 import EditProfile from "../accounts/EditProfile";
 import DisplayModal from "../DisplayModal";
-// import {
-//   TwitterShareButton,
-//   TwitterIcon,
-//   WhatsappShareButton,
-//   WhatsappIcon,
-//   FacebookMessengerShareButton,
-//   FacebookMessengerIcon,
-//   LinkedinIcon,
-//   LinkedinShareButton,
-//   TelegramShareButton,
-//   TelegramIcon,
-// } from "react-share";
+import {
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  LinkedinIcon,
+  LinkedinShareButton,
+  TelegramShareButton,
+  TelegramIcon,
+} from "react-share";
 
 const Dashboard = () => {
   const [user, setUser] = useState();
@@ -163,6 +163,9 @@ const Dashboard = () => {
             >
               Edit Profile
             </Button>
+            <TwitterShareButton url={"https://recs.page/" + user?.username}>
+              <TwitterIcon size={32} round={true} />
+            </TwitterShareButton>
             <DisplayModal show={showModal} handleClose={handleClose}>
               <EditProfile handleClose={handleClose} />
             </DisplayModal>
