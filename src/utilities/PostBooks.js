@@ -100,7 +100,6 @@ const addToFinishedList = async (book, currentUser, close) => {
 };
 
 const removeFromFinishedList = (book, close) => {
-  console.log(book);
   if (
     window.confirm(
       "Are you sure you want to remove from this from finished list?"
