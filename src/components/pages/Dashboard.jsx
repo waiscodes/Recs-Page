@@ -15,10 +15,6 @@ import {
   TwitterIcon,
   WhatsappShareButton,
   WhatsappIcon,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
-  LinkedinIcon,
-  LinkedinShareButton,
   TelegramShareButton,
   TelegramIcon,
 } from "react-share";
