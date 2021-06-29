@@ -21,7 +21,7 @@ const BookDetails = ({ book, isBookFinished, close }) => {
   }, []);
 
   const checkIfBookIsLiked = () => {
-    const likeId = book.id + currentUser.uid;
+    const likeId = book.id + currentUser?.uid;
 
     db.collection("likes")
       .doc(likeId)
@@ -36,17 +36,22 @@ const BookDetails = ({ book, isBookFinished, close }) => {
   };
 
   const likeBook = () => {
-    const likeId = book.id + currentUser.uid;
+    // Anon users can't like
+    if (!currentUser) return;
+    const likeId = book.id + currentUser?.uid;
     // check if book is already liked or not
     if (isBookLiked) {
       unlikeThisBook(book, likeId);
     } else {
-      likeThisBook(book, currentUser.uid, likeId);
+      likeThisBook(book, currentUser?.uid, likeId);
     }
   };
 
   const grabRec = () => {
-    grabThisRec(book, currentUser.uid);
+    // Anon users can't grab rec
+    if (!currentUser) return;
+
+    grabThisRec(book, currentUser?.uid);
   };
 
   const finishedBook = () => {
@@ -54,7 +59,7 @@ const BookDetails = ({ book, isBookFinished, close }) => {
       // remove from finished list
       removeFromFinishedList(book, close);
     } else {
-      addToFinishedList(book, currentUser.uid, close);
+      addToFinishedList(book, currentUser?.uid, close);
     }
   };
 
