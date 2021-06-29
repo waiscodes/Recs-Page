@@ -156,11 +156,6 @@ const Dashboard = () => {
       {loading && (
         <Card>
           <Profile user={user}>
-            <TwitterShareButton
-              url={"Rec me a book https://recs.page/" + user?.username}
-            >
-              <TwitterIcon size={35} round={true} />
-            </TwitterShareButton>
             <Button
               variant='outline-primary'
               className='rounded-pill'
@@ -168,12 +163,21 @@ const Dashboard = () => {
             >
               Edit Profile
             </Button>
-
+            <TwitterShareButton
+              url={"Rec me a book https://recs.page/" + user?.username}
+            >
+              <TwitterIcon size={37} round={true} />
+            </TwitterShareButton>
             <WhatsappShareButton
               url={"Rec me a book https://recs.page/" + user?.username}
             >
-              <WhatsappIcon size={35} round={true} />
+              <WhatsappIcon size={37} round={true} />
             </WhatsappShareButton>
+            <TelegramShareButton
+              url={"Rec me a book https://recs.page/" + user?.username}
+            >
+              <TelegramIcon size={37} round={true} />
+            </TelegramShareButton>
             <DisplayModal show={showModal} handleClose={handleClose}>
               <EditProfile handleClose={handleClose} />
             </DisplayModal>
