@@ -128,7 +128,7 @@ const ProfilePage = () => {
                     : ""
                 }
               >
-                <Link to={`/${profileUrl}`}>TBR</Link>
+                <Link to={`/${profileUrl}`}>Recs TBR</Link>
               </li>
               <li
                 className={

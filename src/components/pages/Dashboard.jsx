@@ -193,7 +193,7 @@ const Dashboard = () => {
                     : ""
                 }
               >
-                <Link to='/home'>TBR</Link>
+                <Link to='/home'>Recs TBR</Link>
               </li>
               <li
                 className={
