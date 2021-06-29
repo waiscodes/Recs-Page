@@ -109,6 +109,7 @@ const removeFromFinishedList = (book, close) => {
     try {
       db.collection("finished").doc(book.id).delete();
 
+      recBook(book);
       close();
     } catch (e) {
       console.log(e);
