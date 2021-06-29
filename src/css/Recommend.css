@@ -14,3 +14,8 @@
 .books-result {
   overflow: scroll;
 }
+
+.results-spinner {
+  border: solid;
+  height: 200px;
+}
