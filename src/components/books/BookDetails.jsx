@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CloseButton } from "react-bootstrap";
+import { CloseButton, Alert } from "react-bootstrap";
 import {
   likeThisBook,
   unlikeThisBook,
@@ -14,6 +14,7 @@ import { useAuth } from "../../contexts/AuthContext";
 const BookDetails = ({ book, isBookFinished, close }) => {
   const { currentUser } = useAuth();
   const [isBookLiked, setIsBookLiked] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     checkIfBookIsLiked();
@@ -37,7 +38,10 @@ const BookDetails = ({ book, isBookFinished, close }) => {
 
   const likeBook = () => {
     // Anon users can't like
-    if (!currentUser) return;
+    if (!currentUser) {
+      setError("Must have an account to like book.");
+      return;
+    }
     const likeId = book.id + currentUser?.uid;
     // check if book is already liked or not
     if (isBookLiked) {
@@ -49,7 +53,10 @@ const BookDetails = ({ book, isBookFinished, close }) => {
 
   const grabRec = () => {
     // Anon users can't grab rec
-    if (!currentUser) return;
+    if (!currentUser) {
+      setError("Must have an account to grab this rec.");
+      return;
+    }
 
     grabThisRec(book, currentUser?.uid);
   };
@@ -71,6 +78,7 @@ const BookDetails = ({ book, isBookFinished, close }) => {
   return (
     <>
       <CloseButton onClick={close}>Close</CloseButton>
+      {error && <Alert variant='danger'>{error}</Alert>}
       <h4 className='book-title'>{book?.title}</h4>
       <div className='book-detail' onDoubleClick={likeBook}>
         <div className='thumbnail-div'>
