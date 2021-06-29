@@ -74,7 +74,6 @@ const grabThisRec = (book, currentUser) => {
 };
 
 const addToFinishedList = async (book, currentUser, close) => {
-  console.log(book);
   if (window.confirm("Are you finished this book?")) {
     try {
       db.collection("finished").add({
