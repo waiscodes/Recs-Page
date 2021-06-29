@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { Container, Form, Button, Alert } from "react-bootstrap";
+import { Container, Form, Button, Alert, Spinner } from "react-bootstrap";
 import axios from "axios";
 import debounce from "lodash.debounce";
 import "../../css/Recommend.css";
@@ -16,6 +16,7 @@ const Recommend = (props) => {
   const [selectBook, setSelectBook] = useState(false);
   const [selectedBookDesc, setSelectedBookDesc] = useState(false);
   const [highlightedBook, setHighlightedBook] = useState(false);
+  const [loading, setLoading] = useState();
 
   const pickBook = (e) => {
     setShowForm(true);
@@ -46,6 +47,7 @@ const Recommend = (props) => {
         .get(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
         .then((res) => {
           if (res.data.items) {
+            setLoading(false);
             setResult(res.data.items.slice(0, 5));
           }
         });
@@ -56,6 +58,7 @@ const Recommend = (props) => {
   const handleChange = (e) => {
     if (e.target.value.length > 1) {
       setSelectBook(true);
+      setLoading(true);
 
       debounceSearch(e.target.value);
     }
@@ -111,6 +114,13 @@ const Recommend = (props) => {
         {selectBook && (
           <div>
             <p className='text-muted'>Select book</p>
+
+            {loading && (
+              <div className='results-spinner'>
+                <Spinner animation='border' />
+              </div>
+            )}
+
             {selectedBookDesc && (
               <Alert variant='success'>{selectedBookDesc}</Alert>
             )}
