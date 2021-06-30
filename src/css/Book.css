@@ -52,3 +52,8 @@
 .icon > span {
   font-size: 14px;
 }
+
+/* Like Icon */
+.fa-heart {
+  color: red;
+}
