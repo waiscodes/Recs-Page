@@ -14,6 +14,7 @@ import { useAuth } from "../../contexts/AuthContext";
 const BookDetails = ({ book, isBookFinished, close }) => {
   const { currentUser } = useAuth();
   const [isBookLiked, setIsBookLiked] = useState(false);
+  const [likesCount, setLikesCount] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -45,9 +46,9 @@ const BookDetails = ({ book, isBookFinished, close }) => {
     const likeId = book.id + currentUser?.uid;
     // check if book is already liked or not
     if (isBookLiked) {
-      unlikeThisBook(book, likeId);
+      unlikeThisBook(book, likeId, setIsBookLiked);
     } else {
-      likeThisBook(book, currentUser?.uid, likeId);
+      likeThisBook(book, currentUser?.uid, likeId, setIsBookLiked);
     }
   };
 

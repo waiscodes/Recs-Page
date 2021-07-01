@@ -24,23 +24,28 @@ const recBook = (book) => {
   }
 };
 
-const likeThisBook = (book, currentUser, likeId) => {
+const likeThisBook = (book, currentUser, likeId, setIsBookLiked) => {
   const increment = firebase.firestore.FieldValue.increment(1);
   try {
-    db.collection("likes").doc(likeId).set({
-      bookLiked: book.id,
-      title: book.title,
-      author: book.author,
-      thumbnail: book.thumbnail,
-      recBy: book.recBy,
-      reason: book.reason,
-      upvotes: increment,
-      uid: book.uid,
-      createdAt: new Date(),
-      // Liked by section
-      likedBy: currentUser,
-      likedOn: new Date(),
-    });
+    db.collection("likes")
+      .doc(likeId)
+      .set({
+        bookLiked: book.id,
+        title: book.title,
+        author: book.author,
+        thumbnail: book.thumbnail,
+        recBy: book.recBy,
+        reason: book.reason,
+        upvotes: increment,
+        uid: book.uid,
+        createdAt: new Date(),
+        // Liked by section
+        likedBy: currentUser,
+        likedOn: new Date(),
+      })
+      .then(() => {
+        setIsBookLiked(true);
+      });
 
     db.collection("books").doc(book.id).update({ upvotes: increment });
   } catch (e) {
@@ -48,13 +53,18 @@ const likeThisBook = (book, currentUser, likeId) => {
   }
 };
 
-const unlikeThisBook = (book, likeId) => {
+const unlikeThisBook = (book, likeId, setIsBookLiked) => {
   const decrement = firebase.firestore.FieldValue.increment(-1);
 
   try {
     db.collection("likes").doc(likeId).delete();
 
-    db.collection("books").doc(book.id).update({ upvotes: decrement });
+    db.collection("books")
+      .doc(book.id)
+      .update({ upvotes: decrement })
+      .then(() => {
+        setIsBookLiked(false);
+      });
   } catch (e) {
     console.log(e);
   }
