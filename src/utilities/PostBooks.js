@@ -136,10 +136,12 @@ const removeFromFinishedList = (book, close) => {
 };
 
 const deleteThisRec = (book) => {
-  try {
-    db.collection("books").doc(book.id).delete();
-  } catch (e) {
-    console.log(e);
+  if (window.confirm("Are you sure you want to delete this book?")) {
+    try {
+      db.collection("books").doc(book.id).delete();
+    } catch (e) {
+      console.log(e);
+    }
   }
 };
 
