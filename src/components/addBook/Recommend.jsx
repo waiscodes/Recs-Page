@@ -121,22 +121,23 @@ const Recommend = (props) => {
               </div>
             ) : (
               <div className='books-result d-flex'>
-                {result?.map((book) => (
-                  <div
-                    key={book.id}
-                    onClick={() => setHighlightedBook(book.id)}
-                    style={highlightedBook === book.id ? highlightCSS : null}
-                  >
-                    <img
-                      src={book.volumeInfo.imageLinks?.thumbnail}
-                      alt=''
-                      data-title={book.volumeInfo.title}
-                      data-authors={book.volumeInfo.authors}
-                      data-thumbnail={book.volumeInfo.imageLinks?.thumbnail}
-                      onClick={pickBook}
-                    />
-                  </div>
-                ))}
+                {result &&
+                  result.map((book) => (
+                    <div
+                      key={book.id}
+                      onClick={() => setHighlightedBook(book.id)}
+                      style={highlightedBook === book.id ? highlightCSS : null}
+                    >
+                      <img
+                        src={book.volumeInfo.imageLinks?.thumbnail}
+                        alt=''
+                        data-title={book.volumeInfo.title}
+                        data-authors={book.volumeInfo.authors}
+                        data-thumbnail={book.volumeInfo.imageLinks?.thumbnail}
+                        onClick={pickBook}
+                      />
+                    </div>
+                  ))}
               </div>
             )}
 
