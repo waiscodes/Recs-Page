@@ -1,8 +1,6 @@
 import React, { useCallback } from "react";
 
-const GetBookFromGoogle = () => {
-  const [title, setTitle] = useState();
-
+const GetBookFromGoogle = ({ title }) => {
   const debounceSearch = useCallback(
     debounce((title) => {
       axios
