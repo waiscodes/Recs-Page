@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 
-const AddBook = () => {
+const GetBookFromGoogle = () => {
   const [title, setTitle] = useState();
 
   const debounceSearch = useCallback(
@@ -23,4 +23,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default GetBookFromGoogle;
