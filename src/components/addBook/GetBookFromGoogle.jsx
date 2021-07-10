@@ -1,4 +1,5 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
+import { Form } from "react-bootstrap";
 
 const GetBookFromGoogle = ({ title }) => {
   const debounceSearch = useCallback(
@@ -14,9 +15,26 @@ const GetBookFromGoogle = ({ title }) => {
     }, 500),
     []
   );
+
+  const handleChange = (e) => {
+    if (e.target.value.length > 1) {
+    }
+    if (e.target.value.length < 1) {
+    }
+  };
+
   return (
     <div>
-      <h5>hello world from add add book component</h5>
+      <Form.Group>
+        <Form.Label className='d-none'>Title</Form.Label>
+        <Form.Control
+          type='text'
+          placeholder='Add Book Recommendation'
+          onChange={handleChange}
+          value={title}
+          required
+        />
+      </Form.Group>
     </div>
   );
 };
