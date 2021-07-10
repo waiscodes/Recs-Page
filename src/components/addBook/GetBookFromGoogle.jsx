@@ -2,6 +2,8 @@ import React, { useState, useCallback } from "react";
 import { Form } from "react-bootstrap";
 
 const GetBookFromGoogle = ({ title }) => {
+  const [loading, setLoading] = useState(false);
+
   const debounceSearch = useCallback(
     debounce((title) => {
       axios
@@ -18,6 +20,8 @@ const GetBookFromGoogle = ({ title }) => {
 
   const handleChange = (e) => {
     if (e.target.value.length > 1) {
+      debounceSearch(e.target.value);
+      setLoading(true);
     }
     if (e.target.value.length < 1) {
     }
