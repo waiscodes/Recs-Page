@@ -10,6 +10,7 @@ import MyNavbar from "./components/templates/Navbar";
 import Welcome from "./components/pages/Welcome";
 import NotFound404 from "./components/pages/NotFound404";
 
+
 const App = () => {
   return (
     <>
